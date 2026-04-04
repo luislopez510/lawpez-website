@@ -1,1274 +1,929 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lawpez, LLC — International Legal Services</title>
-  <meta name="description" content="Lawpez, LLC — Venezuelan law expertise, expert opinion letters, and B2B immigration packages for law firms across the United States." />
+  <title>Lawpez, LLC — Servicios Jurídicos Internacionales</title>
+  <meta name="description" content="Lawpez, LLC — Consultoría en derecho venezolano, cartas de experto y paquetes especializados para firmas de abogados." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy:        #0f1b2d;
-      --navy2:       #172135;
-      --navy3:       #1e2d47;
-      --gold:        #b8924a;
-      --gold-light:  #d4af72;
-      --gold-dim:    rgba(184,146,74,0.12);
-      --cream:       #faf8f3;
-      --cream2:      #f3f0e8;
-      --cream3:      #ede9de;
-      --text-dark:   #1a1a1a;
-      --text-mid:    #4a4a4a;
-      --text-muted:  #7a7a7a;
-      --border-dark: rgba(255,255,255,0.1);
-      --border-light:rgba(0,0,0,0.1);
-      --border-gold: rgba(184,146,74,0.25);
+      --navy:#0f1b2d; --navy2:#172135; --navy3:#1e2d47;
+      --gold:#b8924a; --gold-light:#d4af72; --gold-dim:rgba(184,146,74,0.12);
+      --cream:#faf8f3; --cream2:#f3f0e8; --cream3:#ede9de;
+      --text-dark:#1a1a1a; --text-mid:#4a4a4a; --text-muted:#7a7a7a;
+      --border-dark:rgba(255,255,255,0.1); --border-light:rgba(0,0,0,0.1);
+      --border-gold:rgba(184,146,74,0.25);
     }
-
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--cream);
-      color: var(--text-dark);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--cream); }
-    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+    body { font-family:'Inter',sans-serif; background:var(--cream); color:var(--text-dark); line-height:1.7; overflow-x:hidden; }
+    ::-webkit-scrollbar { width:4px; }
+    ::-webkit-scrollbar-track { background:var(--cream); }
+    ::-webkit-scrollbar-thumb { background:var(--gold); border-radius:2px; }
 
-    /* ─────────────────────────────────────────
-       NAVIGATION
-    ───────────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 1.6rem 5rem;
-      display: flex; align-items: center; justify-content: space-between;
-      background: transparent;
-      transition: all 0.4s;
-    }
-    nav.scrolled {
-      background: rgba(255,250,243,0.96);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 1px 0 var(--border-light), 0 8px 32px rgba(0,0,0,0.06);
-      padding: 1rem 5rem;
-    }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      text-decoration: none;
-      color: #fff;
-      transition: color 0.4s;
-    }
-    nav.scrolled .nav-logo { color: var(--navy); }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 2.8rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.7rem; letter-spacing: 0.18em;
-      text-transform: uppercase; font-weight: 500;
-      text-decoration: none;
-      color: rgba(255,255,255,0.75);
-      transition: color 0.3s;
-    }
-    nav.scrolled .nav-links a { color: var(--text-muted); }
-    .nav-links a:hover { color: var(--gold) !important; }
-    .nav-cta {
-      font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-      font-weight: 500; text-decoration: none;
-      color: var(--gold); border: 1px solid var(--gold);
-      padding: 0.6rem 1.5rem;
-      transition: all 0.3s;
-    }
-    .nav-cta:hover { background: var(--gold); color: #fff; }
-    nav.scrolled .nav-cta { color: var(--gold); }
+    /* ── NAV ── */
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:1.6rem 5rem; display:flex; align-items:center; justify-content:space-between; background:transparent; transition:all 0.4s; }
+    nav.scrolled { background:rgba(255,250,243,0.96); backdrop-filter:blur(16px); box-shadow:0 1px 0 var(--border-light),0 8px 32px rgba(0,0,0,0.06); padding:1rem 5rem; }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; text-decoration:none; color:#fff; transition:color 0.4s; }
+    nav.scrolled .nav-logo { color:var(--navy); }
+    .nav-logo span { color:var(--gold); }
+    .nav-right { display:flex; align-items:center; gap:2rem; }
+    .nav-links { display:flex; gap:2.4rem; list-style:none; }
+    .nav-links a { font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; text-decoration:none; color:rgba(255,255,255,0.75); transition:color 0.3s; }
+    nav.scrolled .nav-links a { color:var(--text-muted); }
+    .nav-links a:hover { color:var(--gold)!important; }
+    .nav-cta { font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; text-decoration:none; color:var(--gold); border:1px solid var(--gold); padding:0.6rem 1.5rem; transition:all 0.3s; }
+    .nav-cta:hover { background:var(--gold); color:#fff; }
 
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger span { width: 22px; height: 1px; background: var(--gold); transition: 0.3s; }
-    .mobile-menu {
-      display: none; position: fixed; inset: 0;
-      background: var(--navy);
-      z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem; color: #fff; text-decoration: none; letter-spacing: 0.1em;
-      transition: color 0.3s;
-    }
-    .mobile-menu a:hover { color: var(--gold); }
+    /* Language switcher */
+    .lang-switcher { display:flex; align-items:center; gap:0.4rem; }
+    .lang-btn { background:none; border:none; cursor:pointer; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:500; color:rgba(255,255,255,0.45); transition:color 0.3s; padding:0.2rem 0.3rem; font-family:'Inter',sans-serif; }
+    .lang-btn:hover, .lang-btn.active { color:var(--gold); }
+    nav.scrolled .lang-btn { color:var(--text-muted); }
+    nav.scrolled .lang-btn:hover, nav.scrolled .lang-btn.active { color:var(--gold); }
+    .lang-sep { color:rgba(255,255,255,0.2); font-size:0.6rem; }
+    nav.scrolled .lang-sep { color:var(--border-light); }
 
-    /* ─────────────────────────────────────────
-       HERO
-    ───────────────────────────────────────── */
-    #hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      background: var(--navy);
-      position: relative;
-      overflow: hidden;
-    }
-    /* subtle texture overlay */
-    #hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
-    }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+    .hamburger span { width:22px; height:1px; background:var(--gold); transition:0.3s; }
+    .mobile-menu { display:none; position:fixed; inset:0; background:var(--navy); z-index:99; flex-direction:column; align-items:center; justify-content:center; gap:2.5rem; }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a { font-family:'Cormorant Garamond',serif; font-size:2rem; color:#fff; text-decoration:none; letter-spacing:0.1em; transition:color 0.3s; }
+    .mobile-menu a:hover { color:var(--gold); }
+    .mobile-lang { display:flex; gap:1rem; margin-top:1rem; }
+    .mobile-lang button { background:none; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.6); padding:0.4rem 0.8rem; font-size:0.7rem; letter-spacing:0.15em; cursor:pointer; font-family:'Inter',sans-serif; }
+    .mobile-lang button.active { border-color:var(--gold); color:var(--gold); }
 
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 10rem 5rem 6rem;
-      position: relative; z-index: 2;
-    }
-    .hero-eyebrow {
-      font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 2rem;
-      display: flex; align-items: center; gap: 1.2rem;
-    }
-    .hero-eyebrow::before {
-      content: ''; display: block;
-      width: 36px; height: 1px; background: var(--gold);
-    }
-    h1.hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.2rem, 5vw, 5.5rem);
-      font-weight: 300; line-height: 1.05;
-      color: #fff; letter-spacing: -0.01em;
-      margin-bottom: 1.5rem;
-    }
-    h1.hero-title em {
-      font-style: italic; color: var(--gold-light);
-      display: block;
-    }
-    .hero-name {
-      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
-      color: rgba(255,255,255,0.45); margin-bottom: 2.5rem;
-      padding-top: 0.5rem;
-    }
-    .hero-desc {
-      font-size: 0.92rem; color: rgba(255,255,255,0.55);
-      max-width: 380px; line-height: 1.85;
-      font-weight: 300; margin-bottom: 3rem;
-    }
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-gold {
-      display: inline-block; background: var(--gold);
-      color: #fff; padding: 0.9rem 2.4rem;
-      text-decoration: none; font-size: 0.7rem;
-      letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;
-      transition: all 0.3s;
-    }
-    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(184,146,74,0.3); }
-    .btn-ghost {
-      display: inline-block; border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.7); padding: 0.9rem 2.4rem;
-      text-decoration: none; font-size: 0.7rem;
-      letter-spacing: 0.18em; text-transform: uppercase; font-weight: 400;
-      transition: all 0.3s;
-    }
-    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    /* ── HERO ── */
+    #hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; background:var(--navy); position:relative; overflow:hidden; }
+    #hero::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events:none; }
+    .hero-left { display:flex; flex-direction:column; justify-content:center; padding:10rem 5rem 6rem; position:relative; z-index:2; }
+    .hero-eyebrow { font-size:0.68rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); margin-bottom:2rem; display:flex; align-items:center; gap:1.2rem; }
+    .hero-eyebrow::before { content:''; display:block; width:36px; height:1px; background:var(--gold); }
+    h1.hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(3.2rem,5vw,5.5rem); font-weight:300; line-height:1.05; color:#fff; letter-spacing:-0.01em; margin-bottom:1.5rem; }
+    h1.hero-title em { font-style:italic; color:var(--gold-light); display:block; }
+    .hero-name { font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:2.5rem; padding-top:0.5rem; }
+    .hero-desc { font-size:0.92rem; color:rgba(255,255,255,0.55); max-width:380px; line-height:1.85; font-weight:300; margin-bottom:3rem; }
+    .hero-ctas { display:flex; gap:1rem; flex-wrap:wrap; }
+    .btn-gold { display:inline-block; background:var(--gold); color:#fff; padding:0.9rem 2.4rem; text-decoration:none; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; transition:all 0.3s; }
+    .btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 8px 24px rgba(184,146,74,0.3); }
+    .btn-ghost { display:inline-block; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.7); padding:0.9rem 2.4rem; text-decoration:none; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:400; transition:all 0.3s; }
+    .btn-ghost:hover { border-color:var(--gold); color:var(--gold); }
+    .hero-right { position:relative; overflow:hidden; }
+    .hero-right::before { content:''; position:absolute; inset:0; z-index:2; background:linear-gradient(to right,var(--navy) 0%,transparent 35%); }
+    .hero-right::after { content:''; position:absolute; inset:0; z-index:2; background:linear-gradient(to top,var(--navy) 0%,transparent 20%); }
+    .hero-photo { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+    .hero-accent { position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(to bottom,transparent 15%,var(--gold) 50%,transparent 85%); }
 
-    .hero-right {
-      position: relative; overflow: hidden;
-    }
-    .hero-right::before {
-      content: ''; position: absolute; inset: 0; z-index: 2;
-      background: linear-gradient(to right, var(--navy) 0%, transparent 35%);
-    }
-    .hero-right::after {
-      content: ''; position: absolute; inset: 0; z-index: 2;
-      background: linear-gradient(to top, var(--navy) 0%, transparent 20%);
-    }
-    .hero-photo {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      display: block;
-    }
+    /* ── CREDENTIALS STRIP ── */
+    #credentials { background:var(--gold); padding:0; }
+    .cred-grid { display:flex; flex-wrap:wrap; }
+    .cred-item { flex:1; min-width:200px; padding:2.2rem 2.5rem; border-right:1px solid rgba(255,255,255,0.2); text-align:center; }
+    .cred-item:last-child { border-right:none; }
+    .cred-year { font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:400; color:#fff; line-height:1; margin-bottom:0.3rem; }
+    .cred-label { font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.75); line-height:1.5; }
 
-    /* gold vertical accent */
-    .hero-accent {
-      position: absolute; left: 0; top: 0; bottom: 0;
-      width: 3px;
-      background: linear-gradient(to bottom, transparent 15%, var(--gold) 50%, transparent 85%);
-    }
+    /* ── SECTION COMMONS ── */
+    section { padding:8rem 5rem; }
+    .section-label { font-size:0.66rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem; display:flex; align-items:center; gap:1rem; }
+    .section-label::after { content:''; display:block; width:36px; height:1px; background:var(--gold); }
+    .centered .section-label { justify-content:center; }
+    .section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,4vw,3.8rem); font-weight:300; line-height:1.12; margin-bottom:1.5rem; color:var(--navy); }
+    .section-title em { font-style:italic; color:var(--gold); }
+    .section-title.on-dark { color:#fff; }
+    .gold-line { width:50px; height:2px; background:var(--gold); margin:1.5rem 0; }
+    .centered .gold-line { margin:1.5rem auto; }
 
-    /* ─────────────────────────────────────────
-       CREDENTIALS STRIP
-    ───────────────────────────────────────── */
-    #credentials {
-      background: var(--gold);
-      padding: 0;
-    }
-    .cred-grid {
-      display: flex; flex-wrap: wrap;
-    }
-    .cred-item {
-      flex: 1; min-width: 200px;
-      padding: 2.2rem 2.5rem;
-      border-right: 1px solid rgba(255,255,255,0.2);
-      text-align: center;
-    }
-    .cred-item:last-child { border-right: none; }
-    .cred-year {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem; font-weight: 400;
-      color: #fff; line-height: 1; margin-bottom: 0.3rem;
-    }
-    .cred-label {
-      font-size: 0.65rem; letter-spacing: 0.18em;
-      text-transform: uppercase; color: rgba(255,255,255,0.75);
-      line-height: 1.5;
-    }
+    /* ── ABOUT ── */
+    #about { background:var(--cream); }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:7rem; align-items:center; max-width:1200px; margin:0 auto; }
+    .about-quote { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-style:italic; font-weight:300; line-height:1.6; color:var(--navy); border-left:3px solid var(--gold); padding-left:1.5rem; margin:2rem 0; }
+    .about-text { font-size:0.88rem; color:var(--text-mid); line-height:1.9; font-weight:300; margin-bottom:1.2rem; }
+    .edu-list { list-style:none; margin-top:2rem; }
+    .edu-item { display:flex; gap:1.5rem; padding:1rem 0; border-bottom:1px solid var(--border-light); }
+    .edu-item:last-child { border-bottom:none; }
+    .edu-year { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--gold); min-width:48px; font-weight:400; padding-top:0.1rem; }
+    .edu-degree { font-size:0.83rem; color:var(--text-dark); font-weight:500; margin-bottom:0.2rem; }
+    .edu-school { font-size:0.76rem; color:var(--text-muted); }
+    .about-photo-wrap { position:relative; }
+    .about-photo-wrap::before { content:''; position:absolute; top:-1.5rem; left:-1.5rem; right:1.5rem; bottom:1.5rem; border:1px solid var(--border-gold); pointer-events:none; }
+    .about-photo-wrap img { position:relative; z-index:1; width:100%; display:block; box-shadow:0 20px 60px rgba(0,0,0,0.12); }
+    .author-badge { display:inline-flex; align-items:center; gap:0.8rem; background:var(--gold-dim); border:1px solid var(--border-gold); padding:0.7rem 1.2rem; margin-bottom:1.5rem; }
+    .author-badge-icon { color:var(--gold); font-size:0.8rem; }
+    .author-badge-text { font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-weight:500; }
 
-    /* ─────────────────────────────────────────
-       SECTION COMMONS
-    ───────────────────────────────────────── */
-    section { padding: 8rem 5rem; }
+    /* UPL Notice */
+    .upl-notice { margin-top:2rem; padding:1.2rem 1.5rem; border-left:3px solid var(--gold); background:rgba(184,146,74,0.06); }
+    .upl-notice p { font-size:0.78rem; color:var(--text-muted); line-height:1.7; font-style:italic; }
 
-    .section-label {
-      font-size: 0.66rem; letter-spacing: 0.35em;
-      text-transform: uppercase; color: var(--gold);
-      margin-bottom: 1.2rem;
-      display: flex; align-items: center; gap: 1rem;
-    }
-    .section-label::after {
-      content: ''; display: block; width: 36px; height: 1px; background: var(--gold);
-    }
-    .centered .section-label { justify-content: center; }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.4rem, 4vw, 3.8rem);
-      font-weight: 300; line-height: 1.12;
-      margin-bottom: 1.5rem; color: var(--navy);
-    }
-    .section-title em { font-style: italic; color: var(--gold); }
-    .section-title.on-dark { color: #fff; }
-    .gold-line { width: 50px; height: 2px; background: var(--gold); margin: 1.5rem 0; }
-    .centered .gold-line { margin: 1.5rem auto; }
+    /* ── SERVICES ── */
+    #services { background:var(--navy); }
+    .services-header { max-width:1200px; margin:0 auto 4rem; }
+    .services-header .section-label { color:var(--gold-light); }
+    .services-header .section-label::after { background:var(--gold-light); }
+    .services-intro { font-size:0.88rem; color:rgba(255,255,255,0.5); max-width:480px; line-height:1.8; font-weight:300; }
+    .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.08); max-width:1200px; margin:0 auto; }
+    .service-card { background:var(--navy2); padding:3rem 2.5rem; transition:background 0.3s; position:relative; overflow:hidden; }
+    .service-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--gold); transform:scaleX(0); transition:transform 0.4s; transform-origin:left; }
+    .service-card:hover { background:var(--navy3); }
+    .service-card:hover::after { transform:scaleX(1); }
+    .service-num { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; color:rgba(255,255,255,0.06); line-height:1; margin-bottom:1.2rem; }
+    .service-title { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:400; color:#fff; line-height:1.2; margin-bottom:1rem; }
+    .service-desc { font-size:0.83rem; color:rgba(255,255,255,0.45); line-height:1.8; font-weight:300; margin-bottom:1.5rem; }
+    .service-list { list-style:none; }
+    .service-list li { font-size:0.78rem; color:rgba(255,255,255,0.5); padding:0.4rem 0 0.4rem 1.2rem; border-bottom:1px solid rgba(255,255,255,0.04); position:relative; }
+    .service-list li::before { content:'—'; position:absolute; left:0; color:var(--gold); font-size:0.65rem; }
+    .service-list li:last-child { border-bottom:none; }
+    .services-note { max-width:1200px; margin:2.5rem auto 0; padding:1.2rem 1.5rem; border:1px solid rgba(184,146,74,0.2); }
+    .services-note p { font-size:0.75rem; color:rgba(255,255,255,0.35); line-height:1.7; font-style:italic; }
 
-    /* ─────────────────────────────────────────
-       ABOUT
-    ───────────────────────────────────────── */
-    #about { background: var(--cream); }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 7rem; align-items: center;
-      max-width: 1200px; margin: 0 auto;
-    }
-    .about-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem; font-style: italic; font-weight: 300;
-      line-height: 1.6; color: var(--navy);
-      border-left: 3px solid var(--gold);
-      padding-left: 1.5rem; margin: 2rem 0;
-    }
-    .about-text {
-      font-size: 0.88rem; color: var(--text-mid);
-      line-height: 1.9; font-weight: 300; margin-bottom: 1.2rem;
-    }
-    .edu-list { list-style: none; margin-top: 2rem; }
-    .edu-item {
-      display: flex; gap: 1.5rem; padding: 1rem 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .edu-item:last-child { border-bottom: none; }
-    .edu-year {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem; color: var(--gold);
-      min-width: 48px; font-weight: 400; padding-top: 0.1rem;
-    }
-    .edu-degree { font-size: 0.83rem; color: var(--text-dark); font-weight: 500; margin-bottom: 0.2rem; }
-    .edu-school { font-size: 0.76rem; color: var(--text-muted); }
+    /* ── B2B ── */
+    #b2b { background:var(--cream2); }
+    .b2b-inner { max-width:1200px; margin:0 auto; }
+    .b2b-top { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; margin-bottom:4rem; }
+    .b2b-intro-text { font-size:0.88rem; color:var(--text-mid); line-height:1.9; font-weight:300; margin-top:1.5rem; }
+    .b2b-packages { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
+    .b2b-package { background:#fff; padding:2.5rem; border:1px solid var(--border-light); border-top:3px solid var(--gold); transition:all 0.3s; box-shadow:0 2px 12px rgba(0,0,0,0.04); }
+    .b2b-package:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.1); }
+    .pkg-tag { font-size:0.62rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem; }
+    .pkg-title { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:400; color:var(--navy); margin-bottom:0.8rem; }
+    .pkg-desc { font-size:0.8rem; color:var(--text-muted); line-height:1.7; font-weight:300; }
+    .pkg-list { list-style:none; margin-top:1.2rem; }
+    .pkg-list li { font-size:0.77rem; color:var(--text-mid); padding:0.35rem 0 0.35rem 1rem; border-bottom:1px solid rgba(0,0,0,0.05); position:relative; }
+    .pkg-list li::before { content:'·'; position:absolute; left:0; color:var(--gold); font-weight:bold; }
+    .pkg-list li:last-child { border-bottom:none; }
 
-    /* Photo frame */
-    .about-photo-wrap {
-      position: relative;
-    }
-    .about-photo-wrap::before {
-      content: ''; position: absolute;
-      top: -1.5rem; left: -1.5rem;
-      right: 1.5rem; bottom: 1.5rem;
-      border: 1px solid var(--border-gold);
-      pointer-events: none;
-    }
-    .about-photo-wrap img {
-      position: relative; z-index: 1;
-      width: 100%; display: block;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
-    }
+    /* ── WHY ── */
+    #why { background:var(--cream3); }
+    .why-inner { max-width:1200px; margin:0 auto; }
+    .why-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-top:4rem; }
+    .why-item { text-align:center; padding:2.5rem 1.5rem; background:#fff; border-bottom:3px solid var(--gold); box-shadow:0 2px 12px rgba(0,0,0,0.04); transition:transform 0.3s,box-shadow 0.3s; }
+    .why-item:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,0.08); }
+    .why-icon { font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:var(--gold); margin-bottom:1rem; }
+    .why-title { font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--navy); margin-bottom:0.8rem; font-weight:600; }
+    .why-text { font-size:0.79rem; color:var(--text-muted); line-height:1.7; font-weight:300; }
 
-    /* Author badge */
-    .author-badge {
-      display: inline-flex; align-items: center; gap: 0.8rem;
-      background: var(--gold-dim); border: 1px solid var(--border-gold);
-      padding: 0.7rem 1.2rem; margin-bottom: 1.5rem;
-    }
-    .author-badge-icon { color: var(--gold); font-size: 0.8rem; }
-    .author-badge-text {
-      font-size: 0.72rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--gold); font-weight: 500;
-    }
+    /* ── PUBLICATIONS ── */
+    #publications { background:var(--navy); }
+    .pub-header { max-width:1200px; margin:0 auto 4rem; }
+    .pub-header .section-label { color:var(--gold-light); }
+    .pub-header .section-label::after { background:var(--gold-light); }
+    .pub-intro { font-size:0.88rem; color:rgba(255,255,255,0.5); max-width:520px; line-height:1.8; font-weight:300; }
+    .pub-categories { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; max-width:1200px; margin:0 auto; }
+    .pub-category { background:var(--navy2); border-bottom:2px solid var(--gold); padding:2.5rem; }
+    .pub-cat-label { font-size:0.62rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem; }
+    .pub-cat-title { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:400; color:#fff; margin-bottom:1.5rem; }
+    .pub-list { list-style:none; }
+    .pub-item { padding:0.9rem 0; border-bottom:1px solid rgba(255,255,255,0.06); }
+    .pub-item:last-child { border-bottom:none; }
+    .pub-item a { text-decoration:none; display:block; transition:color 0.3s; }
+    .pub-item-title { font-size:0.85rem; color:rgba(255,255,255,0.75); line-height:1.5; margin-bottom:0.25rem; transition:color 0.3s; }
+    .pub-item a:hover .pub-item-title { color:var(--gold-light); }
+    .pub-item-meta { font-size:0.7rem; color:rgba(255,255,255,0.3); letter-spacing:0.08em; }
+    .pub-item-static .pub-item-title { color:rgba(255,255,255,0.75); cursor:default; }
+    .pub-empty { font-size:0.8rem; color:rgba(255,255,255,0.25); font-style:italic; padding:0.5rem 0; }
+    .pub-novel-card { display:flex; align-items:flex-start; gap:1.5rem; background:rgba(255,255,255,0.03); padding:1.5rem; border:1px solid rgba(184,146,74,0.15); margin-bottom:1rem; text-decoration:none; transition:border-color 0.3s; }
+    .pub-novel-card:hover { border-color:var(--gold); }
+    .pub-novel-icon { font-family:'Cormorant Garamond',serif; font-size:2.5rem; color:var(--gold); line-height:1; flex-shrink:0; }
+    .pub-novel-title { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:#fff; margin-bottom:0.3rem; }
+    .pub-novel-sub { font-size:0.75rem; color:rgba(255,255,255,0.4); line-height:1.6; }
+    .pub-novel-link { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-top:0.5rem; display:block; }
 
-    /* ─────────────────────────────────────────
-       SERVICES
-    ───────────────────────────────────────── */
-    #services { background: var(--navy); }
-    .services-header {
-      max-width: 1200px; margin: 0 auto 4rem;
-    }
-    .services-header .section-label { color: var(--gold-light); }
-    .services-header .section-label::after { background: var(--gold-light); }
-    .services-intro {
-      font-size: 0.88rem; color: rgba(255,255,255,0.5);
-      max-width: 480px; line-height: 1.8; font-weight: 300;
-    }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: rgba(255,255,255,0.08);
-      max-width: 1200px; margin: 0 auto;
-    }
-    .service-card {
-      background: var(--navy2);
-      padding: 3rem 2.5rem;
-      transition: background 0.3s;
-      position: relative; overflow: hidden;
-    }
-    .service-card::after {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: var(--gold);
-      transform: scaleX(0); transition: transform 0.4s;
-      transform-origin: left;
-    }
-    .service-card:hover { background: var(--navy3); }
-    .service-card:hover::after { transform: scaleX(1); }
-    .service-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem; font-weight: 300;
-      color: rgba(255,255,255,0.06); line-height: 1;
-      margin-bottom: 1.2rem;
-    }
-    .service-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem; font-weight: 400;
-      color: #fff; line-height: 1.2; margin-bottom: 1rem;
-    }
-    .service-desc {
-      font-size: 0.83rem; color: rgba(255,255,255,0.45);
-      line-height: 1.8; font-weight: 300; margin-bottom: 1.5rem;
-    }
-    .service-list { list-style: none; }
-    .service-list li {
-      font-size: 0.78rem; color: rgba(255,255,255,0.5);
-      padding: 0.4rem 0 0.4rem 1.2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      position: relative;
-    }
-    .service-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 0.65rem; }
-    .service-list li:last-child { border-bottom: none; }
+    /* ── TEAM ── */
+    #team { background:var(--cream2); }
+    .team-header { max-width:1200px; margin:0 auto 4rem; }
+    .team-intro { font-size:0.88rem; color:var(--text-mid); max-width:480px; line-height:1.8; font-weight:300; }
+    .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:1200px; margin:0 auto; }
+    .team-card { background:#fff; border-bottom:2px solid var(--gold); overflow:hidden; transition:transform 0.3s,box-shadow 0.3s; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+    .team-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,0.12); }
+    .team-photo { width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center top; display:block; }
+    /* Initials placeholder */
+    .team-placeholder { width:100%; aspect-ratio:3/4; display:flex; flex-direction:column; align-items:center; justify-content:center; background:var(--navy); position:relative; overflow:hidden; }
+    .team-placeholder::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,var(--navy2) 0%,var(--navy) 100%); }
+    .team-placeholder-inner { position:relative; z-index:1; text-align:center; }
+    .team-initials { font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:300; color:var(--gold); line-height:1; display:block; margin-bottom:0.8rem; }
+    .team-placeholder-line { width:40px; height:1px; background:rgba(184,146,74,0.4); margin:0 auto 0.8rem; }
+    .team-placeholder-note { font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.25); }
+    .team-info { padding:1.8rem 2rem; }
+    .team-name { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:400; color:var(--navy); margin-bottom:0.3rem; }
+    .team-title { font-size:0.66rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
+    .team-bio { font-size:0.8rem; color:var(--text-mid); line-height:1.75; font-weight:300; }
+    .team-creds { margin-top:1rem; padding-top:1rem; border-top:1px solid rgba(0,0,0,0.07); font-size:0.72rem; color:var(--text-muted); line-height:1.6; font-weight:300; }
 
-    /* ─────────────────────────────────────────
-       B2B
-    ───────────────────────────────────────── */
-    #b2b { background: var(--cream2); }
-    .b2b-inner { max-width: 1200px; margin: 0 auto; }
-    .b2b-top {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 6rem; align-items: start; margin-bottom: 4rem;
-    }
-    .b2b-intro-text {
-      font-size: 0.88rem; color: var(--text-mid);
-      line-height: 1.9; font-weight: 300; margin-top: 1.5rem;
-    }
-    .b2b-packages {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-    .b2b-package {
-      background: #fff;
-      padding: 2.5rem;
-      border: 1px solid var(--border-light);
-      border-top: 3px solid var(--gold);
-      transition: all 0.3s;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-    }
-    .b2b-package:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
-    }
-    .pkg-tag {
-      font-size: 0.62rem; letter-spacing: 0.28em;
-      text-transform: uppercase; color: var(--gold);
-      margin-bottom: 0.8rem;
-    }
-    .pkg-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem; font-weight: 400;
-      color: var(--navy); margin-bottom: 0.8rem;
-    }
-    .pkg-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
-    .pkg-list { list-style: none; margin-top: 1.2rem; }
-    .pkg-list li {
-      font-size: 0.77rem; color: var(--text-mid);
-      padding: 0.35rem 0 0.35rem 1rem;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      position: relative;
-    }
-    .pkg-list li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
-    .pkg-list li:last-child { border-bottom: none; }
+    /* ── CONTACT ── */
+    #contact { background:var(--cream); }
+    .contact-inner { max-width:860px; margin:0 auto; text-align:center; }
+    .contact-intro { font-size:0.88rem; color:var(--text-mid); max-width:520px; margin:0 auto 3.5rem; line-height:1.85; font-weight:300; }
+    .contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:3.5rem; }
+    .contact-item { background:#fff; padding:2.5rem 1.5rem; text-align:center; border-top:2px solid var(--gold); box-shadow:0 2px 12px rgba(0,0,0,0.04); }
+    .contact-item-label { font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem; }
+    .contact-item-value { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--navy); text-decoration:none; display:block; font-weight:400; transition:color 0.3s; }
+    .contact-item-value:hover { color:var(--gold); }
+    .contact-disclaimer { font-size:0.73rem; color:var(--text-muted); opacity:0.65; margin-top:2.5rem; line-height:1.7; max-width:600px; margin-left:auto; margin-right:auto; }
 
-    /* ─────────────────────────────────────────
-       WHY SECTION
-    ───────────────────────────────────────── */
-    #why { background: var(--cream3); }
-    .why-inner { max-width: 1200px; margin: 0 auto; }
-    .why-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 2rem; margin-top: 4rem;
-    }
-    .why-item {
-      text-align: center; padding: 2.5rem 1.5rem;
-      background: #fff;
-      border-bottom: 3px solid var(--gold);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .why-item:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
-    .why-icon {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem; color: var(--gold); margin-bottom: 1rem;
-    }
-    .why-title {
-      font-size: 0.75rem; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--navy);
-      margin-bottom: 0.8rem; font-weight: 600;
-    }
-    .why-text { font-size: 0.79rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+    /* ── FOOTER ── */
+    footer { background:var(--navy); padding:3rem 5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; }
+    .footer-logo { font-family:'Cormorant Garamond',serif; font-size:1.3rem; letter-spacing:0.2em; text-transform:uppercase; color:#fff; }
+    .footer-logo span { color:var(--gold); }
+    .footer-copy { font-size:0.7rem; color:rgba(255,255,255,0.3); letter-spacing:0.1em; }
+    .footer-disclaimer { width:100%; font-size:0.68rem; color:rgba(255,255,255,0.2); line-height:1.7; border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem; margin-top:0.5rem; }
 
-    /* ─────────────────────────────────────────
-       TEAM
-    ───────────────────────────────────────── */
-    #team { background: var(--navy); }
-    .team-header { max-width: 1200px; margin: 0 auto 4rem; }
-    .team-header .section-label { color: var(--gold-light); }
-    .team-header .section-label::after { background: var(--gold-light); }
-    .team-intro {
-      font-size: 0.88rem; color: rgba(255,255,255,0.5);
-      max-width: 480px; line-height: 1.8; font-weight: 300;
-    }
-    .team-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem; max-width: 1200px; margin: 0 auto;
-    }
-    .team-card {
-      background: var(--navy2);
-      border-bottom: 2px solid var(--gold);
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .team-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-    }
-    .team-photo {
-      width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top;
-      display: block;
-    }
-    .team-photo-svg {
-      width: 100%; aspect-ratio: 3/4;
-      display: block;
-    }
-    .team-info { padding: 1.8rem 2rem; }
-    .team-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem; font-weight: 400;
-      color: #fff; margin-bottom: 0.3rem;
-    }
-    .team-title {
-      font-size: 0.66rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    .team-bio {
-      font-size: 0.8rem; color: rgba(255,255,255,0.45);
-      line-height: 1.75; font-weight: 300;
-    }
-    .team-creds {
-      margin-top: 1rem; padding-top: 1rem;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      font-size: 0.72rem; color: rgba(255,255,255,0.3);
-      line-height: 1.6; font-weight: 300;
-    }
+    /* ── SCROLL ANIMATION ── */
+    .fade-up { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease,transform 0.7s ease; }
+    .fade-up.visible { opacity:1; transform:none; }
 
-    /* ─────────────────────────────────────────
-       CONTACT
-    ───────────────────────────────────────── */
-    #contact { background: var(--cream2); }
-    .contact-inner { max-width: 860px; margin: 0 auto; text-align: center; }
-    .contact-intro {
-      font-size: 0.88rem; color: var(--text-mid);
-      max-width: 520px; margin: 0 auto 3.5rem;
-      line-height: 1.85; font-weight: 300;
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px) {
+      nav { padding:1.4rem 3rem; }
+      nav.scrolled { padding:0.9rem 3rem; }
+      section { padding:6rem 3rem; }
+      .about-grid,.b2b-top { grid-template-columns:1fr; gap:4rem; }
+      .why-grid { grid-template-columns:repeat(2,1fr); }
+      .pub-categories { grid-template-columns:1fr; }
     }
-    .contact-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem; margin-bottom: 3.5rem;
-    }
-    .contact-item {
-      background: #fff;
-      padding: 2.5rem 1.5rem; text-align: center;
-      border-top: 2px solid var(--gold);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-    }
-    .contact-item-label {
-      font-size: 0.62rem; letter-spacing: 0.3em;
-      text-transform: uppercase; color: var(--gold);
-      margin-bottom: 0.8rem;
-    }
-    .contact-item-value {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem; color: var(--navy);
-      text-decoration: none; display: block; font-weight: 400;
-      transition: color 0.3s;
-    }
-    .contact-item-value:hover { color: var(--gold); }
-    .contact-disclaimer {
-      font-size: 0.73rem; color: var(--text-muted);
-      opacity: 0.6; margin-top: 2.5rem; line-height: 1.7;
-    }
-    .contact-inner { max-width: 860px; margin: 0 auto; text-align: center; }
-    .contact-intro {
-      font-size: 0.88rem; color: rgba(255,255,255,0.5);
-      max-width: 520px; margin: 0 auto 3.5rem;
-      line-height: 1.85; font-weight: 300;
-    }
-    .contact-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: rgba(255,255,255,0.08);
-      margin-bottom: 3.5rem;
-    }
-    .contact-item {
-      background: var(--navy2);
-      padding: 2.5rem 1.5rem; text-align: center;
-    }
-    .contact-item-label {
-      font-size: 0.62rem; letter-spacing: 0.3em;
-      text-transform: uppercase; color: var(--gold);
-      margin-bottom: 0.8rem;
-    }
-    /* ─────────────────────────────────────────
-       FOOTER
-    ───────────────────────────────────────── */
-    footer {
-      background: #080e18;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 3rem 5rem;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1.5rem;
-    }
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      text-decoration: none; color: #fff;
-    }
-    .footer-logo span { color: var(--gold); }
-    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; }
-    .footer-disclaimer {
-      font-size: 0.66rem; color: rgba(255,255,255,0.2);
-      max-width: 380px; line-height: 1.6; text-align: right;
-    }
-
-    /* ─────────────────────────────────────────
-       ANIMATIONS
-    ───────────────────────────────────────── */
-    .fade-up {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.75s ease, transform 0.75s ease;
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    /* ─────────────────────────────────────────
-       RESPONSIVE
-    ───────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      nav, nav.scrolled { padding: 1.2rem 2rem; }
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; }
-      #hero { grid-template-columns: 1fr; min-height: 100vh; position: relative; }
-      .hero-right { position: absolute; inset: 0; }
-      .hero-left {
-        position: relative; z-index: 3;
-        padding: 9rem 2.5rem 5rem;
-        background: linear-gradient(105deg, rgba(15,27,45,0.95) 55%, rgba(15,27,45,0.5) 100%);
-        min-height: 100vh;
-      }
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .about-photo-wrap { order: -1; max-width: 380px; }
-      .about-photo-wrap::before { display: none; }
-      .services-grid { grid-template-columns: 1fr; }
-      .b2b-top { grid-template-columns: 1fr; gap: 2rem; }
-      .b2b-packages { grid-template-columns: 1fr; }
-      .why-grid { grid-template-columns: repeat(2, 1fr); }
-      .team-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
-      .contact-grid { grid-template-columns: 1fr; }
-      section { padding: 5rem 2rem; }
-      footer { padding: 2rem; flex-direction: column; align-items: flex-start; }
-      .footer-disclaimer { text-align: left; }
-    }
-    @media (max-width: 600px) {
-      .why-grid { grid-template-columns: 1fr; }
-      .cred-grid { flex-direction: column; }
-      .cred-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
-      .cred-item:last-child { border-bottom: none; }
-      .hero-ctas { flex-direction: column; }
+    @media(max-width:768px) {
+      nav { padding:1.2rem 1.5rem; }
+      nav.scrolled { padding:0.8rem 1.5rem; }
+      .nav-links,.nav-cta,.lang-switcher { display:none; }
+      .hamburger { display:flex; }
+      #hero { grid-template-columns:1fr; }
+      .hero-right { display:none; }
+      .hero-left { padding:8rem 1.5rem 4rem; }
+      section { padding:5rem 1.5rem; }
+      .services-grid,.team-grid { grid-template-columns:1fr; }
+      .b2b-packages,.contact-grid { grid-template-columns:1fr; }
+      .why-grid { grid-template-columns:1fr; }
+      footer { padding:2rem 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════
-   NAVIGATION
-══════════════════════════════════════════ -->
-<nav id="navbar">
-  <a href="#hero" class="nav-logo">Law<span>pez</span></a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#b2b">For Law Firms</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Schedule a Consultation</a>
+<!-- ── NAVIGATION ── -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">Law<span>pez</span></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about" class="t" data-es="Perfil" data-en="Profile" data-fr="Profil">Perfil</a></li>
+      <li><a href="#services" class="t" data-es="Servicios" data-en="Services" data-fr="Services">Servicios</a></li>
+      <li><a href="#b2b" class="t" data-es="B2B" data-en="B2B" data-fr="B2B">B2B</a></li>
+      <li><a href="#publications" class="t" data-es="Publicaciones" data-en="Publications" data-fr="Publications">Publicaciones</a></li>
+      <li><a href="#team" class="t" data-es="Equipo" data-en="Team" data-fr="Équipe">Equipo</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    </div>
+    <a href="#contact" class="nav-cta t" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a>
+  </div>
   <div class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
   </div>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMobile()">About</a>
-  <a href="#services" onclick="closeMobile()">Services</a>
-  <a href="#b2b" onclick="closeMobile()">For Law Firms</a>
-  <a href="#team" onclick="closeMobile()">Our Team</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" onclick="closeMobile()" class="t" data-es="Perfil" data-en="Profile" data-fr="Profil">Perfil</a>
+  <a href="#services" onclick="closeMobile()" class="t" data-es="Servicios" data-en="Services" data-fr="Services">Servicios</a>
+  <a href="#b2b" onclick="closeMobile()">B2B</a>
+  <a href="#publications" onclick="closeMobile()" class="t" data-es="Publicaciones" data-en="Publications" data-fr="Publications">Publicaciones</a>
+  <a href="#team" onclick="closeMobile()" class="t" data-es="Equipo" data-en="Team" data-fr="Équipe">Equipo</a>
+  <a href="#contact" onclick="closeMobile()" class="t" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a>
+  <div class="mobile-lang">
+    <button onclick="setLang('es');closeMobile()" id="mb-es" class="active">ES</button>
+    <button onclick="setLang('en');closeMobile()" id="mb-en">EN</button>
+    <button onclick="setLang('fr');closeMobile()" id="mb-fr">FR</button>
+  </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-   HERO
-══════════════════════════════════════════ -->
+<!-- ── HERO ── -->
 <section id="hero">
   <div class="hero-accent"></div>
   <div class="hero-left">
-    <p class="hero-eyebrow">International Legal Services</p>
+    <p class="hero-eyebrow t" data-es="Derecho Venezolano · Servicios Internacionales" data-en="Venezuelan Law · International Services" data-fr="Droit Vénézuélien · Services Internationaux">Derecho Venezolano · Servicios Internacionales</p>
     <h1 class="hero-title">
-      Where Law<br>Meets <em>Precision.</em>
+      <span class="t" data-es="Donde el derecho venezolano" data-en="Where Venezuelan law" data-fr="Là où le droit vénézuélien">Donde el derecho venezolano</span>
+      <em class="t" data-es="encuentra el mundo." data-en="meets the world." data-fr="rencontre le monde.">encuentra el mundo.</em>
     </h1>
-    <p class="hero-name">Luis López — Attorney &amp; Legal Consultant</p>
-    <p class="hero-desc">
-      Venezuelan and U.S. law expertise delivered with the rigor of top-tier
-      practice. Serving individuals, businesses, and law firms across
-      jurisdictions.
+    <p class="hero-name">Luis López Rodríguez · Lawpez, LLC</p>
+    <p class="hero-desc t"
+      data-es="Consultoría especializada en derecho venezolano, análisis jurídico y materiales de apoyo para firmas de abogados en Estados Unidos. Rigor académico. Experiencia binacional. Resultados concretos."
+      data-en="Specialized consulting in Venezuelan law, legal analysis, and support materials for U.S. law firms. Academic rigor. Binational experience. Concrete results."
+      data-fr="Conseil spécialisé en droit vénézuélien, analyse juridique et documents d'appui pour les cabinets d'avocats américains. Rigueur académique. Expérience binationale. Résultats concrets.">
+      Consultoría especializada en derecho venezolano, análisis jurídico y materiales de apoyo para firmas de abogados en Estados Unidos. Rigor académico. Experiencia binacional. Resultados concretos.
     </p>
     <div class="hero-ctas">
-      <a href="#contact" class="btn-gold">Schedule a Consultation</a>
-      <a href="#services" class="btn-ghost">Explore Services</a>
+      <a href="#services" class="btn-gold t" data-es="Ver Servicios" data-en="Our Services" data-fr="Nos Services">Ver Servicios</a>
+      <a href="#contact" class="btn-ghost t" data-es="Contactar" data-en="Get in Touch" data-fr="Nous Contacter">Contactar</a>
     </div>
   </div>
   <div class="hero-right">
-    <img src="img/photo.jpg" alt="Luis López — Attorney at Law" class="hero-photo" />
+    <img src="img/photo.jpg" alt="Luis López Rodríguez" class="hero-photo" />
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-   CREDENTIALS STRIP
-══════════════════════════════════════════ -->
+<!-- ── CREDENTIALS STRIP ── -->
 <div id="credentials">
   <div class="cred-grid">
-    <div class="cred-item fade-up">
-      <div class="cred-year">J.D.</div>
-      <div class="cred-label">Universidad de Margarita<br>Venezuela · 2018</div>
+    <div class="cred-item">
+      <div class="cred-year">'18</div>
+      <div class="cred-label t" data-es="J.D. · Univ. de Margarita" data-en="J.D. · Univ. de Margarita" data-fr="J.D. · Univ. de Margarita">J.D. · Univ. de Margarita</div>
     </div>
-    <div class="cred-item fade-up">
-      <div class="cred-year">M.A.</div>
-      <div class="cred-label">Political Studies &amp; Government<br>Universidad Metropolitana · 2021</div>
+    <div class="cred-item">
+      <div class="cred-year">'21</div>
+      <div class="cred-label t" data-es="M.A. Estudios Políticos · UNIMET" data-en="M.A. Political Studies · UNIMET" data-fr="M.A. Études Politiques · UNIMET">M.A. Estudios Políticos · UNIMET</div>
     </div>
-    <div class="cred-item fade-up">
-      <div class="cred-year">LLM</div>
-      <div class="cred-label">U.S. Law — Loyola University<br>Chicago School of Law</div>
+    <div class="cred-item">
+      <div class="cred-year">'25</div>
+      <div class="cred-label t" data-es="LL.M. U.S. Law · Loyola Chicago" data-en="LL.M. U.S. Law · Loyola Chicago" data-fr="LL.M. Droit américain · Loyola Chicago">LL.M. U.S. Law · Loyola Chicago</div>
     </div>
-    <div class="cred-item fade-up">
-      <div class="cred-year">EN · ES</div>
-      <div class="cred-label">Full Professional Bilingual<br>English &amp; Spanish</div>
+    <div class="cred-item">
+      <div class="cred-year">VZ</div>
+      <div class="cred-label t" data-es="Abogado · Barra Venezolana" data-en="Attorney · Venezuelan Bar" data-fr="Avocat · Barreau Vénézuélien">Abogado · Barra Venezolana</div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-   ABOUT
-══════════════════════════════════════════ -->
+<!-- ── ABOUT ── -->
 <section id="about">
   <div class="about-grid">
-    <div class="fade-up">
-      <p class="section-label">About</p>
-      <h2 class="section-title">A Counsel Built<br>on <em>Excellence</em></h2>
+    <div class="about-content">
+      <p class="section-label t" data-es="Perfil Profesional" data-en="Professional Profile" data-fr="Profil Professionnel">Perfil Profesional</p>
+      <h2 class="section-title t"
+        data-es="Conocimiento venezolano.<br><em>Perspectiva global.</em>"
+        data-en="Venezuelan expertise.<br><em>Global perspective.</em>"
+        data-fr="Expertise vénézuélienne.<br><em>Perspective mondiale.</em>">
+        Conocimiento venezolano.<br><em>Perspectiva global.</em>
+      </h2>
       <div class="gold-line"></div>
 
       <div class="author-badge">
         <span class="author-badge-icon">✦</span>
-        <span class="author-badge-text">Author · Legal Scholar · Novelist</span>
+        <span class="author-badge-text t" data-es="Autor · Novela & Publicaciones Académicas" data-en="Author · Novel & Academic Publications" data-fr="Auteur · Roman & Publications Académiques">Autor · Novela &amp; Publicaciones Académicas</span>
       </div>
 
-      <blockquote class="about-quote">
-        "The law is not merely a set of rules —<br>it is the architecture of trust."
-      </blockquote>
-
-      <p class="about-text">
-        Luis López is a Venezuelan-trained attorney and U.S. legal consultant with a distinguished
-        academic record spanning three institutions across two countries. His formation combines the
-        depth of civil law tradition with a command of the U.S. legal system, cultivated through
-        graduate studies at Loyola University Chicago School of Law.
-      </p>
-      <p class="about-text">
-        A prolific legal author and contributor to journals of law and political science, Luis is
-        also the author of <em><strong>Código Salitre</strong></em>, a novel that bridges the
-        literary and legal worlds. Through Lawpez, LLC, he serves individuals and law firms seeking
-        expert support on Venezuelan law, immigration, and cross-border legal matters.
+      <p class="about-quote t"
+        data-es="&ldquo;El derecho venezolano no necesita ser un misterio para los abogados americanos. Eso es exactamente lo que resolvemos.&rdquo;"
+        data-en="&ldquo;Venezuelan law doesn&rsquo;t have to be a mystery for American attorneys. That&rsquo;s exactly what we solve.&rdquo;"
+        data-fr="&ldquo;Le droit vénézuélien ne devrait pas être un mystère pour les avocats américains. C&rsquo;est exactement ce que nous résolvons.&rdquo;">
+        &ldquo;El derecho venezolano no necesita ser un misterio para los abogados americanos. Eso es exactamente lo que resolvemos.&rdquo;
       </p>
 
-      <div class="gold-line"></div>
+      <p class="about-text t"
+        data-es="Soy abogado venezolano, admitido ante la barra venezolana, con formación adicional en derecho estadounidense a través del LL.M. en Loyola University Chicago School of Law. Desde Lawpez, LLC, ofrezco consultoría especializada, investigación jurídica, análisis de sistemas legales y preparación de materiales de apoyo para firmas de abogados y profesionales del derecho en Estados Unidos."
+        data-en="I am a Venezuelan attorney, admitted to the Venezuelan bar, with additional training in U.S. law through the LL.M. program at Loyola University Chicago School of Law. Through Lawpez, LLC, I provide specialized consulting, legal research, comparative legal analysis, and support materials for U.S. law firms and legal professionals."
+        data-fr="Je suis avocat vénézuélien, admis au barreau vénézuélien, avec une formation complémentaire en droit américain grâce au LL.M. de la Loyola University Chicago School of Law. Par le biais de Lawpez, LLC, j&rsquo;offre des conseils spécialisés, des recherches juridiques et des matériaux d&rsquo;appui pour les cabinets d&rsquo;avocats américains.">
+        Soy abogado venezolano, admitido ante la barra venezolana, con formación adicional en derecho estadounidense a través del LL.M. en Loyola University Chicago School of Law. Desde Lawpez, LLC, ofrezco consultoría especializada, investigación jurídica, análisis de sistemas legales y preparación de materiales de apoyo para firmas de abogados y profesionales del derecho en Estados Unidos.
+      </p>
 
-      <ul class="edu-list">
+      <p class="about-text t"
+        data-es="Mi trabajo combina rigor académico con experiencia práctica en asuntos venezolanos: desde el análisis del ordenamiento jurídico y la estructura institucional del país, hasta la preparación de cartas de experto, traducciones certificadas y paquetes de documentación para casos de inmigración, negocios y familia."
+        data-en="My work combines academic rigor with practical experience in Venezuelan matters: from analysis of the country&rsquo;s legal framework and institutional structure, to expert opinion letters, certified translations, and documentation packages for immigration, business, and family law cases."
+        data-fr="Mon travail combine rigueur académique et expérience pratique dans les affaires vénézuéliennes: de l&rsquo;analyse du cadre juridique et de la structure institutionnelle du pays, aux lettres d&rsquo;expert, aux traductions certifiées et aux dossiers pour les affaires d&rsquo;immigration, de commerce et de famille.">
+        Mi trabajo combina rigor académico con experiencia práctica en asuntos venezolanos: desde el análisis del ordenamiento jurídico y la estructura institucional del país, hasta la preparación de cartas de experto, traducciones certificadas y paquetes de documentación para casos de inmigración, negocios y familia.
+      </p>
+
+      <div class="upl-notice">
+        <p class="t"
+          data-es="Luis López Rodríguez es abogado venezolano. Lawpez, LLC no es una firma de abogados licenciada en Estados Unidos y no presta servicios de representación legal ni asesoría jurídica regulados por ningún estado. Los servicios se limitan a consultoría en derecho venezolano, análisis jurídico, investigación, preparación de materiales y coordinación de apoyo para profesionales del derecho."
+          data-en="Luis López Rodríguez is a Venezuelan attorney. Lawpez, LLC is not a U.S. licensed law firm and does not provide legal representation or legal advice regulated by any U.S. state bar. Services are limited to Venezuelan law consulting, legal analysis, research, document preparation, and coordination support for legal professionals."
+          data-fr="Luis López Rodríguez est avocat vénézuélien. Lawpez, LLC n&rsquo;est pas un cabinet d&rsquo;avocats agréé aux États-Unis et ne fournit pas de représentation légale ni de conseils juridiques réglementés par un barreau américain. Les services se limitent à la consultation en droit vénézuélien, à l&rsquo;analyse juridique et à la préparation de documents.">
+          Luis López Rodríguez es abogado venezolano. Lawpez, LLC no es una firma de abogados licenciada en Estados Unidos y no presta servicios de representación legal ni asesoría jurídica regulados por ningún estado. Los servicios se limitan a consultoría en derecho venezolano, análisis jurídico, investigación, preparación de materiales y coordinación de apoyo para profesionales del derecho.
+        </p>
+      </div>
+
+      <ul class="edu-list fade-up">
         <li class="edu-item">
-          <span class="edu-year">LLM</span>
+          <span class="edu-year">'18</span>
           <div>
-            <div class="edu-degree">Master of Laws in U.S. Law</div>
-            <div class="edu-school">Loyola University Chicago School of Law</div>
+            <div class="edu-degree t" data-es="Juris Doctor (J.D.)" data-en="Juris Doctor (J.D.)" data-fr="Juris Doctor (J.D.)">Juris Doctor (J.D.)</div>
+            <div class="edu-school t" data-es="Universidad de Margarita · Venezuela" data-en="Universidad de Margarita · Venezuela" data-fr="Universidad de Margarita · Venezuela">Universidad de Margarita · Venezuela</div>
           </div>
         </li>
         <li class="edu-item">
           <span class="edu-year">'21</span>
           <div>
-            <div class="edu-degree">M.A. in Political Studies &amp; Government</div>
-            <div class="edu-school">Universidad Metropolitana, Venezuela</div>
+            <div class="edu-degree t" data-es="Maestría en Estudios Políticos y de Gobierno" data-en="M.A. in Political and Government Studies" data-fr="M.A. en Études Politiques et de Gouvernement">Maestría en Estudios Políticos y de Gobierno</div>
+            <div class="edu-school t" data-es="Universidad Metropolitana (UNIMET) · Venezuela" data-en="Universidad Metropolitana (UNIMET) · Venezuela" data-fr="Universidad Metropolitana (UNIMET) · Venezuela">Universidad Metropolitana (UNIMET) · Venezuela</div>
           </div>
         </li>
         <li class="edu-item">
-          <span class="edu-year">'18</span>
+          <span class="edu-year">'25</span>
           <div>
-            <div class="edu-degree">Juris Doctor (J.D. equivalent)</div>
-            <div class="edu-school">Universidad de Margarita, Venezuela</div>
+            <div class="edu-degree t" data-es="LL.M. en Derecho Estadounidense" data-en="Master of Laws (LL.M.) in U.S. Law" data-fr="LL.M. en Droit américain">LL.M. en Derecho Estadounidense</div>
+            <div class="edu-school t" data-es="Loyola University Chicago School of Law · Illinois, EE.UU." data-en="Loyola University Chicago School of Law · Illinois, USA" data-fr="Loyola University Chicago School of Law · Illinois, É.-U.">Loyola University Chicago School of Law · Illinois, EE.UU.</div>
           </div>
         </li>
       </ul>
     </div>
-
     <div class="about-photo-wrap fade-up">
-      <img src="img/photo.jpg" alt="Luis López — Attorney at Law" />
+      <img src="img/photo.jpg" alt="Luis López Rodríguez" />
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-   SERVICES
-══════════════════════════════════════════ -->
+<!-- ── SERVICES ── -->
 <section id="services">
-  <div class="services-header fade-up">
-    <p class="section-label">Practice Areas</p>
-    <h2 class="section-title on-dark">What We <em>Offer</em></h2>
-    <p class="services-intro">
-      Three distinct practice areas, each backed by advanced academic training
-      and hands-on experience at the intersection of U.S. and Venezuelan law.
+  <div class="services-header">
+    <p class="section-label t" data-es="Servicios" data-en="Services" data-fr="Services">Servicios</p>
+    <h2 class="section-title on-dark t"
+      data-es="Experiencia venezolana.<br><em>Valor real para su firma.</em>"
+      data-en="Venezuelan expertise.<br><em>Real value for your firm.</em>"
+      data-fr="Expertise vénézuélienne.<br><em>Valeur réelle pour votre cabinet.</em>">
+      Experiencia venezolana.<br><em>Valor real para su firma.</em>
+    </h2>
+    <p class="services-intro t"
+      data-es="Servicios de análisis, investigación y preparación de materiales jurídicos especializados en el sistema legal venezolano, diseñados para apoyar a firmas de abogados y profesionales en Estados Unidos."
+      data-en="Analysis, research, and preparation of specialized legal materials on the Venezuelan legal system, designed to support U.S. law firms and legal professionals."
+      data-fr="Analyse, recherche et préparation de matériaux juridiques spécialisés sur le système juridique vénézuélien, conçus pour soutenir les cabinets d&rsquo;avocats et les professionnels du droit américains.">
+      Servicios de análisis, investigación y preparación de materiales jurídicos especializados en el sistema legal venezolano, diseñados para apoyar a firmas de abogados y profesionales en Estados Unidos.
     </p>
   </div>
   <div class="services-grid">
-
     <div class="service-card fade-up">
       <div class="service-num">01</div>
-      <h3 class="service-title">Venezuelan Law Consulting</h3>
-      <p class="service-desc">
-        Expert legal analysis on Venezuelan civil, commercial, and administrative
-        law for U.S. courts, agencies, attorneys, and individuals.
+      <h3 class="service-title t" data-es="Consultoría en Derecho Venezolano" data-en="Venezuelan Law Consulting" data-fr="Conseil en Droit Vénézuélien">Consultoría en Derecho Venezolano</h3>
+      <p class="service-desc t"
+        data-es="Análisis e investigación del ordenamiento jurídico venezolano para apoyar casos de inmigración, litigios internacionales y transacciones comerciales. Respuestas claras, documentadas y en tiempo."
+        data-en="Analysis and research of the Venezuelan legal system to support immigration cases, international litigation, and commercial transactions. Clear, documented, timely answers."
+        data-fr="Analyse et recherche du système juridique vénézuélien pour soutenir les dossiers d&rsquo;immigration, les litiges internationaux et les transactions commerciales.">
+        Análisis e investigación del ordenamiento jurídico venezolano para apoyar casos de inmigración, litigios internacionales y transacciones comerciales. Respuestas claras, documentadas y en tiempo.
       </p>
       <ul class="service-list">
-        <li>Expert Opinion Letters on Venezuelan Law</li>
-        <li>Country Conditions Analysis &amp; Reports</li>
-        <li>Document Authenticity &amp; Legal Equivalency</li>
-        <li>Venezuelan Family Law Matters</li>
-        <li>Corporate &amp; Property Law Consultation</li>
-        <li>Affidavits for U.S. Court Proceedings</li>
+        <li class="t" data-es="Investigación de legislación y jurisprudencia venezolana" data-en="Venezuelan legislation and case law research" data-fr="Recherche de législation et jurisprudence vénézuélienne">Investigación de legislación y jurisprudencia venezolana</li>
+        <li class="t" data-es="Análisis del sistema institucional y político venezolano" data-en="Analysis of Venezuelan institutional and political system" data-fr="Analyse du système institutionnel et politique vénézuélien">Análisis del sistema institucional y político venezolano</li>
+        <li class="t" data-es="Memorandos y resúmenes de derecho comparado" data-en="Comparative law memos and summaries" data-fr="Mémorandums et résumés de droit comparé">Memorandos y resúmenes de derecho comparado</li>
+        <li class="t" data-es="Traducción de documentos legales venezolanos" data-en="Translation of Venezuelan legal documents" data-fr="Traduction de documents juridiques vénézuéliens">Traducción de documentos legales venezolanos</li>
       </ul>
     </div>
-
     <div class="service-card fade-up">
       <div class="service-num">02</div>
-      <h3 class="service-title">Family-Based Immigration</h3>
-      <p class="service-desc">
-        Full-service support for family-based petitions and adjustment of status,
-        with meticulous case preparation and documentation.
+      <h3 class="service-title t" data-es="Cartas de Experto" data-en="Expert Opinion Letters" data-fr="Lettres d'Opinion d'Expert">Cartas de Experto</h3>
+      <p class="service-desc t"
+        data-es="Preparación de cartas de experto sobre el sistema jurídico venezolano para procedimientos de asilo, inmigración y litigios. Documentos rigurosos, citados y estructurados para uso legal."
+        data-en="Preparation of expert opinion letters on the Venezuelan legal system for asylum, immigration, and litigation proceedings. Rigorous, properly cited, and structured for legal use."
+        data-fr="Préparation de lettres d&rsquo;opinion d&rsquo;expert sur le système juridique vénézuélien pour les procédures d&rsquo;asile, d&rsquo;immigration et de contentieux.">
+        Preparación de cartas de experto sobre el sistema jurídico venezolano para procedimientos de asilo, inmigración y litigios. Documentos rigurosos, citados y estructurados para uso legal.
       </p>
       <ul class="service-list">
-        <li>I-130 Family Petition Packages</li>
-        <li>One-Step Concurrent Filing (I-130 + I-485)</li>
-        <li>Parental Petitions &amp; Supporting Documents</li>
-        <li>Consular Processing Support</li>
-        <li>RFE Response Drafting</li>
-        <li>Case Review &amp; Strategy</li>
+        <li class="t" data-es="Cartas de experto para casos de asilo" data-en="Expert letters for asylum cases" data-fr="Lettres d'expert pour les dossiers d'asile">Cartas de experto para casos de asilo</li>
+        <li class="t" data-es="Análisis del contexto político y de derechos humanos" data-en="Political context and human rights analysis" data-fr="Analyse du contexte politique et des droits humains">Análisis del contexto político y de derechos humanos</li>
+        <li class="t" data-es="Documentación del sistema judicial venezolano" data-en="Documentation of the Venezuelan judicial system" data-fr="Documentation du système judiciaire vénézuélien">Documentación del sistema judicial venezolano</li>
+        <li class="t" data-es="Revisión y actualización de cartas existentes" data-en="Review and update of existing letters" data-fr="Révision et mise à jour de lettres existantes">Revisión y actualización de cartas existentes</li>
       </ul>
     </div>
-
     <div class="service-card fade-up">
       <div class="service-num">03</div>
-      <h3 class="service-title">Business Immigration</h3>
-      <p class="service-desc">
-        Tailored solutions for investors, entrepreneurs, and corporations
-        seeking U.S. business immigration pathways.
+      <h3 class="service-title t" data-es="Servicios de Traducción" data-en="Translation Services" data-fr="Services de Traduction">Servicios de Traducción</h3>
+      <p class="service-desc t"
+        data-es="Traducción jurídica especializada español-inglés de documentos venezolanos: actas, certificados, contratos, sentencias y comunicaciones oficiales. Precisión terminológica y conocimiento del contexto legal."
+        data-en="Specialized Spanish-English legal translation of Venezuelan documents: certificates, contracts, judgments, and official communications. Terminological precision and legal context expertise."
+        data-fr="Traduction juridique spécialisée espagnol-anglais de documents vénézuéliens: actes, contrats, jugements et communications officielles. Précision terminologique et expertise du contexte juridique.">
+        Traducción jurídica especializada español-inglés de documentos venezolanos: actas, certificados, contratos, sentencias y comunicaciones oficiales. Precisión terminológica y conocimiento del contexto legal.
       </p>
       <ul class="service-list">
-        <li>E-2 Treaty Investor Visa Packages</li>
-        <li>EB-1 &amp; National Interest Waiver</li>
-        <li>Business Plan Review &amp; Compliance</li>
-        <li>Investment Structure Consultation</li>
-        <li>L-1 Intracompany Transfer Support</li>
-        <li>USCIS Filing Coordination</li>
+        <li class="t" data-es="Actas de nacimiento, matrimonio y defunción" data-en="Birth, marriage, and death certificates" data-fr="Actes de naissance, mariage et décès">Actas de nacimiento, matrimonio y defunción</li>
+        <li class="t" data-es="Contratos, poderes notariales y documentos corporativos" data-en="Contracts, powers of attorney, corporate documents" data-fr="Contrats, procurations et documents d'entreprise">Contratos, poderes notariales y documentos corporativos</li>
+        <li class="t" data-es="Sentencias y resoluciones judiciales" data-en="Court judgments and rulings" data-fr="Jugements et décisions de justice">Sentencias y resoluciones judiciales</li>
+        <li class="t" data-es="Correspondencia y comunicaciones oficiales" data-en="Official correspondence and communications" data-fr="Correspondance et communications officielles">Correspondencia y comunicaciones oficiales</li>
       </ul>
     </div>
-
+  </div>
+  <div class="services-note">
+    <p class="t"
+      data-es="Lawpez, LLC no es una firma de abogados en Estados Unidos. Los servicios prestados son de naturaleza consultiva, investigativa y de preparación de materiales. No se presta representación legal ni asesoría jurídica regulada por ningún estado de EE.UU."
+      data-en="Lawpez, LLC is not a U.S. law firm. Services provided are consultative, research-based, and document preparation in nature. No legal representation or legal advice regulated by any U.S. state is provided."
+      data-fr="Lawpez, LLC n&rsquo;est pas un cabinet d&rsquo;avocats américain. Les services sont de nature consultative, de recherche et de préparation de documents. Aucune représentation légale réglementée par un État américain n&rsquo;est fournie.">
+      Lawpez, LLC no es una firma de abogados en Estados Unidos. Los servicios prestados son de naturaleza consultiva, investigativa y de preparación de materiales. No se presta representación legal ni asesoría jurídica regulada por ningún estado de EE.UU.
+    </p>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-   B2B
-══════════════════════════════════════════ -->
+<!-- ── B2B ── -->
 <section id="b2b">
   <div class="b2b-inner">
     <div class="b2b-top">
-      <div class="fade-up">
-        <p class="section-label">For Law Firms</p>
-        <h2 class="section-title">B2B <em>Partnership</em><br>Packages</h2>
+      <div>
+        <p class="section-label t" data-es="Paquetes para Firmas" data-en="Firm Packages" data-fr="Forfaits pour Cabinets">Paquetes para Firmas</p>
+        <h2 class="section-title t"
+          data-es="Su socio en casos<br><em>venezolanos.</em>"
+          data-en="Your partner in<br><em>Venezuelan matters.</em>"
+          data-fr="Votre partenaire dans les<br><em>affaires vénézuéliennes.</em>">
+          Su socio en casos<br><em>venezolanos.</em>
+        </h2>
         <div class="gold-line"></div>
-        <p class="b2b-intro-text">
-          Lawpez, LLC partners with law firms and solo practitioners as a trusted,
-          expert-level resource for outsourced case preparation. Our B2B packages
-          integrate seamlessly into your practice — expanding your capacity and
-          service offering without added overhead.
-        </p>
-        <br />
-        <p class="b2b-intro-text">
-          Every deliverable meets the standard your clients expect and your
-          practice demands: precise, professionally formatted, and ready for
-          attorney review and filing.
+        <p class="b2b-intro-text t"
+          data-es="Diseñados específicamente para firmas de abogados en EE.UU. Paquetes completos de materiales de apoyo, investigación y documentación para casos de inmigración y negocio con elementos venezolanos. Su firma lidera el caso; nosotros preparamos los materiales."
+          data-en="Designed specifically for U.S. law firms. Complete packages of support materials, research, and documentation for immigration and business cases with Venezuelan elements. Your firm leads the case; we prepare the materials."
+          data-fr="Conçus spécifiquement pour les cabinets d&rsquo;avocats américains. Forfaits complets de matériaux d&rsquo;appui, de recherche et de documentation pour les affaires d&rsquo;immigration et de commerce avec des éléments vénézuéliens.">
+          Diseñados específicamente para firmas de abogados en EE.UU. Paquetes completos de materiales de apoyo, investigación y documentación para casos de inmigración y negocio con elementos venezolanos. Su firma lidera el caso; nosotros preparamos los materiales.
         </p>
       </div>
-      <div class="fade-up" style="padding-top:5.5rem;">
-        <p class="b2b-intro-text" style="font-style:italic; font-size:1rem; font-family:'Cormorant Garamond',serif; line-height:1.7; color:#4a4a4a;">
-          "The right partner doesn't just save you time — they protect the
-          integrity of your practice."
-        </p>
-      </div>
-    </div>
-
-    <div class="b2b-packages">
-      <div class="b2b-package fade-up">
-        <div class="pkg-tag">Family Law</div>
-        <h3 class="pkg-title">Family-Based Immigration Package</h3>
-        <p class="pkg-desc">Complete case preparation for family-based petitions, ready for attorney signature and filing.</p>
-        <ul class="pkg-list">
-          <li>I-130 Immediate Relative Packages</li>
-          <li>One-Step Concurrent Filing Sets</li>
-          <li>Parental Petitions (USC &amp; LPR)</li>
-          <li>Spousal &amp; Fiancé Visa Packages</li>
-          <li>Supporting Document Compilation</li>
-          <li>Cover Letters &amp; Client-Ready Forms</li>
-        </ul>
-      </div>
-
-      <div class="b2b-package fade-up">
-        <div class="pkg-tag">Business Law</div>
-        <h3 class="pkg-title">Business Immigration Package</h3>
-        <p class="pkg-desc">Turnkey business immigration case preparation for investor, entrepreneur, and corporate clients.</p>
-        <ul class="pkg-list">
-          <li>E-2 Treaty Investor Full Package</li>
-          <li>EB-1C Multinational Manager Package</li>
-          <li>National Interest Waiver (NIW) Package</li>
-          <li>Business Plan Review &amp; Structuring</li>
-          <li>Source of Funds Documentation</li>
-          <li>USCIS-Ready Filing Sets</li>
-        </ul>
-      </div>
-
-      <div class="b2b-package fade-up">
-        <div class="pkg-tag">Expert Opinions</div>
-        <h3 class="pkg-title">Venezuelan Law Expert Letters</h3>
-        <p class="pkg-desc">Court-ready expert opinion letters and affidavits on Venezuelan law for U.S. immigration proceedings.</p>
-        <ul class="pkg-list">
-          <li>Asylum &amp; Withholding of Removal Support</li>
-          <li>Country Conditions &amp; Law Analysis</li>
-          <li>Family Law Equivalency Opinions</li>
-          <li>Criminal Law Comparatives</li>
-          <li>Admissible Expert Witness Declarations</li>
-          <li>Translation &amp; Certification Coordination</li>
-        </ul>
-      </div>
-
-      <div class="b2b-package fade-up">
-        <div class="pkg-tag">Retainer</div>
-        <h3 class="pkg-title">Ongoing Firm Partnership</h3>
-        <p class="pkg-desc">Monthly retainer arrangements for firms with consistent volume seeking dedicated legal support capacity.</p>
-        <ul class="pkg-list">
-          <li>Dedicated Case Preparation Allocation</li>
-          <li>Priority Turnaround on Expert Letters</li>
-          <li>Direct Attorney Consultation Access</li>
-          <li>Custom &amp; Volume-Based Pricing</li>
-          <li>Full Confidentiality &amp; NDA Framework</li>
-          <li>Scalable Monthly Engagement</li>
-        </ul>
+      <div class="b2b-packages">
+        <div class="b2b-package fade-up">
+          <p class="pkg-tag t" data-es="Inmigración · Familiar" data-en="Immigration · Family" data-fr="Immigration · Famille">Inmigración · Familiar</p>
+          <h3 class="pkg-title t" data-es="Family-Based One-Stop" data-en="Family-Based One-Stop" data-fr="Forfait Famille Complet">Family-Based One-Stop</h3>
+          <p class="pkg-desc t"
+            data-es="Paquete completo de materiales para peticiones familiares con clientes venezolanos. Análisis documental, contexto legal venezolano y preparación de soporte."
+            data-en="Complete materials package for family-based petitions with Venezuelan clients. Document analysis, Venezuelan legal context, and support preparation."
+            data-fr="Forfait complet de matériaux pour les pétitions familiales avec des clients vénézuéliens.">
+            Paquete completo de materiales para peticiones familiares con clientes venezolanos. Análisis documental, contexto legal venezolano y preparación de soporte.
+          </p>
+          <ul class="pkg-list">
+            <li class="t" data-es="Verificación de documentos venezolanos" data-en="Venezuelan document verification" data-fr="Vérification de documents vénézuéliens">Verificación de documentos venezolanos</li>
+            <li class="t" data-es="Contexto del sistema de registro civil" data-en="Civil registry system context" data-fr="Contexte du système d'état civil">Contexto del sistema de registro civil</li>
+            <li class="t" data-es="Traducción certificada de documentos" data-en="Certified document translation" data-fr="Traduction certifiée de documents">Traducción certificada de documentos</li>
+            <li class="t" data-es="Resumen de antecedentes legales relevantes" data-en="Summary of relevant legal background" data-fr="Résumé des antécédents juridiques pertinents">Resumen de antecedentes legales relevantes</li>
+          </ul>
+        </div>
+        <div class="b2b-package fade-up">
+          <p class="pkg-tag t" data-es="Negocios · Visas E-2" data-en="Business · E-2 Visas" data-fr="Affaires · Visas E-2">Negocios · Visas E-2</p>
+          <h3 class="pkg-title t" data-es="E-2 Venezuela Package" data-en="E-2 Venezuela Package" data-fr="Forfait E-2 Venezuela">E-2 Venezuela Package</h3>
+          <p class="pkg-desc t"
+            data-es="Materiales de apoyo e investigación para solicitudes E-2 con inversionistas venezolanos. Análisis del marco empresarial venezolano e historial del solicitante."
+            data-en="Support materials and research for E-2 applications with Venezuelan investors. Analysis of Venezuelan business framework and applicant background."
+            data-fr="Matériaux d&rsquo;appui et recherche pour les demandes E-2 avec des investisseurs vénézuéliens.">
+            Materiales de apoyo e investigación para solicitudes E-2 con inversionistas venezolanos. Análisis del marco empresarial venezolano e historial del solicitante.
+          </p>
+          <ul class="pkg-list">
+            <li class="t" data-es="Análisis del marco empresarial venezolano" data-en="Venezuelan business framework analysis" data-fr="Analyse du cadre commercial vénézuélien">Análisis del marco empresarial venezolano</li>
+            <li class="t" data-es="Investigación de historial corporativo y legal" data-en="Corporate and legal history research" data-fr="Recherche d'antécédents d'entreprise et juridiques">Investigación de historial corporativo y legal</li>
+            <li class="t" data-es="Contexto económico y regulatorio de Venezuela" data-en="Venezuelan economic and regulatory context" data-fr="Contexte économique et réglementaire du Venezuela">Contexto económico y regulatorio de Venezuela</li>
+            <li class="t" data-es="Soporte documental para la aplicación" data-en="Documentary support for the application" data-fr="Soutien documentaire pour la demande">Soporte documental para la aplicación</li>
+          </ul>
+        </div>
+        <div class="b2b-package fade-up">
+          <p class="pkg-tag t" data-es="Asilo · Protección" data-en="Asylum · Protection" data-fr="Asile · Protection">Asilo · Protección</p>
+          <h3 class="pkg-title t" data-es="Country Conditions Package" data-en="Country Conditions Package" data-fr="Forfait Conditions Nationales">Country Conditions Package</h3>
+          <p class="pkg-desc t"
+            data-es="Investigación exhaustiva de condiciones en Venezuela para casos de asilo y protección. Análisis político, institucional y de derechos humanos, debidamente documentado."
+            data-en="Comprehensive research on conditions in Venezuela for asylum and protection cases. Political, institutional, and human rights analysis, properly documented."
+            data-fr="Recherche complète sur les conditions au Venezuela pour les dossiers d&rsquo;asile et de protection.">
+            Investigación exhaustiva de condiciones en Venezuela para casos de asilo y protección. Análisis político, institucional y de derechos humanos, debidamente documentado.
+          </p>
+          <ul class="pkg-list">
+            <li class="t" data-es="Carta de experto sobre condiciones del país" data-en="Country conditions expert opinion letter" data-fr="Lettre d'expert sur les conditions nationales">Carta de experto sobre condiciones del país</li>
+            <li class="t" data-es="Análisis de riesgo personalizado" data-en="Personalized risk analysis" data-fr="Analyse de risque personnalisée">Análisis de riesgo personalizado</li>
+            <li class="t" data-es="Fuentes académicas y documentación de apoyo" data-en="Academic sources and supporting documentation" data-fr="Sources académiques et documentation complémentaire">Fuentes académicas y documentación de apoyo</li>
+            <li class="t" data-es="Actualización de análisis existentes" data-en="Update of existing analyses" data-fr="Mise à jour des analyses existantes">Actualización de análisis existentes</li>
+          </ul>
+        </div>
+        <div class="b2b-package fade-up">
+          <p class="pkg-tag t" data-es="Familiar · Peticiones" data-en="Family · Petitions" data-fr="Famille · Pétitions">Familiar · Peticiones</p>
+          <h3 class="pkg-title t" data-es="Parental Petitions Support" data-en="Parental Petitions Support" data-fr="Soutien Pétitions Parentales">Parental Petitions Support</h3>
+          <p class="pkg-desc t"
+            data-es="Soporte documental y de investigación para peticiones parentales con documentos venezolanos. Verificación de actas, contexto legal y preparación de materiales."
+            data-en="Documentary and research support for parental petitions involving Venezuelan documents. Record verification, legal context, and materials preparation."
+            data-fr="Soutien documentaire et de recherche pour les pétitions parentales impliquant des documents vénézuéliens.">
+            Soporte documental y de investigación para peticiones parentales con documentos venezolanos. Verificación de actas, contexto legal y preparación de materiales.
+          </p>
+          <ul class="pkg-list">
+            <li class="t" data-es="Verificación de actas venezolanas" data-en="Venezuelan record verification" data-fr="Vérification des actes vénézuéliens">Verificación de actas venezolanas</li>
+            <li class="t" data-es="Análisis de derecho de familia venezolano" data-en="Venezuelan family law analysis" data-fr="Analyse du droit de la famille vénézuélien">Análisis de derecho de familia venezolano</li>
+            <li class="t" data-es="Traducción y contexto documental" data-en="Translation and documentary context" data-fr="Traduction et contexte documentaire">Traducción y contexto documental</li>
+            <li class="t" data-es="Coordinación y seguimiento del expediente" data-en="Case coordination and follow-up" data-fr="Coordination et suivi du dossier">Coordinación y seguimiento del expediente</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-   WHY
-══════════════════════════════════════════ -->
+<!-- ── WHY LAWPEZ ── -->
 <section id="why">
-  <div class="why-inner centered">
-    <div class="fade-up">
-      <p class="section-label">Why Lawpez</p>
-      <h2 class="section-title">The <em>Standard</em> We Set</h2>
+  <div class="why-inner">
+    <div class="centered">
+      <p class="section-label t" data-es="Por Qué Lawpez" data-en="Why Lawpez" data-fr="Pourquoi Lawpez">Por Qué Lawpez</p>
+      <h2 class="section-title t"
+        data-es="Precisión venezolana.<br><em>Eficiencia americana.</em>"
+        data-en="Venezuelan precision.<br><em>American efficiency.</em>"
+        data-fr="Précision vénézuélienne.<br><em>Efficacité américaine.</em>">
+        Precisión venezolana.<br><em>Eficiencia americana.</em>
+      </h2>
       <div class="gold-line"></div>
     </div>
     <div class="why-grid">
       <div class="why-item fade-up">
-        <div class="why-icon">⚖</div>
-        <div class="why-title">Dual Jurisdiction</div>
-        <p class="why-text">Trained in both Venezuelan civil law and U.S. common law — a rare combination for cross-border matters.</p>
+        <div class="why-icon">§</div>
+        <h3 class="why-title t" data-es="Formación Dual" data-en="Dual Training" data-fr="Formation Duale">Formación Dual</h3>
+        <p class="why-text t"
+          data-es="J.D. venezolano y LL.M. en derecho estadounidense. Entendemos ambos sistemas y sabemos traducir entre ellos."
+          data-en="Venezuelan J.D. and U.S. LL.M. We understand both legal systems and know how to bridge them."
+          data-fr="J.D. vénézuélien et LL.M. américain. Nous comprenons les deux systèmes juridiques et savons les articuler.">
+          J.D. venezolano y LL.M. en derecho estadounidense. Entendemos ambos sistemas y sabemos traducir entre ellos.
+        </p>
       </div>
       <div class="why-item fade-up">
         <div class="why-icon">✦</div>
-        <div class="why-title">Academic Distinction</div>
-        <p class="why-text">Three advanced degrees from distinguished institutions, plus published legal scholarship and authorship.</p>
+        <h3 class="why-title t" data-es="Rigor Académico" data-en="Academic Rigor" data-fr="Rigueur Académique">Rigor Académico</h3>
+        <p class="why-text t"
+          data-es="Investigación fundamentada en fuentes primarias, jurisprudencia y doctrina. Nada de generalidades: análisis puntual y documentado."
+          data-en="Research grounded in primary sources, case law, and doctrine. No generalizations: specific, documented analysis."
+          data-fr="Recherche fondée sur des sources primaires, la jurisprudence et la doctrine. Pas de généralités: une analyse précise et documentée.">
+          Investigación fundamentada en fuentes primarias, jurisprudencia y doctrina. Nada de generalidades: análisis puntual y documentado.
+        </p>
       </div>
       <div class="why-item fade-up">
         <div class="why-icon">◈</div>
-        <div class="why-title">Court-Ready Precision</div>
-        <p class="why-text">Every document prepared to the exacting standard of U.S. federal courts and USCIS requirements.</p>
+        <h3 class="why-title t" data-es="Respuesta Ágil" data-en="Agile Response" data-fr="Réponse Agile">Respuesta Ágil</h3>
+        <p class="why-text t"
+          data-es="Entendemos los tiempos del litigio. Plazos ajustados, comunicación directa y entrega sin burocracia innecesaria."
+          data-en="We understand litigation timelines. Tight deadlines, direct communication, and delivery without unnecessary bureaucracy."
+          data-fr="Nous comprenons les délais du contentieux. Délais serrés, communication directe et livraison sans bureaucratie inutile.">
+          Entendemos los tiempos del litigio. Plazos ajustados, comunicación directa y entrega sin burocracia innecesaria.
+        </p>
       </div>
       <div class="why-item fade-up">
-        <div class="why-icon">◇</div>
-        <div class="why-title">Absolute Discretion</div>
-        <p class="why-text">Strict confidentiality and professional responsibility in every client and firm engagement.</p>
+        <div class="why-icon">▲</div>
+        <h3 class="why-title t" data-es="Contexto Real" data-en="Real Context" data-fr="Contexte Réel">Contexto Real</h3>
+        <p class="why-text t"
+          data-es="Conocimiento directo de la realidad venezolana: institucional, política y jurídica. No solo textos de ley, sino cómo funciona el sistema en la práctica."
+          data-en="Direct knowledge of Venezuelan reality: institutional, political, and legal. Not just legal texts, but how the system actually works in practice."
+          data-fr="Connaissance directe de la réalité vénézuélienne: institutionnelle, politique et juridique. Pas seulement des textes de loi, mais comment le système fonctionne réellement.">
+          Conocimiento directo de la realidad venezolana: institucional, política y jurídica. No solo textos de ley, sino cómo funciona el sistema en la práctica.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-   TEAM
-══════════════════════════════════════════ -->
-<section id="team">
-  <div class="team-header fade-up">
-    <p class="section-label">Our Team</p>
-    <h2 class="section-title on-dark">The People Behind <em>Lawpez</em></h2>
-    <p class="team-intro">
-      A small, dedicated team of legal professionals committed to delivering
-      precision, discretion, and results at the highest standard of practice.
+<!-- ── PUBLICATIONS ── -->
+<section id="publications">
+  <div class="pub-header fade-up">
+    <p class="section-label t" data-es="Publicaciones" data-en="Publications" data-fr="Publications">Publicaciones</p>
+    <h2 class="section-title on-dark t"
+      data-es="Repositorio intelectual.<br><em>Escritura con propósito.</em>"
+      data-en="Intellectual repository.<br><em>Writing with purpose.</em>"
+      data-fr="Répertoire intellectuel.<br><em>Écriture avec intention.</em>">
+      Repositorio intelectual.<br><em>Escritura con propósito.</em>
+    </h2>
+    <p class="pub-intro t"
+      data-es="Obra académica, análisis político y creación literaria. Este espacio reúne el trabajo escrito de Luis López Rodríguez como testimonio de su trayectoria intelectual y profesional."
+      data-en="Academic work, political analysis, and literary creation. This space gathers the written work of Luis López Rodríguez as a testament to his intellectual and professional journey."
+      data-fr="Travaux académiques, analyses politiques et création littéraire. Cet espace rassemble l&rsquo;œuvre écrite de Luis López Rodríguez.">
+      Obra académica, análisis política y creación literaria. Este espacio reúne el trabajo escrito de Luis López Rodríguez como testimonio de su trayectoria intelectual y profesional.
     </p>
   </div>
+  <div class="pub-categories">
+    <!-- Novel -->
+    <div class="pub-category fade-up">
+      <p class="pub-cat-label t" data-es="Obra Literaria" data-en="Literary Work" data-fr="Œuvre Littéraire">Obra Literaria</p>
+      <h3 class="pub-cat-title t" data-es="Novela" data-en="Novel" data-fr="Roman">Novela</h3>
+      <a href="https://www.amazon.com" target="_blank" rel="noopener" class="pub-novel-card">
+        <div class="pub-novel-icon">❧</div>
+        <div>
+          <div class="pub-novel-title">Código Salitre</div>
+          <div class="pub-novel-sub t"
+            data-es="Novela. Disponible en Amazon. Una obra que explora la identidad, el poder y la diáspora venezolana desde una perspectiva literaria y política."
+            data-en="Novel. Available on Amazon. A work that explores identity, power, and the Venezuelan diaspora from a literary and political perspective."
+            data-fr="Roman. Disponible sur Amazon. Une œuvre qui explore l&rsquo;identité, le pouvoir et la diaspora vénézuélienne.">
+            Novela. Disponible en Amazon. Una obra que explora la identidad, el poder y la diáspora venezolana desde una perspectiva literaria y política.
+          </div>
+          <span class="pub-novel-link t" data-es="Ver en Amazon →" data-en="View on Amazon →" data-fr="Voir sur Amazon →">Ver en Amazon →</span>
+        </div>
+      </a>
+    </div>
+    <!-- Opinion ES -->
+    <div class="pub-category fade-up">
+      <p class="pub-cat-label t" data-es="Opinión · Español" data-en="Opinion · Spanish" data-fr="Opinion · Espagnol">Opinión · Español</p>
+      <h3 class="pub-cat-title t" data-es="Artículos de Opinión Política" data-en="Political Opinion Articles" data-fr="Articles d'Opinion Politique">Artículos de Opinión Política</h3>
+      <ul class="pub-list">
+        <li class="pub-item pub-item-static">
+          <div class="pub-item-title t" data-es="Archivo en construcción — próximamente disponible" data-en="Archive in progress — coming soon" data-fr="Archive en cours — bientôt disponible">Archivo en construcción — próximamente disponible</div>
+          <div class="pub-item-meta t" data-es="Artículos en español" data-en="Articles in Spanish" data-fr="Articles en espagnol">Artículos en español</div>
+        </li>
+      </ul>
+    </div>
+    <!-- Opinion EN -->
+    <div class="pub-category fade-up">
+      <p class="pub-cat-label t" data-es="Opinión · Inglés" data-en="Opinion · English" data-fr="Opinion · Anglais">Opinión · Inglés</p>
+      <h3 class="pub-cat-title t" data-es="Artículos de Opinión Política" data-en="Political Opinion Articles" data-fr="Articles d'Opinion Politique">Artículos de Opinión Política</h3>
+      <ul class="pub-list">
+        <li class="pub-item pub-item-static">
+          <div class="pub-item-title t" data-es="Archivo en construcción — próximamente disponible" data-en="Archive in progress — coming soon" data-fr="Archive en cours — bientôt disponible">Archivo en construcción — próximamente disponible</div>
+          <div class="pub-item-meta t" data-es="Articles in English" data-en="Articles in English" data-fr="Articles in English">Articles in English</div>
+        </li>
+      </ul>
+    </div>
+    <!-- Academic -->
+    <div class="pub-category fade-up">
+      <p class="pub-cat-label t" data-es="Académico" data-en="Academic" data-fr="Académique">Académico</p>
+      <h3 class="pub-cat-title t" data-es="Ensayos & Publicaciones Académicas" data-en="Essays & Academic Publications" data-fr="Essais & Publications Académiques">Ensayos &amp; Publicaciones Académicas</h3>
+      <ul class="pub-list">
+        <li class="pub-item pub-item-static">
+          <div class="pub-item-title t" data-es="Archivo en construcción — próximamente disponible" data-en="Archive in progress — coming soon" data-fr="Archive en cours — bientôt disponible">Archivo en construcción — próximamente disponible</div>
+          <div class="pub-item-meta t" data-es="Ciencia política · Derecho comparado" data-en="Political science · Comparative law" data-fr="Science politique · Droit comparé">Ciencia política · Derecho comparado</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
 
+<!-- ── TEAM ── -->
+<section id="team">
+  <div class="team-header">
+    <p class="section-label t" data-es="El Equipo" data-en="The Team" data-fr="L'Équipe">El Equipo</p>
+    <h2 class="section-title t"
+      data-es="Las personas detrás<br><em>del trabajo.</em>"
+      data-en="The people behind<br><em>the work.</em>"
+      data-fr="Les personnes derrière<br><em>le travail.</em>">
+      Las personas detrás<br><em>del trabajo.</em>
+    </h2>
+    <p class="team-intro t"
+      data-es="Un equipo comprometido con la precisión, la ética y los mejores resultados para cada caso."
+      data-en="A team committed to precision, ethics, and the best outcomes for every matter."
+      data-fr="Une équipe engagée pour la précision, l&rsquo;éthique et les meilleurs résultats pour chaque dossier.">
+      Un equipo comprometido con la precisión, la ética y los mejores resultados para cada caso.
+    </p>
+  </div>
   <div class="team-grid">
-
-    <!-- Luis López -->
+    <!-- Luis -->
     <div class="team-card fade-up">
-      <img src="img/photo.jpg" alt="Luis López" class="team-photo" />
+      <img src="img/photo.jpg" alt="Luis López Rodríguez" class="team-photo" />
       <div class="team-info">
-        <div class="team-name">Luis López</div>
-        <div class="team-title">Managing Attorney &amp; Founder</div>
-        <p class="team-bio">
-          Venezuelan-trained attorney and U.S. legal consultant with advanced degrees from
-          three institutions. Author of <em>Código Salitre</em> and published legal
-          scholar. Expert in Venezuelan law and U.S. immigration.
+        <div class="team-name">Luis López Rodríguez</div>
+        <div class="team-title t" data-es="Fundador &amp; Consultor Principal" data-en="Founder &amp; Principal Consultant" data-fr="Fondateur &amp; Consultant Principal">Fundador &amp; Consultor Principal</div>
+        <p class="team-bio t"
+          data-es="Abogado venezolano con J.D., Maestría en Estudios Políticos y LL.M. en derecho estadounidense. Especializado en consultoría de derecho venezolano, cartas de experto y servicios de apoyo para firmas de inmigración y negocio en EE.UU."
+          data-en="Venezuelan attorney with J.D., M.A. in Political Studies, and LL.M. in U.S. Law. Specialized in Venezuelan law consulting, expert opinion letters, and support services for U.S. immigration and business law firms."
+          data-fr="Avocat vénézuélien avec J.D., M.A. en Études Politiques et LL.M. en droit américain. Spécialisé dans la consultation en droit vénézuélien et les services d&rsquo;appui pour les cabinets américains.">
+          Abogado venezolano con J.D., Maestría en Estudios Políticos y LL.M. en derecho estadounidense. Especializado en consultoría de derecho venezolano, cartas de experto y servicios de apoyo para firmas de inmigración y negocio en EE.UU.
         </p>
-        <p class="team-creds">LLM · Loyola University Chicago &nbsp;|&nbsp; M.A. · UNIMET &nbsp;|&nbsp; J.D. · UDM</p>
+        <p class="team-creds">J.D. · M.A. · LL.M. Loyola Chicago '25 &nbsp;|&nbsp; <span class="t" data-es="Barra Venezolana" data-en="Venezuelan Bar" data-fr="Barreau Vénézuélien">Barra Venezolana</span></p>
       </div>
     </div>
-
-    <!-- Sofia Reyes - Fictional -->
+    <!-- Sofia -->
     <div class="team-card fade-up">
-      <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" class="team-photo-svg">
-        <defs>
-          <linearGradient id="bg-sofia" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#1a2d47"/>
-            <stop offset="100%" stop-color="#0f1b2d"/>
-          </linearGradient>
-          <clipPath id="clip-sofia"><rect width="300" height="400"/></clipPath>
-        </defs>
-        <rect width="300" height="400" fill="url(#bg-sofia)"/>
-        <!-- Gold accent line top -->
-        <rect width="300" height="3" fill="#b8924a"/>
-
-        <!-- Suit/jacket body -->
-        <path d="M 0 400 L 30 255 Q 80 240 150 238 Q 220 240 270 255 L 300 400 Z" fill="#0f1b2d"/>
-        <!-- Left lapel -->
-        <path d="M 122 238 L 150 278 L 150 400 L 60 400 L 38 258 Z" fill="#172135"/>
-        <!-- Right lapel -->
-        <path d="M 178 238 L 150 278 L 150 400 L 240 400 L 262 258 Z" fill="#172135"/>
-        <!-- Shirt center -->
-        <polygon points="138,238 150,268 162,238" fill="#f0ede0"/>
-        <!-- Gold pin -->
-        <circle cx="150" cy="275" r="4" fill="#b8924a"/>
-
-        <!-- Neck -->
-        <path d="M 132 198 Q 130 236 150 240 Q 170 236 168 198 Z" fill="#c49070"/>
-
-        <!-- Head/face -->
-        <ellipse cx="150" cy="152" rx="58" ry="64" fill="#c49070"/>
-
-        <!-- Hair - dark, elegant updo -->
-        <ellipse cx="150" cy="100" rx="60" ry="46" fill="#1a0d08"/>
-        <ellipse cx="150" cy="88" rx="55" ry="40" fill="#1a0d08"/>
-        <path d="M 92 120 Q 94 80 96 65 Q 115 40 150 38 Q 185 40 204 65 Q 206 80 208 120" fill="#1a0d08"/>
-        <!-- Bun/chignon -->
-        <ellipse cx="150" cy="50" rx="26" ry="22" fill="#1a0d08"/>
-        <ellipse cx="150" cy="44" rx="22" ry="16" fill="#241510"/>
-
-        <!-- Side hair strands -->
-        <ellipse cx="94" cy="140" rx="10" ry="28" fill="#1a0d08"/>
-        <ellipse cx="206" cy="140" rx="10" ry="28" fill="#1a0d08"/>
-
-        <!-- Ears -->
-        <ellipse cx="93" cy="152" rx="9" ry="13" fill="#b88060"/>
-        <ellipse cx="207" cy="152" rx="9" ry="13" fill="#b88060"/>
-
-        <!-- Gold drop earrings -->
-        <ellipse cx="93" cy="162" rx="5" ry="3" fill="#b8924a"/>
-        <rect x="90" y="162" width="6" height="12" rx="3" fill="#b8924a"/>
-        <ellipse cx="207" cy="162" rx="5" ry="3" fill="#b8924a"/>
-        <rect x="204" y="162" width="6" height="12" rx="3" fill="#b8924a"/>
-
-        <!-- Eyes -->
-        <!-- Left -->
-        <ellipse cx="128" cy="146" rx="11" ry="9" fill="#fff"/>
-        <ellipse cx="128" cy="148" rx="8" ry="8" fill="#3d2010"/>
-        <ellipse cx="128" cy="148" rx="5.5" ry="5.5" fill="#1a0808"/>
-        <circle cx="130" cy="145" r="2.5" fill="#fff"/>
-        <!-- Right -->
-        <ellipse cx="172" cy="146" rx="11" ry="9" fill="#fff"/>
-        <ellipse cx="172" cy="148" rx="8" ry="8" fill="#3d2010"/>
-        <ellipse cx="172" cy="148" rx="5.5" ry="5.5" fill="#1a0808"/>
-        <circle cx="174" cy="145" r="2.5" fill="#fff"/>
-
-        <!-- Eyelashes top -->
-        <path d="M117,140 Q128,136 139,140" stroke="#1a0808" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <path d="M161,140 Q172,136 183,140" stroke="#1a0808" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-
-        <!-- Eyebrows -->
-        <path d="M 114 133 Q 128 127 142 133" stroke="#2a1208" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-        <path d="M 158 133 Q 172 127 186 133" stroke="#2a1208" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-
-        <!-- Nose -->
-        <path d="M 150 155 L 145 173 Q 148 178 150 178 Q 152 178 155 173 Z" fill="rgba(0,0,0,0.12)"/>
-        <ellipse cx="143" cy="174" rx="6" ry="4" fill="rgba(0,0,0,0.08)"/>
-        <ellipse cx="157" cy="174" rx="6" ry="4" fill="rgba(0,0,0,0.08)"/>
-
-        <!-- Lips -->
-        <path d="M 132 190 Q 150 202 168 190 Q 160 188 150 190 Q 140 188 132 190 Z" fill="#c06050"/>
-        <path d="M 132 190 Q 141 186 150 188 Q 159 186 168 190" fill="none" stroke="#a04838" stroke-width="1" stroke-linecap="round"/>
-
-        <!-- Subtle smile -->
-        <path d="M 128 192 Q 124 200 129 205" stroke="rgba(0,0,0,0.1)" stroke-width="1.5" fill="none"/>
-        <path d="M 172 192 Q 176 200 171 205" stroke="rgba(0,0,0,0.1)" stroke-width="1.5" fill="none"/>
-      </svg>
+      <img src="img/sofia.png" alt="Sofia Reyes" class="team-photo"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="team-placeholder" style="display:none;">
+        <div class="team-placeholder-inner">
+          <span class="team-initials">SR</span>
+          <div class="team-placeholder-line"></div>
+          <span class="team-placeholder-note t" data-es="Foto no disponible" data-en="Photo unavailable" data-fr="Photo non disponible">Foto no disponible</span>
+        </div>
+      </div>
       <div class="team-info">
         <div class="team-name">Sofia Reyes</div>
-        <div class="team-title">Legal Research Associate</div>
-        <p class="team-bio">
-          Venezuelan attorney specializing in civil and family law. Collaborates on
-          expert opinion letters, cross-border legal research, and document analysis
-          for U.S. immigration proceedings.
+        <div class="team-title t" data-es="Asociada de Investigación Jurídica" data-en="Legal Research Associate" data-fr="Associée en Recherche Juridique">Asociada de Investigación Jurídica</div>
+        <p class="team-bio t"
+          data-es="Abogada venezolana especializada en derecho civil y familia. Colabora en la preparación de cartas de experto, investigación jurídica comparada y análisis documental para procedimientos de inmigración en EE.UU."
+          data-en="Venezuelan attorney specializing in civil and family law. Collaborates on expert opinion letters, comparative legal research, and document analysis for U.S. immigration proceedings."
+          data-fr="Avocate vénézuélienne spécialisée en droit civil et familial. Collabore sur les lettres d&rsquo;expert, la recherche juridique comparative et l&rsquo;analyse documentaire.">
+          Abogada venezolana especializada en derecho civil y familia. Colabora en la preparación de cartas de experto, investigación jurídica comparada y análisis documental para procedimientos de inmigración en EE.UU.
         </p>
-        <p class="team-creds">J.D. · Universidad Central de Venezuela &nbsp;|&nbsp; 2020</p>
+        <p class="team-creds">J.D. · <span class="t" data-es="Universidad Central de Venezuela" data-en="Universidad Central de Venezuela" data-fr="Universidad Central de Venezuela">Universidad Central de Venezuela</span> &nbsp;|&nbsp; 2020</p>
       </div>
     </div>
-
-    <!-- Daniel Arenas - Fictional -->
+    <!-- Daniel -->
     <div class="team-card fade-up">
-      <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" class="team-photo-svg">
-        <defs>
-          <linearGradient id="bg-daniel" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#0f1b2d"/>
-            <stop offset="100%" stop-color="#1a2d47"/>
-          </linearGradient>
-        </defs>
-        <rect width="300" height="400" fill="url(#bg-daniel)"/>
-        <!-- Gold accent line top -->
-        <rect width="300" height="3" fill="#b8924a"/>
-
-        <!-- Suit body -->
-        <path d="M 0 400 L 25 258 Q 80 242 150 240 Q 220 242 275 258 L 300 400 Z" fill="#0f1b2d"/>
-        <!-- Left lapel -->
-        <path d="M 120 240 L 150 282 L 150 400 L 55 400 L 32 262 Z" fill="#172135"/>
-        <!-- Right lapel -->
-        <path d="M 180 240 L 150 282 L 150 400 L 245 400 L 268 262 Z" fill="#172135"/>
-        <!-- Shirt/tie center -->
-        <polygon points="136,240 150,270 164,240" fill="#edeae0"/>
-        <!-- Tie -->
-        <polygon points="148,244 150,270 152,244 151,248 150,245 149,248" fill="#b8924a"/>
-        <path d="M 148 244 L 150 264 L 152 244 Q 151 250 150 252 Q 149 250 148 244Z" fill="#9a7838"/>
-
-        <!-- Neck -->
-        <path d="M 134 200 Q 132 238 150 242 Q 168 238 166 200 Z" fill="#a07050"/>
-
-        <!-- Head/face - slightly darker/warmer tone -->
-        <ellipse cx="150" cy="150" rx="60" ry="66" fill="#a07050"/>
-
-        <!-- Short professional hair -->
-        <path d="M 90 125 Q 92 78 150 74 Q 208 78 210 125 Q 200 95 150 92 Q 100 95 90 125Z" fill="#1a0e08"/>
-        <path d="M 90 118 Q 91 75 100 62 Q 118 44 150 42 Q 182 44 200 62 Q 209 75 210 118" fill="#1a0e08"/>
-
-        <!-- Hair top -->
-        <ellipse cx="150" cy="82" rx="60" ry="42" fill="#1a0e08"/>
-        <ellipse cx="150" cy="72" rx="58" ry="35" fill="#201410"/>
-
-        <!-- Slight fade on sides -->
-        <rect x="90" y="100" width="20" height="50" rx="10" fill="rgba(26,14,8,0.6)"/>
-        <rect x="190" y="100" width="20" height="50" rx="10" fill="rgba(26,14,8,0.6)"/>
-
-        <!-- Ears -->
-        <ellipse cx="91" cy="150" rx="9" ry="14" fill="#906040"/>
-        <ellipse cx="209" cy="150" rx="9" ry="14" fill="#906040"/>
-
-        <!-- Eyes -->
-        <!-- Left -->
-        <ellipse cx="126" cy="144" rx="12" ry="9" fill="#fff"/>
-        <ellipse cx="126" cy="146" rx="8.5" ry="8" fill="#2a1408"/>
-        <ellipse cx="126" cy="146" rx="6" ry="6" fill="#0e0808"/>
-        <circle cx="128" cy="143" r="2.5" fill="#fff"/>
-        <!-- Right -->
-        <ellipse cx="174" cy="144" rx="12" ry="9" fill="#fff"/>
-        <ellipse cx="174" cy="146" rx="8.5" ry="8" fill="#2a1408"/>
-        <ellipse cx="174" cy="146" rx="6" ry="6" fill="#0e0808"/>
-        <circle cx="176" cy="143" r="2.5" fill="#fff"/>
-
-        <!-- Eyebrows - slightly thicker/masculine -->
-        <path d="M 112 132 Q 126 126 140 130" stroke="#1a0e08" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-        <path d="M 160 130 Q 174 126 188 132" stroke="#1a0e08" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-
-        <!-- Nose - more defined -->
-        <path d="M 150 154 L 144 176 Q 148 182 150 182 Q 152 182 156 176 Z" fill="rgba(0,0,0,0.15)"/>
-        <ellipse cx="143" cy="177" rx="7" ry="4.5" fill="rgba(0,0,0,0.1)"/>
-        <ellipse cx="157" cy="177" rx="7" ry="4.5" fill="rgba(0,0,0,0.1)"/>
-
-        <!-- Lips - slightly thicker -->
-        <path d="M 130 196 Q 150 207 170 196 Q 162 193 150 195 Q 138 193 130 196 Z" fill="#7a4030"/>
-        <path d="M 130 196 Q 140 192 150 194 Q 160 192 170 196" fill="none" stroke="#6a3025" stroke-width="1.2"/>
-
-        <!-- Stubble/beard suggestion -->
-        <ellipse cx="150" cy="204" rx="32" ry="18" fill="rgba(26,14,8,0.08)"/>
-        <ellipse cx="130" cy="200" rx="14" ry="12" fill="rgba(26,14,8,0.06)"/>
-        <ellipse cx="170" cy="200" rx="14" ry="12" fill="rgba(26,14,8,0.06)"/>
-
-        <!-- Ear detail -->
-        <ellipse cx="91" cy="158" rx="4" ry="5" fill="rgba(0,0,0,0.12)"/>
-        <ellipse cx="209" cy="158" rx="4" ry="5" fill="rgba(0,0,0,0.12)"/>
-      </svg>
+      <div class="team-placeholder">
+        <div class="team-placeholder-inner">
+          <span class="team-initials">DA</span>
+          <div class="team-placeholder-line"></div>
+          <span class="team-placeholder-note t" data-es="Foto no disponible" data-en="Photo unavailable" data-fr="Photo non disponible">Foto no disponible</span>
+        </div>
+      </div>
       <div class="team-info">
         <div class="team-name">Daniel Arenas</div>
-        <div class="team-title">Immigration Case Manager</div>
-        <p class="team-bio">
-          Bilingual paralegal and case coordinator with expertise in USCIS documentation,
-          family-based and business immigration filings. Ensures every case file meets
-          the highest standard before attorney review.
+        <div class="team-title t" data-es="Coordinador de Casos y Gestión" data-en="Case &amp; Operations Coordinator" data-fr="Coordinateur de Dossiers">Coordinador de Casos y Gestión</div>
+        <p class="team-bio t"
+          data-es="Coordinador bilingüe con experiencia en gestión de expedientes, documentación USCIS y coordinación de casos de inmigración familiar y empresarial. Asegura que cada expediente cumpla los más altos estándares antes de la revisión final."
+          data-en="Bilingual coordinator with experience in case file management, USCIS documentation, and coordination of family and business immigration matters. Ensures every case file meets the highest standards before final review."
+          data-fr="Coordinateur bilingue avec expérience en gestion de dossiers et coordination des affaires d&rsquo;immigration familiale et commerciale.">
+          Coordinador bilingüe con experiencia en gestión de expedientes, documentación USCIS y coordinación de casos de inmigración familiar y empresarial. Asegura que cada expediente cumpla los más altos estándares antes de la revisión final.
         </p>
-        <p class="team-creds">B.S. Political Science · Universidad Simón Bolívar &nbsp;|&nbsp; 2021</p>
+        <p class="team-creds t"
+          data-es="Estudios en Ciencia Política · Venezuela"
+          data-en="Political Science Studies · Venezuela"
+          data-fr="Études en Science Politique · Venezuela">
+          Estudios en Ciencia Política · Venezuela
+        </p>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-   CONTACT
-══════════════════════════════════════════ -->
+<!-- ── CONTACT ── -->
 <section id="contact">
   <div class="contact-inner">
-    <p class="section-label" style="justify-content:center;">Contact</p>
-    <h2 class="section-title centered fade-up">Begin Your <em>Consultation</em></h2>
-    <p class="contact-intro">
-      We welcome inquiries from individuals, law firms, and institutions.
-      All consultations are confidential and handled with the discretion
-      your matter deserves.
+    <p class="section-label centered t" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</p>
+    <h2 class="section-title centered t"
+      data-es="Hablemos de<br><em>su caso.</em>"
+      data-en="Let's talk about<br><em>your matter.</em>"
+      data-fr="Parlons de<br><em>votre dossier.</em>">
+      Hablemos de<br><em>su caso.</em>
+    </h2>
+    <div class="gold-line centered" style="margin:1.5rem auto 2rem;"></div>
+    <p class="contact-intro t"
+      data-es="¿Tiene un caso con elementos venezolanos? ¿Necesita investigación, una carta de experto o materiales de apoyo? Escríbanos y le respondemos en menos de 24 horas."
+      data-en="Do you have a matter with Venezuelan elements? Need research, an expert opinion letter, or support materials? Write to us and we'll respond within 24 hours."
+      data-fr="Vous avez un dossier avec des éléments vénézuéliens ? Besoin d&rsquo;une lettre d&rsquo;expert ou de matériaux d&rsquo;appui ? Écrivez-nous et nous répondrons dans les 24 heures.">
+      ¿Tiene un caso con elementos venezolanos? ¿Necesita investigación, una carta de experto o materiales de apoyo? Escríbanos y le respondemos en menos de 24 horas.
     </p>
-
-    <div class="contact-grid fade-up">
-      <div class="contact-item">
-        <div class="contact-item-label">Email</div>
+    <div class="contact-grid">
+      <div class="contact-item fade-up">
+        <p class="contact-item-label t" data-es="Correo" data-en="Email" data-fr="Courriel">Correo</p>
         <a href="mailto:info@lawpez.com" class="contact-item-value">info@lawpez.com</a>
       </div>
-      <div class="contact-item">
-        <div class="contact-item-label">Practice</div>
-        <span class="contact-item-value">Lawpez, LLC</span>
+      <div class="contact-item fade-up">
+        <p class="contact-item-label t" data-es="Jurisdicción" data-en="Jurisdiction" data-fr="Juridiction">Jurisdicción</p>
+        <span class="contact-item-value t" data-es="Venezuela · EE.UU." data-en="Venezuela · U.S." data-fr="Venezuela · É.-U.">Venezuela · EE.UU.</span>
       </div>
-      <div class="contact-item">
-        <div class="contact-item-label">Availability</div>
-        <span class="contact-item-value">By Appointment</span>
+      <div class="contact-item fade-up">
+        <p class="contact-item-label t" data-es="Idiomas" data-en="Languages" data-fr="Langues">Idiomas</p>
+        <span class="contact-item-value">Español · English · Français</span>
       </div>
     </div>
-
-    <a href="mailto:info@lawpez.com" class="btn-gold">Send a Message</a>
-
-    <p class="contact-disclaimer">
-      The information on this website is provided for general informational purposes only and does not
-      constitute legal advice. No attorney-client relationship is formed by contacting Lawpez, LLC
-      without a formal engagement agreement.
+    <a href="mailto:info@lawpez.com" class="btn-gold t" data-es="Enviar Consulta" data-en="Send Inquiry" data-fr="Envoyer une Demande">Enviar Consulta</a>
+    <p class="contact-disclaimer t"
+      data-es="Lawpez, LLC no es una firma de abogados licenciada en Estados Unidos. Los servicios son de naturaleza consultiva, investigativa y de preparación de materiales. No se presta representación legal ni asesoría jurídica regulada por ningún estado de EE.UU. La comunicación a través de este sitio no crea ninguna relación abogado-cliente."
+      data-en="Lawpez, LLC is not a U.S. licensed law firm. Services are consultative, research-based, and document preparation in nature. No legal representation or legal advice regulated by any U.S. state is provided. Communication through this site does not create an attorney-client relationship."
+      data-fr="Lawpez, LLC n&rsquo;est pas un cabinet d&rsquo;avocats agréé aux États-Unis. Les services sont de nature consultative. Aucune représentation légale réglementée par un État américain n&rsquo;est fournie. La communication via ce site ne crée aucune relation avocat-client.">
+      Lawpez, LLC no es una firma de abogados licenciada en Estados Unidos. Los servicios son de naturaleza consultiva, investigativa y de preparación de materiales. No se presta representación legal ni asesoría jurídica regulada por ningún estado de EE.UU. La comunicación a través de este sitio no crea ninguna relación abogado-cliente.
     </p>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════ -->
+<!-- ── FOOTER ── -->
 <footer>
-  <a href="#hero" class="footer-logo">Law<span>pez</span>, LLC</a>
-  <p class="footer-copy">© 2026 Lawpez, LLC. All rights reserved.</p>
-  <p class="footer-disclaimer">
-    This website does not constitute legal advice. Use of this site does not
-    create an attorney-client relationship.
-  </p>
+  <div class="footer-logo">Law<span>pez</span>, LLC</div>
+  <div class="footer-copy t" data-es="© 2025 Lawpez, LLC. Todos los derechos reservados." data-en="© 2025 Lawpez, LLC. All rights reserved." data-fr="© 2025 Lawpez, LLC. Tous droits réservés.">© 2025 Lawpez, LLC. Todos los derechos reservados.</div>
+  <div class="footer-disclaimer t"
+    data-es="Lawpez, LLC no es una firma de abogados licenciada en ningún estado de EE.UU. Luis López Rodríguez es abogado venezolano, admitido ante la barra venezolana. Los servicios de Lawpez, LLC son de naturaleza consultiva, investigativa y de preparación de materiales en el ámbito del derecho venezolano. Nada en este sitio constituye asesoría legal ni crea una relación abogado-cliente bajo el derecho de ningún estado."
+    data-en="Lawpez, LLC is not a law firm licensed in any U.S. state. Luis López Rodríguez is a Venezuelan attorney admitted to the Venezuelan bar. Lawpez, LLC services are consultative, research-based, and document preparation in nature within the scope of Venezuelan law. Nothing on this site constitutes legal advice or creates an attorney-client relationship under any state's law."
+    data-fr="Lawpez, LLC n&rsquo;est pas un cabinet d&rsquo;avocats agréé dans un État américain. Luis López Rodríguez est avocat vénézuélien. Les services de Lawpez, LLC sont de nature consultative et de préparation de documents. Rien sur ce site ne constitue un conseil juridique ni ne crée une relation avocat-client.">
+    Lawpez, LLC no es una firma de abogados licenciada en ningún estado de EE.UU. Luis López Rodríguez es abogado venezolano, admitido ante la barra venezolana. Los servicios de Lawpez, LLC son de naturaleza consultiva, investigativa y de preparación de materiales en el ámbito del derecho venezolano. Nada en este sitio constituye asesoría legal ni crea una relación abogado-cliente bajo el derecho de ningún estado.
+  </div>
 </footer>
 
-<!-- ══════════════════════════════════════════
-   SCRIPTS
-══════════════════════════════════════════ -->
 <script>
-  // Navbar scroll
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  // ── LANGUAGE SWITCHER ──
+  const LANGS = ['es','en','fr'];
+  let currentLang = localStorage.getItem('lawpez-lang') || 'es';
+
+  function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('lawpez-lang', lang);
+    document.documentElement.lang = lang;
+
+    // Update all translatable elements
+    document.querySelectorAll('.t').forEach(el => {
+      const val = el.getAttribute('data-' + lang) || el.getAttribute('data-es');
+      if (val) el.innerHTML = val;
+    });
+
+    // Update section titles with innerHTML (they contain <em> and <br>)
+    document.querySelectorAll('.section-title.t, h1.hero-title .t, .about-quote.t, .contact-intro.t').forEach(el => {
+      const val = el.getAttribute('data-' + lang) || el.getAttribute('data-es');
+      if (val) el.innerHTML = val;
+    });
+
+    // Update active states
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    });
+    ['es','en','fr'].forEach(l => {
+      const mb = document.getElementById('mb-' + l);
+      if (mb) mb.classList.toggle('active', l === lang);
+    });
+
+    // Update page title and meta
+    const titles = {
+      es: 'Lawpez, LLC — Servicios Jurídicos Internacionales',
+      en: 'Lawpez, LLC — International Legal Services',
+      fr: 'Lawpez, LLC — Services Juridiques Internationaux'
+    };
+    document.title = titles[lang];
+  }
+
+  // Init language on load
+  document.addEventListener('DOMContentLoaded', () => {
+    setLang(currentLang);
   });
 
-  // Mobile menu
+  // ── NAVBAR SCROLL ──
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── MOBILE MENU ──
   const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenu = document.getElementById('mobile-menu');
   hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
   function closeMobile() { mobileMenu.classList.remove('open'); }
 
-  // Fade-in on scroll
-  const faders = document.querySelectorAll('.fade-up');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 90);
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  faders.forEach(f => io.observe(f));
+  // ── SCROLL FADE ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
