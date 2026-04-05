@@ -275,6 +275,25 @@
       .why-grid { grid-template-columns:1fr; }
       footer { padding:2rem 1.5rem; }
     }
+  
+    /* ── v6 upgrades ── */
+    .hero-text-link { color:rgba(255,255,255,0.65); font-size:0.75rem; letter-spacing:0.18em; text-transform:uppercase; text-decoration:none; transition:color 0.3s; padding:0.5rem 0; font-weight:500; }
+    .hero-text-link:hover { color:var(--gold); }
+    .why-num { font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:300; color:var(--gold); opacity:0.6; line-height:1; margin-bottom:0.6rem; letter-spacing:-0.02em; }
+    .testimonios-footnote { font-size:0.7rem; color:rgba(15,27,45,0.38); text-align:center; max-width:600px; margin:2.5rem auto 0; line-height:1.7; font-style:italic; letter-spacing:0.02em; }
+    .footer-logo-wrap { margin-bottom:1.2rem; }
+    .footer-logo-img { height:26px; display:block; margin:0 auto; opacity:0.85; }
+    .contact-form { width:100%; max-width:640px; margin:2.5rem auto 0; display:flex; flex-direction:column; gap:1.4rem; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; }
+    .form-group { display:flex; flex-direction:column; gap:0.5rem; }
+    .form-group label { font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-muted); font-weight:500; }
+    .form-group input, .form-group select, .form-group textarea { background:#fff; border:1px solid rgba(15,27,45,0.18); color:var(--navy); padding:0.85rem 1rem; font-family:Inter,sans-serif; font-size:0.9rem; width:100%; transition:border-color 0.3s; outline:none; border-radius:0; -webkit-appearance:none; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:var(--gold); }
+    .form-group textarea { resize:vertical; min-height:130px; }
+    .form-group select { cursor:pointer; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M6 8L0 0h12z' fill='%230f1b2d' opacity='.4'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1rem center; padding-right:2.5rem; }
+    .form-submit { width:100%; border:none; cursor:pointer; font-family:Inter,sans-serif; }
+    .form-success { text-align:center; color:var(--gold); font-size:0.88rem; padding:0.5rem; letter-spacing:0.04em; }
+    @media(max-width:640px){ .form-row{ grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -329,7 +348,6 @@
       <span class="t" data-es="Donde el derecho venezolano" data-en="Where Venezuelan law" data-fr="Là où le droit vénézuélien">Donde el derecho venezolano</span>
       <em class="t" data-es="encuentra el mundo." data-en="meets the world." data-fr="rencontre le monde.">encuentra el mundo.</em>
     </h1>
-    <p class="hero-name">Luis López Rodríguez · Lawpez, LLC</p>
     <p class="hero-desc t"
       data-es="Consultoría especializada en derecho venezolano, análisis jurídico y materiales de apoyo para firmas de abogados en Estados Unidos. Rigor académico. Experiencia binacional. Resultados concretos."
       data-en="Specialized consulting in Venezuelan law, legal analysis, and support materials for U.S. law firms. Academic rigor. Binational experience. Concrete results."
@@ -337,8 +355,8 @@
       Consultoría especializada en derecho venezolano, análisis jurídico y materiales de apoyo para firmas de abogados en Estados Unidos. Rigor académico. Experiencia binacional. Resultados concretos.
     </p>
     <div class="hero-ctas">
-      <a href="#services" class="btn-gold t" data-es="Ver Servicios" data-en="Our Services" data-fr="Nos Services">Ver Servicios</a>
-      <a href="#contact" class="btn-ghost t" data-es="Contactar" data-en="Get in Touch" data-fr="Nous Contacter">Contactar</a>
+      <a href="#contact" class="btn-gold t" data-es="Contactar" data-en="Get in Touch" data-fr="Nous Contacter">Contactar</a>
+      <a href="#services" class="hero-text-link t" data-es="Ver Servicios →" data-en="Our Services →" data-fr="Nos Services →">Ver Servicios →</a>
     </div>
   </div>
 
@@ -404,15 +422,6 @@
         data-fr="Mon travail combine rigueur académique et expérience pratique dans les affaires vénézuéliennes: de l&rsquo;analyse du cadre juridique et de la structure institutionnelle du pays, aux lettres d&rsquo;expert, aux traductions certifiées et aux dossiers pour les affaires d&rsquo;immigration, de commerce et de famille.">
         Mi trabajo combina rigor académico con experiencia práctica en asuntos venezolanos: desde el análisis del ordenamiento jurídico y la estructura institucional del país, hasta la preparación de cartas de experto, traducciones certificadas y paquetes de documentación para casos de inmigración, negocios y familia.
       </p>
-
-      <div class="upl-notice">
-        <p class="t"
-          data-es="Luis López Rodríguez es abogado venezolano. Lawpez, LLC no es una firma de abogados licenciada en Estados Unidos y no presta servicios de representación legal ni asesoría jurídica regulados por ningún estado. Los servicios se limitan a consultoría en derecho venezolano, análisis jurídico, investigación, preparación de materiales y coordinación de apoyo para profesionales del derecho."
-          data-en="Luis López Rodríguez is a Venezuelan attorney. Lawpez, LLC is not a U.S. licensed law firm and does not provide legal representation or legal advice regulated by any U.S. state bar. Services are limited to Venezuelan law consulting, legal analysis, research, document preparation, and coordination support for legal professionals."
-          data-fr="Luis López Rodríguez est avocat vénézuélien. Lawpez, LLC n&rsquo;est pas un cabinet d&rsquo;avocats agréé aux États-Unis et ne fournit pas de représentation légale ni de conseils juridiques réglementés par un barreau américain. Les services se limitent à la consultation en droit vénézuélien, à l&rsquo;analyse juridique et à la préparation de documents.">
-          Luis López Rodríguez es abogado venezolano. Lawpez, LLC no es una firma de abogados licenciada en Estados Unidos y no presta servicios de representación legal ni asesoría jurídica regulados por ningún estado. Los servicios se limitan a consultoría en derecho venezolano, análisis jurídico, investigación, preparación de materiales y coordinación de apoyo para profesionales del derecho.
-        </p>
-      </div>
 
       <ul class="edu-list fade-up">
         <li class="edu-item">
@@ -531,14 +540,6 @@
       </ul>
     </div>
   </div>
-  <div class="services-note">
-    <p class="t"
-      data-es="Lawpez, LLC no es una firma de abogados en Estados Unidos. Los servicios prestados son de naturaleza consultiva, investigativa y de preparación de materiales. No se presta representación legal ni asesoría jurídica regulada por ningún estado de EE.UU."
-      data-en="Lawpez, LLC is not a U.S. law firm. Services provided are consultative, research-based, and document preparation in nature. No legal representation or legal advice regulated by any U.S. state is provided."
-      data-fr="Lawpez, LLC n&rsquo;est pas un cabinet d&rsquo;avocats américain. Les services sont de nature consultative, de recherche et de préparation de documents. Aucune représentation légale réglementée par un État américain n&rsquo;est fournie.">
-      Lawpez, LLC no es una firma de abogados en Estados Unidos. Los servicios prestados son de naturaleza consultiva, investigativa y de preparación de materiales. No se presta representación legal ni asesoría jurídica regulada por ningún estado de EE.UU.
-    </p>
-  </div>
 </section>
 
 <!-- ── B2B ── -->
@@ -646,7 +647,7 @@
     </div>
     <div class="why-grid">
       <div class="why-item fade-up">
-        <div class="why-icon">§</div>
+        <div class="why-num">01</div>
         <h3 class="why-title t" data-es="Formación Dual" data-en="Dual Training" data-fr="Formation Duale">Formación Dual</h3>
         <p class="why-text t"
           data-es="J.D. venezolano y LL.M. en derecho estadounidense. Entendemos ambos sistemas y sabemos traducir entre ellos."
@@ -656,7 +657,7 @@
         </p>
       </div>
       <div class="why-item fade-up">
-        <div class="why-icon">✦</div>
+        <div class="why-num">02</div>
         <h3 class="why-title t" data-es="Rigor Académico" data-en="Academic Rigor" data-fr="Rigueur Académique">Rigor Académico</h3>
         <p class="why-text t"
           data-es="Investigación fundamentada en fuentes primarias, jurisprudencia y doctrina. Nada de generalidades: análisis puntual y documentado."
@@ -666,7 +667,7 @@
         </p>
       </div>
       <div class="why-item fade-up">
-        <div class="why-icon">◈</div>
+        <div class="why-num">03</div>
         <h3 class="why-title t" data-es="Respuesta Ágil" data-en="Agile Response" data-fr="Réponse Agile">Respuesta Ágil</h3>
         <p class="why-text t"
           data-es="Entendemos los tiempos del litigio. Plazos ajustados, comunicación directa y entrega sin burocracia innecesaria."
@@ -676,7 +677,7 @@
         </p>
       </div>
       <div class="why-item fade-up">
-        <div class="why-icon">▲</div>
+        <div class="why-num">04</div>
         <h3 class="why-title t" data-es="Contexto Real" data-en="Real Context" data-fr="Contexte Réel">Contexto Real</h3>
         <p class="why-text t"
           data-es="Conocimiento directo de la realidad venezolana: institucional, política y jurídica. No solo textos de ley, sino cómo funciona el sistema en la práctica."
@@ -825,8 +826,6 @@
       <div class="team-placeholder" style="display:none;">
         <div class="team-placeholder-inner">
           <span class="team-initials">SR</span>
-          <div class="team-placeholder-line"></div>
-          <span class="team-placeholder-note t" data-es="Foto no disponible" data-en="Photo unavailable" data-fr="Photo non disponible">Foto no disponible</span>
         </div>
       </div>
       <div class="team-info">
@@ -846,8 +845,6 @@
       <div class="team-placeholder">
         <div class="team-placeholder-inner">
           <span class="team-initials">DA</span>
-          <div class="team-placeholder-line"></div>
-          <span class="team-placeholder-note t" data-es="Foto no disponible" data-en="Photo unavailable" data-fr="Photo non disponible">Foto no disponible</span>
         </div>
       </div>
       <div class="team-info">
@@ -884,12 +881,6 @@
       </h2>
       <div class="gold-line"></div>
     </div>
-    <p class="testimonios-disclaimer t"
-      data-es="Los testimonios a continuación son ilustrativos y los nombres son ficticios. Reflejan el tipo de resultados que nuestros clientes han obtenido con el apoyo de Lawpez, LLC."
-      data-en="The testimonials below are illustrative and the names are fictitious. They reflect the type of outcomes our clients have achieved with the support of Lawpez, LLC."
-      data-fr="Les témoignages ci-dessous sont illustratifs et les noms sont fictifs. Ils reflètent le type de résultats obtenus par nos clients avec le soutien de Lawpez, LLC.">
-      Los testimonios a continuación son ilustrativos y los nombres son ficticios. Reflejan el tipo de resultados que nuestros clientes han obtenido con el apoyo de Lawpez, LLC.
-    </p>
     <div class="testimonios-grid">
 
       <div class="testimonial-card fade-up">
@@ -965,6 +956,12 @@
       </div>
 
     </div>
+    <p class="testimonios-footnote t"
+      data-es="Los testimonios a continuación son ilustrativos y los nombres son ficticios. Reflejan el tipo de resultados que nuestros clientes han obtenido con el apoyo de Lawpez, LLC."
+      data-en="The testimonials below are illustrative and the names are fictitious. They reflect the type of outcomes our clients have achieved with the support of Lawpez, LLC."
+      data-fr="Les témoignages ci-dessous sont illustratifs et les noms sont fictifs. Ils reflètent le type de résultats obtenus par nos clients avec le soutien de Lawpez, LLC.">
+      Los testimonios a continuación son ilustrativos y los nombres son ficticios. Reflejan el tipo de resultados que nuestros clientes han obtenido con el apoyo de Lawpez, LLC.
+    </p>
   </div>
 </section>
 
@@ -999,20 +996,56 @@
         <span class="contact-item-value">Español · English · Français</span>
       </div>
     </div>
-    <a href="mailto:info@lawpez.com" class="btn-gold t" data-es="Enviar Consulta" data-en="Send Inquiry" data-fr="Envoyer une Demande">Enviar Consulta</a>
-    <p class="contact-disclaimer t"
-      data-es="Lawpez, LLC no es una firma de abogados licenciada en Estados Unidos. Los servicios son de naturaleza consultiva, investigativa y de preparación de materiales. No se presta representación legal ni asesoría jurídica regulada por ningún estado de EE.UU. La comunicación a través de este sitio no crea ninguna relación abogado-cliente."
-      data-en="Lawpez, LLC is not a U.S. licensed law firm. Services are consultative, research-based, and document preparation in nature. No legal representation or legal advice regulated by any U.S. state is provided. Communication through this site does not create an attorney-client relationship."
-      data-fr="Lawpez, LLC n&rsquo;est pas un cabinet d&rsquo;avocats agréé aux États-Unis. Les services sont de nature consultative. Aucune représentation légale réglementée par un État américain n&rsquo;est fournie. La communication via ce site ne crée aucune relation avocat-client.">
-      Lawpez, LLC no es una firma de abogados licenciada en Estados Unidos. Los servicios son de naturaleza consultiva, investigativa y de preparación de materiales. No se presta representación legal ni asesoría jurídica regulada por ningún estado de EE.UU. La comunicación a través de este sitio no crea ninguna relación abogado-cliente.
-    </p>
+    <!-- ✦ FORMSPREE FORM — replace ACTION with your Formspree endpoint -->
+    <!-- Sign up free at formspree.io → New Form → copy endpoint URL -->
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+          onsubmit="handleFormSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-name" class="t" data-es="Nombre" data-en="Name" data-fr="Nom">Nombre</label>
+          <input type="text" id="cf-name" name="name" required
+            placeholder="Luis López" />
+        </div>
+        <div class="form-group">
+          <label for="cf-email" class="t" data-es="Correo electrónico" data-en="Email address" data-fr="Adresse e-mail">Correo electrónico</label>
+          <input type="email" id="cf-email" name="email" required
+            placeholder="nombre@firma.com" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cf-matter" class="t" data-es="Tipo de asunto" data-en="Matter type" data-fr="Type de dossier">Tipo de asunto</label>
+        <select id="cf-matter" name="matter">
+          <option value="" class="t" data-es="Seleccionar..." data-en="Select..." data-fr="Sélectionner...">Seleccionar...</option>
+          <option value="consulting" class="t" data-es="Consultoría en derecho venezolano" data-en="Venezuelan law consulting" data-fr="Consultation en droit vénézuélien">Consultoría en derecho venezolano</option>
+          <option value="expert-letter" class="t" data-es="Carta de experto" data-en="Expert opinion letter" data-fr="Lettre d'expert">Carta de experto</option>
+          <option value="translation" class="t" data-es="Traducción jurídica" data-en="Legal translation" data-fr="Traduction juridique">Traducción jurídica</option>
+          <option value="immigration" class="t" data-es="Trámites migratorios / USCIS" data-en="Immigration filing / USCIS" data-fr="Démarches d'immigration / USCIS">Trámites migratorios / USCIS</option>
+          <option value="other" class="t" data-es="Otro" data-en="Other" data-fr="Autre">Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="cf-message" class="t" data-es="Mensaje" data-en="Message" data-fr="Message">Mensaje</label>
+        <textarea id="cf-message" name="message" rows="5" required
+          placeholder="Cuéntenos sobre su caso..."></textarea>
+      </div>
+      <button type="submit" class="btn-gold form-submit t"
+        data-es="Enviar Consulta" data-en="Send Inquiry" data-fr="Envoyer une Demande">
+        Enviar Consulta
+      </button>
+      <p class="form-success" id="form-success" style="display:none;"
+        data-es="✓ Mensaje enviado. Le respondemos en menos de 24 horas."
+        data-en="✓ Message sent. We'll respond within 24 hours."
+        data-fr="✓ Message envoyé. Nous répondrons dans les 24 heures.">
+        ✓ Mensaje enviado. Le respondemos en menos de 24 horas.
+      </p>
+    </form>
   </div>
 </section>
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-logo">Law<span>pez</span>, LLC</div>
-  <div class="footer-copy t" data-es="© 2025 Lawpez, LLC. Todos los derechos reservados." data-en="© 2025 Lawpez, LLC. All rights reserved." data-fr="© 2025 Lawpez, LLC. Tous droits réservés.">© 2025 Lawpez, LLC. Todos los derechos reservados.</div>
+  <div class="footer-logo-wrap"><img class="footer-logo-img" src="data:image/png;base64,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" alt="Lawpez" /></div>
+  <div class="footer-copy t" data-es="© 2026 Lawpez, LLC. Todos los derechos reservados." data-en="© 2026 Lawpez, LLC. All rights reserved." data-fr="© 2026 Lawpez, LLC. Tous droits réservés.">© 2026 Lawpez, LLC. Todos los derechos reservados.</div>
   <div class="footer-disclaimer t"
     data-es="Lawpez, LLC no es una firma de abogados licenciada en ningún estado de EE.UU. Luis López Rodríguez es abogado venezolano, admitido ante la barra venezolana. Los servicios de Lawpez, LLC son de naturaleza consultiva, investigativa y de preparación de materiales en el ámbito del derecho venezolano. Nada en este sitio constituye asesoría legal ni crea una relación abogado-cliente bajo el derecho de ningún estado."
     data-en="Lawpez, LLC is not a law firm licensed in any U.S. state. Luis López Rodríguez is a Venezuelan attorney admitted to the Venezuelan bar. Lawpez, LLC services are consultative, research-based, and document preparation in nature within the scope of Venezuelan law. Nothing on this site constitutes legal advice or creates an attorney-client relationship under any state's law."
@@ -1083,6 +1116,31 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── CONTACT FORM HANDLER ──
+  async function handleFormSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = '...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.reset();
+        const msg = document.getElementById('form-success');
+        msg.style.display = 'block';
+        const langVal = currentLang;
+        const texts = { es: '✓ Mensaje enviado. Le respondemos en menos de 24 horas.', en: '✓ Message sent. We'll respond within 24 hours.', fr: '✓ Message envoyé. Nous répondrons dans les 24 heures.' };
+        msg.textContent = texts[langVal] || texts.es;
+      } else { btn.textContent = 'Error — intente de nuevo'; btn.disabled = false; }
+    } catch { btn.textContent = 'Error — intente de nuevo'; btn.disabled = false; }
+  }
+
 </script>
 </body>
 </html>
