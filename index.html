@@ -992,7 +992,7 @@
     </div>
     <!-- ✦ FORMSPREE FORM — replace ACTION with your Formspree endpoint -->
     <!-- Sign up free at formspree.io → New Form → copy endpoint URL -->
-    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+    <form class="contact-form" action="https://formsubmit.co/info@lawpez.com" method="POST"
           onsubmit="handleFormSubmit(event)">
       <div class="form-row">
         <div class="form-group">
@@ -1022,6 +1022,10 @@
         <textarea id="cf-message" name="message" rows="5" required
           placeholder="Cuéntenos sobre su caso..."></textarea>
       </div>
+      <input type="hidden" name="_subject" value="Nueva consulta — lawpez.com" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_next" value="https://lawpez.com" />
       <button type="submit" class="btn-gold form-submit t"
         data-es="Enviar Consulta" data-en="Send Inquiry" data-fr="Envoyer une Demande">
         Enviar Consulta
