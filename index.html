@@ -234,6 +234,22 @@
     .fade-up { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease,transform 0.7s ease; }
     .fade-up.visible { opacity:1; transform:none; }
 
+
+    /* ── TESTIMONIALS ── */
+    #testimonios { background:var(--cream); }
+    .testimonios-inner { max-width:1200px; margin:0 auto; }
+    .testimonios-header { text-align:center; margin-bottom:3rem; }
+    .testimonios-header .section-label { justify-content:center; }
+    .testimonios-header .gold-line { margin:1.5rem auto; }
+    .testimonios-disclaimer { font-size:0.72rem; color:var(--text-muted); font-style:italic; margin-bottom:3rem; text-align:center; opacity:0.75; max-width:680px; margin-left:auto; margin-right:auto; line-height:1.7; }
+    .testimonios-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .testimonial-card { background:#fff; padding:2.5rem; border-bottom:3px solid var(--gold); box-shadow:0 2px 12px rgba(0,0,0,0.05); position:relative; transition:transform 0.3s,box-shadow 0.3s; }
+    .testimonial-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.1); }
+    .testimonial-stars { color:var(--gold); font-size:0.85rem; letter-spacing:0.1em; margin-bottom:1.2rem; }
+    .testimonial-quote { font-family:'Cormorant Garamond',serif; font-size:1.08rem; font-style:italic; font-weight:300; color:var(--navy); line-height:1.7; margin-bottom:1.5rem; padding-left:1.2rem; border-left:3px solid var(--gold-dim); }
+    .testimonial-author { font-size:0.8rem; font-weight:600; color:var(--navy); letter-spacing:0.06em; }
+    .testimonial-case { font-size:0.63rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-top:0.25rem; }
+
     /* ── RESPONSIVE ── */
     @media(max-width:1024px) {
       nav { padding:1.4rem 3rem; }
@@ -242,6 +258,7 @@
       .about-grid,.b2b-top { grid-template-columns:1fr; gap:4rem; }
       .why-grid { grid-template-columns:repeat(2,1fr); }
       .pub-categories { grid-template-columns:1fr; }
+      .testimonios-grid { grid-template-columns:repeat(2,1fr); }
     }
     @media(max-width:768px) {
       nav { padding:1.2rem 1.5rem; }
@@ -252,7 +269,7 @@
       .hero-left { padding:8rem 1.5rem 4rem; }
       section { padding:5rem 1.5rem; }
       .services-grid,.team-grid { grid-template-columns:1fr; }
-      .b2b-packages,.contact-grid { grid-template-columns:1fr; }
+      .b2b-packages,.contact-grid,.testimonios-grid { grid-template-columns:1fr; }
       .why-grid { grid-template-columns:1fr; }
       footer { padding:2rem 1.5rem; }
     }
@@ -270,6 +287,7 @@
       <li><a href="#b2b" class="t" data-es="B2B" data-en="B2B" data-fr="B2B">B2B</a></li>
       <li><a href="#publications" class="t" data-es="Publicaciones" data-en="Publications" data-fr="Publications">Publicaciones</a></li>
       <li><a href="#team" class="t" data-es="Equipo" data-en="Team" data-fr="Équipe">Equipo</a></li>
+      <li><a href="#testimonios" class="t" data-es="Testimonios" data-en="Testimonials" data-fr="Témoignages">Testimonios</a></li>
     </ul>
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLang('es')">ES</button>
@@ -291,6 +309,7 @@
   <a href="#b2b" onclick="closeMobile()">B2B</a>
   <a href="#publications" onclick="closeMobile()" class="t" data-es="Publicaciones" data-en="Publications" data-fr="Publications">Publicaciones</a>
   <a href="#team" onclick="closeMobile()" class="t" data-es="Equipo" data-en="Team" data-fr="Équipe">Equipo</a>
+  <a href="#testimonios" onclick="closeMobile()" class="t" data-es="Testimonios" data-en="Testimonials" data-fr="Témoignages">Testimonios</a>
   <a href="#contact" onclick="closeMobile()" class="t" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a>
   <div class="mobile-lang">
     <button onclick="setLang('es');closeMobile()" id="mb-es" class="active">ES</button>
@@ -532,8 +551,8 @@
           </p>
           <ul class="pkg-list">
             <li class="t" data-es="Preparación de evidencia documental" data-en="Documentary evidence preparation" data-fr="Préparation de preuves documentaires">Preparación de evidencia documental</li>
-            <li class="t" data-es="Verificación y traducción de documentos venezolanos" data-en="Verification and translation of Venezuelan documents" data-fr="Vérification et traduction de documents vénézuéliens">Verificación y traducción de documentos venezolanos</li>
-            <li class="t" data-es="Contexto del sistema de registro civil venezolano" data-en="Venezuelan civil registry system context" data-fr="Contexte du registre civil vénézuélien">Contexto del sistema de registro civil venezolano</li>
+            <li class="t" data-es="Verificación y traducción de documentos del país de origen" data-en="Home country document verification and translation" data-fr="Vérification et traduction de documents du pays d'origine">Verificación y traducción de documentos del país de origen</li>
+            <li class="t" data-es="Contexto del sistema de registro civil del país de origen" data-en="Home country civil registry system context" data-fr="Contexte du système de registre civil du pays d'origine">Contexto del sistema de registro civil del país de origen</li>
             <li class="t" data-es="Resumen de antecedentes legales relevantes" data-en="Summary of relevant legal background" data-fr="Résumé des antécédents juridiques pertinents">Resumen de antecedentes legales relevantes</li>
           </ul>
         </div>
@@ -580,7 +599,7 @@
           </p>
           <ul class="pkg-list">
             <li class="t" data-es="Preparación y revisión de formularios USCIS" data-en="USCIS form preparation and review" data-fr="Préparation et révision des formulaires USCIS">Preparación y revisión de formularios USCIS</li>
-            <li class="t" data-es="Verificación y traducción de documentos venezolanos" data-en="Venezuelan document verification and translation" data-fr="Vérification et traduction de documents vénézuéliens">Verificación y traducción de documentos venezolanos</li>
+            <li class="t" data-es="Verificación y traducción de documentos extranjeros" data-en="Foreign document verification and translation (any country)" data-fr="Vérification et traduction de documents étrangers (tout pays)">Verificación y traducción de documentos extranjeros</li>
             <li class="t" data-es="Organización y revisión de expediente completo" data-en="Complete case file organization and review" data-fr="Organisation et révision du dossier complet">Organización y revisión de expediente completo</li>
             <li class="t" data-es="Coordinación y seguimiento del caso" data-en="Case coordination and follow-up" data-fr="Coordination et suivi du dossier">Coordinación y seguimiento del caso</li>
           </ul>
@@ -825,6 +844,104 @@
           Estudios en Ciencia Política · Venezuela
         </p>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── TESTIMONIOS ── -->
+<section id="testimonios">
+  <div class="testimonios-inner">
+    <div class="testimonios-header">
+      <p class="section-label t" data-es="Resultados" data-en="Results" data-fr="Résultats">Resultados</p>
+      <h2 class="section-title t"
+        data-es="Casos reales.<br><em>Personas reales.</em>"
+        data-en="Real cases.<br><em>Real people.</em>"
+        data-fr="Cas réels.<br><em>Personnes réelles.</em>">
+        Casos reales.<br><em>Personas reales.</em>
+      </h2>
+      <div class="gold-line"></div>
+    </div>
+    <p class="testimonios-disclaimer t"
+      data-es="Los testimonios a continuación son ilustrativos y los nombres son ficticios. Reflejan el tipo de resultados que nuestros clientes han obtenido con el apoyo de Lawpez, LLC."
+      data-en="The testimonials below are illustrative and the names are fictitious. They reflect the type of outcomes our clients have achieved with the support of Lawpez, LLC."
+      data-fr="Les témoignages ci-dessous sont illustratifs et les noms sont fictifs. Ils reflètent le type de résultats obtenus par nos clients avec le soutien de Lawpez, LLC.">
+      Los testimonios a continuación son ilustrativos y los nombres son ficticios. Reflejan el tipo de resultados que nuestros clientes han obtenido con el apoyo de Lawpez, LLC.
+    </p>
+    <div class="testimonios-grid">
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote t"
+          data-es="Mi abogado necesitaba una carta de experto sobre persecución política. La que preparó Lawpez era tan detallada y bien fundamentada que el juez la aceptó sin objeciones. Hoy tengo mi asilo aprobado."
+          data-en="My attorney needed an expert opinion letter about political persecution. The one Lawpez prepared was so detailed and well-grounded that the judge accepted it without objection. Today my asylum is approved."
+          data-fr="Mon avocat avait besoin d'une lettre d'expert sur la persécution politique. Celle que Lawpez a préparée était si solide que le juge l'a acceptée sans objection. Aujourd'hui mon asile est approuvé.">
+          Mi abogado necesitaba una carta de experto sobre persecución política. La que preparó Lawpez era tan detallada y bien fundamentada que el juez la aceptó sin objeciones. Hoy tengo mi asilo aprobado.
+        </p>
+        <div class="testimonial-author">Valentina G.</div>
+        <div class="testimonial-case t" data-es="Asilo Afirmativo" data-en="Affirmative Asylum" data-fr="Asile Affirmatif">Asilo Afirmativo</div>
+      </div>
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote t"
+          data-es="Somos una pareja binacional y no sabíamos por dónde empezar con el I-130 y el I-485. Lawpez organizó toda nuestra documentación, tradujo los registros civiles y el proceso fue mucho más claro de lo que esperábamos."
+          data-en="We're a binational couple and didn't know where to start with the I-130 and I-485. Lawpez organized all our documentation, translated the civil records, and the process was much clearer than we expected."
+          data-fr="Nous sommes un couple binational et ne savions pas par où commencer. Lawpez a organisé tous nos documents et le processus a été beaucoup plus clair que prévu.">
+          Somos una pareja binacional y no sabíamos por dónde empezar con el I-130 y el I-485. Lawpez organizó toda nuestra documentación, tradujo los registros civiles y el proceso fue mucho más claro de lo que esperábamos.
+        </p>
+        <div class="testimonial-author">Carlos &amp; Emily M.</div>
+        <div class="testimonial-case t" data-es="Ajuste de Estatus por Matrimonio" data-en="Marriage-Based Adjustment of Status" data-fr="Ajustement de Statut par Mariage">Ajuste de Estatus por Matrimonio</div>
+      </div>
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote t"
+          data-es="Llevaba cinco años como residente permanente y quería naturalizarme, pero los formularios me intimidaban. Con el apoyo de Lawpez presenté mi N-400 y en menos de un año rendí el examen y me convertí en ciudadana."
+          data-en="I had been a permanent resident for five years and wanted to naturalize, but the forms intimidated me. With Lawpez's support, I filed my N-400 and in less than a year I took the exam and became a citizen."
+          data-fr="J'étais résidente permanente depuis cinq ans et voulais me naturaliser. Avec le soutien de Lawpez, j'ai déposé mon N-400 et en moins d'un an je suis devenue citoyenne.">
+          Llevaba cinco años como residente permanente y quería naturalizarme, pero los formularios me intimidaban. Con el apoyo de Lawpez presenté mi N-400 y en menos de un año rendí el examen y me convertí en ciudadana.
+        </p>
+        <div class="testimonial-author">Rosa F.</div>
+        <div class="testimonial-case t" data-es="Naturalización" data-en="Naturalization" data-fr="Naturalisation">Naturalización</div>
+      </div>
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote t"
+          data-es="Quería traer a mis padres mayores y no sabía que existía este tipo de apoyo. Lawpez preparó toda la documentación, gestionó las traducciones y me explicó cada paso del proceso. Hoy mi familia está reunida."
+          data-en="I wanted to bring my elderly parents and didn't know this type of support existed. Lawpez prepared all the documentation, handled the translations, and explained every step. Today my family is together."
+          data-fr="Je voulais faire venir mes parents âgés et ne savais pas que ce soutien existait. Lawpez a préparé tous les documents et expliqué chaque étape. Aujourd'hui ma famille est réunie.">
+          Quería traer a mis padres mayores y no sabía que existía este tipo de apoyo. Lawpez preparó toda la documentación, gestionó las traducciones y me explicó cada paso del proceso. Hoy mi familia está reunida.
+        </p>
+        <div class="testimonial-author">Tomás R.</div>
+        <div class="testimonial-case t" data-es="Petición Familiar · I-130" data-en="Family Petition · I-130" data-fr="Pétition Familiale · I-130">Petición Familiar · I-130</div>
+      </div>
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote t"
+          data-es="El proceso de la visa E-2 me parecía imposible de entender solo. Lawpez preparó todo el análisis del contexto económico y mi historial empresarial de forma tan profesional que mi solicitud fue aprobada sin inconvenientes."
+          data-en="The E-2 visa process seemed impossible to navigate alone. Lawpez prepared the full economic context analysis and my business history so professionally that my application was approved without issues."
+          data-fr="Le processus du visa E-2 me semblait impossible à naviguer seul. Lawpez a préparé une analyse si professionnelle que ma demande a été approuvée sans problème.">
+          El proceso de la visa E-2 me parecía imposible de entender solo. Lawpez preparó todo el análisis del contexto económico y mi historial empresarial de forma tan profesional que mi solicitud fue aprobada sin inconvenientes.
+        </p>
+        <div class="testimonial-author">Andrés T.</div>
+        <div class="testimonial-case t" data-es="Visa E-2 · Inversionista" data-en="E-2 Visa · Investor" data-fr="Visa E-2 · Investisseur">Visa E-2 · Inversionista</div>
+      </div>
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote t"
+          data-es="Cuando se renovó el TPS para mi país no sabía si calificaba ni cómo registrarme. Lawpez revisó todo mi expediente, preparó los formularios y la evidencia requerida. Hoy tengo mi permiso de trabajo vigente."
+          data-en="When TPS was renewed for my country, I didn't know if I qualified or how to register. Lawpez reviewed my full file, prepared the forms and required evidence. Today I have my valid work permit."
+          data-fr="Quand le TPS a été renouvelé pour mon pays, je ne savais pas si je qualifiais. Lawpez a examiné mon dossier et préparé les formulaires. Aujourd'hui j'ai mon permis de travail valide.">
+          Cuando se renovó el TPS para mi país no sabía si calificaba ni cómo registrarme. Lawpez revisó todo mi expediente, preparó los formularios y la evidencia requerida. Hoy tengo mi permiso de trabajo vigente.
+        </p>
+        <div class="testimonial-author">Lucía M.</div>
+        <div class="testimonial-case t" data-es="TPS · Protección Temporal" data-en="TPS · Temporary Protection" data-fr="TPS · Protection Temporaire">TPS · Protección Temporal</div>
+      </div>
+
     </div>
   </div>
 </section>
