@@ -58,9 +58,10 @@
     .mobile-lang button.active { border-color:var(--gold); color:var(--gold); }
 
     /* ── HERO ── */
-    #hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; background:var(--navy); position:relative; overflow:hidden; }
-    #hero::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events:none; }
-    .hero-left { display:flex; flex-direction:column; justify-content:center; padding:10rem 5rem 6rem; position:relative; z-index:2; }
+    #hero { min-height:100vh; display:flex; align-items:center; background:var(--navy); position:relative; overflow:hidden; background-image:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1920&q=80'); background-size:cover; background-position:center bottom; }
+    #hero::before { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(105deg, rgba(15,27,45,0.97) 0%, rgba(15,27,45,0.85) 55%, rgba(15,27,45,0.55) 100%); pointer-events:none; }
+    #hero::after { content:''; position:absolute; inset:0; z-index:1; background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events:none; }
+    .hero-left { display:flex; flex-direction:column; justify-content:center; padding:10rem 5rem 6rem; position:relative; z-index:2; max-width:800px; }
     .hero-eyebrow { font-size:0.68rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); margin-bottom:2rem; display:flex; align-items:center; gap:1.2rem; }
     .hero-eyebrow::before { content:''; display:block; width:36px; height:1px; background:var(--gold); }
     h1.hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(3.2rem,5vw,5.5rem); font-weight:300; line-height:1.05; color:#fff; letter-spacing:-0.01em; margin-bottom:1.5rem; }
@@ -72,10 +73,8 @@
     .btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 8px 24px rgba(184,146,74,0.3); }
     .btn-ghost { display:inline-block; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.7); padding:0.9rem 2.4rem; text-decoration:none; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:400; transition:all 0.3s; }
     .btn-ghost:hover { border-color:var(--gold); color:var(--gold); }
-    .hero-right { position:relative; overflow:hidden; }
-    .hero-right::before { content:''; position:absolute; inset:0; z-index:2; background:linear-gradient(to right,var(--navy) 0%,transparent 35%); }
-    .hero-right::after { content:''; position:absolute; inset:0; z-index:2; background:linear-gradient(to top,var(--navy) 0%,transparent 20%); }
-    .hero-photo { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+    .hero-right { display:none; }
+    .hero-photo { display:none; }
     .hero-accent { position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(to bottom,transparent 15%,var(--gold) 50%,transparent 85%); }
 
     /* ── CREDENTIALS STRIP ── */
@@ -249,8 +248,7 @@
       nav.scrolled { padding:0.8rem 1.5rem; }
       .nav-links,.nav-cta,.lang-switcher { display:none; }
       .hamburger { display:flex; }
-      #hero { grid-template-columns:1fr; }
-      .hero-right { display:none; }
+      #hero { background-position:center center; }
       .hero-left { padding:8rem 1.5rem 4rem; }
       section { padding:5rem 1.5rem; }
       .services-grid,.team-grid { grid-template-columns:1fr; }
@@ -322,9 +320,7 @@
       <a href="#contact" class="btn-ghost t" data-es="Contactar" data-en="Get in Touch" data-fr="Nous Contacter">Contactar</a>
     </div>
   </div>
-  <div class="hero-right">
-    <img src="img/photo.jpg" alt="Luis López Rodríguez" class="hero-photo" />
-  </div>
+
 </section>
 
 <!-- ── CREDENTIALS STRIP ── -->
@@ -438,10 +434,10 @@
       Experiencia venezolana.<br><em>Valor real para su firma.</em>
     </h2>
     <p class="services-intro t"
-      data-es="Servicios de análisis, investigación y preparación de materiales jurídicos especializados en el sistema legal venezolano, diseñados para apoyar a firmas de abogados y profesionales en Estados Unidos."
-      data-en="Analysis, research, and preparation of specialized legal materials on the Venezuelan legal system, designed to support U.S. law firms and legal professionals."
-      data-fr="Analyse, recherche et préparation de matériaux juridiques spécialisés sur le système juridique vénézuélien, conçus pour soutenir les cabinets d&rsquo;avocats et les professionnels du droit américains.">
-      Servicios de análisis, investigación y preparación de materiales jurídicos especializados en el sistema legal venezolano, diseñados para apoyar a firmas de abogados y profesionales en Estados Unidos.
+      data-es="Trabajamos tanto con firmas de abogados como directamente con particulares. Ofrecemos análisis, investigación, preparación de documentos y materiales de apoyo especializados en el sistema legal venezolano y en procesos migratorios — para quien los necesite."
+      data-en="We work with both law firms and individual clients directly. We offer analysis, research, document preparation, and support materials specialized in the Venezuelan legal system and immigration matters — for whoever needs them."
+      data-fr="Nous travaillons aussi bien avec des cabinets d&rsquo;avocats qu&rsquo;avec des particuliers directement. Nous offrons analyse, recherche, préparation de documents et matériaux d&rsquo;appui spécialisés en droit vénézuélien et en matières d&rsquo;immigration.">
+      Trabajamos tanto con firmas de abogados como directamente con particulares. Ofrecemos análisis, investigación, preparación de documentos y materiales de apoyo especializados en el sistema legal venezolano y en procesos migratorios — para quien los necesite.
     </p>
   </div>
   <div class="services-grid">
@@ -509,52 +505,52 @@
   <div class="b2b-inner">
     <div class="b2b-top">
       <div>
-        <p class="section-label t" data-es="Paquetes para Firmas" data-en="Firm Packages" data-fr="Forfaits pour Cabinets">Paquetes para Firmas</p>
+        <p class="section-label t" data-es="Paquetes de Servicio" data-en="Service Packages" data-fr="Forfaits de Service">Paquetes de Servicio</p>
         <h2 class="section-title t"
-          data-es="Su socio en casos<br><em>venezolanos.</em>"
-          data-en="Your partner in<br><em>Venezuelan matters.</em>"
-          data-fr="Votre partenaire dans les<br><em>affaires vénézuéliennes.</em>">
-          Su socio en casos<br><em>venezolanos.</em>
+          data-es="Paquetes para firmas<br><em>y para particulares.</em>"
+          data-en="Packages for firms<br><em>and individuals alike.</em>"
+          data-fr="Forfaits pour cabinets<br><em>et pour particuliers.</em>">
+          Paquetes para firmas<br><em>y para particulares.</em>
         </h2>
         <div class="gold-line"></div>
         <p class="b2b-intro-text t"
-          data-es="Diseñados específicamente para firmas de abogados en EE.UU. Paquetes completos de materiales de apoyo, investigación y documentación para casos de inmigración y negocio con elementos venezolanos. Su firma lidera el caso; nosotros preparamos los materiales."
-          data-en="Designed specifically for U.S. law firms. Complete packages of support materials, research, and documentation for immigration and business cases with Venezuelan elements. Your firm leads the case; we prepare the materials."
-          data-fr="Conçus spécifiquement pour les cabinets d&rsquo;avocats américains. Forfaits complets de matériaux d&rsquo;appui, de recherche et de documentation pour les affaires d&rsquo;immigration et de commerce avec des éléments vénézuéliens.">
-          Diseñados específicamente para firmas de abogados en EE.UU. Paquetes completos de materiales de apoyo, investigación y documentación para casos de inmigración y negocio con elementos venezolanos. Su firma lidera el caso; nosotros preparamos los materiales.
+          data-es="Trabajamos con firmas de abogados y también directamente con clientes particulares. En todos los casos, nos encargamos de la investigación, la preparación documental y el soporte especializado en derecho venezolano — para que cada proceso esté bien fundamentado."
+          data-en="We work with law firms and directly with individual clients alike. In all cases, we handle the research, document preparation, and specialized Venezuelan law support — so every matter is properly grounded."
+          data-fr="Nous travaillons avec des cabinets d&rsquo;avocats et directement avec des particuliers. Dans tous les cas, nous gérons la recherche, la préparation documentaire et le soutien spécialisé en droit vénézuélien.">
+          Trabajamos con firmas de abogados y también directamente con clientes particulares. En todos los casos, nos encargamos de la investigación, la preparación documental y el soporte especializado en derecho venezolano — para que cada proceso esté bien fundamentado.
         </p>
       </div>
       <div class="b2b-packages">
         <div class="b2b-package fade-up">
           <p class="pkg-tag t" data-es="Inmigración · Familiar" data-en="Immigration · Family" data-fr="Immigration · Famille">Inmigración · Familiar</p>
-          <h3 class="pkg-title t" data-es="Family-Based One-Stop" data-en="Family-Based One-Stop" data-fr="Forfait Famille Complet">Family-Based One-Stop</h3>
+          <h3 class="pkg-title t" data-es="Family-Based One-Step" data-en="Family-Based One-Step" data-fr="Ajustement de Statut Familial">Family-Based One-Step</h3>
           <p class="pkg-desc t"
-            data-es="Paquete completo de materiales para peticiones familiares con clientes venezolanos. Análisis documental, contexto legal venezolano y preparación de soporte."
-            data-en="Complete materials package for family-based petitions with Venezuelan clients. Document analysis, Venezuelan legal context, and support preparation."
-            data-fr="Forfait complet de matériaux pour les pétitions familiales avec des clients vénézuéliens.">
-            Paquete completo de materiales para peticiones familiares con clientes venezolanos. Análisis documental, contexto legal venezolano y preparación de soporte.
+            data-es="Preparación de materiales y documentación de apoyo para procesos de ajuste de estatus dentro de Estados Unidos: por matrimonio, por hijos, por padres u otras categorías inmediatas. Aplica a peticiones I-130, I-485 y casos relacionados."
+            data-en="Preparation of support materials and documentation for adjustment of status processes inside the United States: through marriage, children, parents, or other immediate relative categories. Applies to I-130, I-485 petitions and related cases."
+            data-fr="Préparation de matériaux d&rsquo;appui et documentation pour les procédures d&rsquo;ajustement de statut aux États-Unis: par mariage, enfants, parents ou autres catégories immédiates.">
+            Preparación de materiales y documentación de apoyo para procesos de ajuste de estatus dentro de Estados Unidos: por matrimonio, por hijos, por padres u otras categorías inmediatas. Aplica a peticiones I-130, I-485 y casos relacionados.
           </p>
           <ul class="pkg-list">
-            <li class="t" data-es="Verificación de documentos venezolanos" data-en="Venezuelan document verification" data-fr="Vérification de documents vénézuéliens">Verificación de documentos venezolanos</li>
-            <li class="t" data-es="Contexto del sistema de registro civil" data-en="Civil registry system context" data-fr="Contexte du système d'état civil">Contexto del sistema de registro civil</li>
-            <li class="t" data-es="Traducción certificada de documentos" data-en="Certified document translation" data-fr="Traduction certifiée de documents">Traducción certificada de documentos</li>
+            <li class="t" data-es="Preparación de evidencia documental" data-en="Documentary evidence preparation" data-fr="Préparation de preuves documentaires">Preparación de evidencia documental</li>
+            <li class="t" data-es="Verificación y traducción de documentos venezolanos" data-en="Verification and translation of Venezuelan documents" data-fr="Vérification et traduction de documents vénézuéliens">Verificación y traducción de documentos venezolanos</li>
+            <li class="t" data-es="Contexto del sistema de registro civil venezolano" data-en="Venezuelan civil registry system context" data-fr="Contexte du registre civil vénézuélien">Contexto del sistema de registro civil venezolano</li>
             <li class="t" data-es="Resumen de antecedentes legales relevantes" data-en="Summary of relevant legal background" data-fr="Résumé des antécédents juridiques pertinents">Resumen de antecedentes legales relevantes</li>
           </ul>
         </div>
         <div class="b2b-package fade-up">
-          <p class="pkg-tag t" data-es="Negocios · Visas E-2" data-en="Business · E-2 Visas" data-fr="Affaires · Visas E-2">Negocios · Visas E-2</p>
-          <h3 class="pkg-title t" data-es="E-2 Venezuela Package" data-en="E-2 Venezuela Package" data-fr="Forfait E-2 Venezuela">E-2 Venezuela Package</h3>
+          <p class="pkg-tag t" data-es="Negocios · Visa E-2" data-en="Business · E-2 Visa" data-fr="Affaires · Visa E-2">Negocios · Visa E-2</p>
+          <h3 class="pkg-title t" data-es="E-2 Visa Package" data-en="E-2 Visa Package" data-fr="Forfait Visa E-2">E-2 Visa Package</h3>
           <p class="pkg-desc t"
-            data-es="Materiales de apoyo e investigación para solicitudes E-2 con inversionistas venezolanos. Análisis del marco empresarial venezolano e historial del solicitante."
-            data-en="Support materials and research for E-2 applications with Venezuelan investors. Analysis of Venezuelan business framework and applicant background."
-            data-fr="Matériaux d&rsquo;appui et recherche pour les demandes E-2 avec des investisseurs vénézuéliens.">
-            Materiales de apoyo e investigación para solicitudes E-2 con inversionistas venezolanos. Análisis del marco empresarial venezolano e historial del solicitante.
+            data-es="Materiales de apoyo e investigación para solicitudes de visa E-2. Preparación de documentación del historial empresarial del solicitante, análisis del marco de inversión y contexto económico del país de origen."
+            data-en="Support materials and research for E-2 visa applications. Preparation of applicant business history documentation, investment framework analysis, and home country economic context."
+            data-fr="Matériaux d&rsquo;appui et recherche pour les demandes de visa E-2. Préparation de la documentation de l&rsquo;historique commercial du demandeur et analyse du contexte économique du pays d&rsquo;origine.">
+            Materiales de apoyo e investigación para solicitudes de visa E-2. Preparación de documentación del historial empresarial del solicitante, análisis del marco de inversión y contexto económico del país de origen.
           </p>
           <ul class="pkg-list">
-            <li class="t" data-es="Análisis del marco empresarial venezolano" data-en="Venezuelan business framework analysis" data-fr="Analyse du cadre commercial vénézuélien">Análisis del marco empresarial venezolano</li>
-            <li class="t" data-es="Investigación de historial corporativo y legal" data-en="Corporate and legal history research" data-fr="Recherche d'antécédents d'entreprise et juridiques">Investigación de historial corporativo y legal</li>
-            <li class="t" data-es="Contexto económico y regulatorio de Venezuela" data-en="Venezuelan economic and regulatory context" data-fr="Contexte économique et réglementaire du Venezuela">Contexto económico y regulatorio de Venezuela</li>
-            <li class="t" data-es="Soporte documental para la aplicación" data-en="Documentary support for the application" data-fr="Soutien documentaire pour la demande">Soporte documental para la aplicación</li>
+            <li class="t" data-es="Documentación del historial empresarial del solicitante" data-en="Applicant business history documentation" data-fr="Documentation de l'historique commercial du demandeur">Documentación del historial empresarial del solicitante</li>
+            <li class="t" data-es="Investigación del marco regulatorio y económico del país de origen" data-en="Home country regulatory and economic framework research" data-fr="Recherche du cadre réglementaire et économique du pays d'origine">Investigación del marco regulatorio y económico del país de origen</li>
+            <li class="t" data-es="Preparación de evidencia de inversión sustancial" data-en="Substantial investment evidence preparation" data-fr="Préparation des preuves d'investissement substantiel">Preparación de evidencia de inversión sustancial</li>
+            <li class="t" data-es="Soporte documental para la solicitud completa" data-en="Full documentary support for the application" data-fr="Soutien documentaire complet pour la demande">Soporte documental para la solicitud completa</li>
           </ul>
         </div>
         <div class="b2b-package fade-up">
@@ -574,19 +570,19 @@
           </ul>
         </div>
         <div class="b2b-package fade-up">
-          <p class="pkg-tag t" data-es="Familiar · Peticiones" data-en="Family · Petitions" data-fr="Famille · Pétitions">Familiar · Peticiones</p>
-          <h3 class="pkg-title t" data-es="Parental Petitions Support" data-en="Parental Petitions Support" data-fr="Soutien Pétitions Parentales">Parental Petitions Support</h3>
+          <p class="pkg-tag t" data-es="Inmigración · Soporte General" data-en="Immigration · General Support" data-fr="Immigration · Soutien Général">Inmigración · Soporte General</p>
+          <h3 class="pkg-title t" data-es="Immigration Filing Support" data-en="Immigration Filing Support" data-fr="Soutien aux Dossiers d'Immigration">Immigration Filing Support</h3>
           <p class="pkg-desc t"
-            data-es="Soporte documental y de investigación para peticiones parentales con documentos venezolanos. Verificación de actas, contexto legal y preparación de materiales."
-            data-en="Documentary and research support for parental petitions involving Venezuelan documents. Record verification, legal context, and materials preparation."
-            data-fr="Soutien documentaire et de recherche pour les pétitions parentales impliquant des documents vénézuéliens.">
-            Soporte documental y de investigación para peticiones parentales con documentos venezolanos. Verificación de actas, contexto legal y preparación de materiales.
+            data-es="Soporte documental para una amplia gama de trámites migratorios: naturalización, ajuste de estatus, peticiones parentales, visas de diversidad, TPS y otros procesos. Preparación de formularios, evidencia, traducciones y materiales de apoyo."
+            data-en="Documentary support for a wide range of immigration matters: naturalization, adjustment of status, parental petitions, diversity visas, TPS, and other processes. Form preparation, evidence, translations, and support materials."
+            data-fr="Soutien documentaire pour un large éventail de procédures d&rsquo;immigration: naturalisation, ajustement de statut, pétitions parentales, visas de diversité, TPS et autres processus.">
+            Soporte documental para una amplia gama de trámites migratorios: naturalización, ajuste de estatus, peticiones parentales, visas de diversidad, TPS y otros procesos. Preparación de formularios, evidencia, traducciones y materiales de apoyo.
           </p>
           <ul class="pkg-list">
-            <li class="t" data-es="Verificación de actas venezolanas" data-en="Venezuelan record verification" data-fr="Vérification des actes vénézuéliens">Verificación de actas venezolanas</li>
-            <li class="t" data-es="Análisis de derecho de familia venezolano" data-en="Venezuelan family law analysis" data-fr="Analyse du droit de la famille vénézuélien">Análisis de derecho de familia venezolano</li>
-            <li class="t" data-es="Traducción y contexto documental" data-en="Translation and documentary context" data-fr="Traduction et contexte documentaire">Traducción y contexto documental</li>
-            <li class="t" data-es="Coordinación y seguimiento del expediente" data-en="Case coordination and follow-up" data-fr="Coordination et suivi du dossier">Coordinación y seguimiento del expediente</li>
+            <li class="t" data-es="Preparación y revisión de formularios USCIS" data-en="USCIS form preparation and review" data-fr="Préparation et révision des formulaires USCIS">Preparación y revisión de formularios USCIS</li>
+            <li class="t" data-es="Verificación y traducción de documentos venezolanos" data-en="Venezuelan document verification and translation" data-fr="Vérification et traduction de documents vénézuéliens">Verificación y traducción de documentos venezolanos</li>
+            <li class="t" data-es="Organización y revisión de expediente completo" data-en="Complete case file organization and review" data-fr="Organisation et révision du dossier complet">Organización y revisión de expediente completo</li>
+            <li class="t" data-es="Coordinación y seguimiento del caso" data-en="Case coordination and follow-up" data-fr="Coordination et suivi du dossier">Coordinación y seguimiento del caso</li>
           </ul>
         </div>
       </div>
@@ -674,7 +670,7 @@
     <div class="pub-category fade-up">
       <p class="pub-cat-label t" data-es="Obra Literaria" data-en="Literary Work" data-fr="Œuvre Littéraire">Obra Literaria</p>
       <h3 class="pub-cat-title t" data-es="Novela" data-en="Novel" data-fr="Roman">Novela</h3>
-      <a href="https://www.amazon.com" target="_blank" rel="noopener" class="pub-novel-card">
+      <a href="https://a.co/d/0ayOVXtv" target="_blank" rel="noopener" class="pub-novel-card">
         <div class="pub-novel-icon">❧</div>
         <div>
           <div class="pub-novel-title">Código Salitre</div>
@@ -688,36 +684,60 @@
         </div>
       </a>
     </div>
-    <!-- Opinion ES -->
+    <!-- Academic -->
     <div class="pub-category fade-up">
-      <p class="pub-cat-label t" data-es="Opinión · Español" data-en="Opinion · Spanish" data-fr="Opinion · Espagnol">Opinión · Español</p>
-      <h3 class="pub-cat-title t" data-es="Artículos de Opinión Política" data-en="Political Opinion Articles" data-fr="Articles d'Opinion Politique">Artículos de Opinión Política</h3>
+      <p class="pub-cat-label t" data-es="Académico · Working Papers" data-en="Academic · Working Papers" data-fr="Académique · Documents de Travail">Académico · Working Papers</p>
+      <h3 class="pub-cat-title t" data-es="Investigación & Ensayos" data-en="Research & Essays" data-fr="Recherche & Essais">Investigación &amp; Ensayos</h3>
       <ul class="pub-list">
-        <li class="pub-item pub-item-static">
-          <div class="pub-item-title t" data-es="Archivo en construcción — próximamente disponible" data-en="Archive in progress — coming soon" data-fr="Archive en cours — bientôt disponible">Archivo en construcción — próximamente disponible</div>
-          <div class="pub-item-meta t" data-es="Artículos en español" data-en="Articles in Spanish" data-fr="Articles en espagnol">Artículos en español</div>
+        <li class="pub-item">
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6365658" target="_blank" rel="noopener">
+            <div class="pub-item-title t"
+              data-es="Working Paper · SSRN #6365658"
+              data-en="Working Paper · SSRN #6365658"
+              data-fr="Document de Travail · SSRN #6365658">Working Paper · SSRN #6365658</div>
+            <div class="pub-item-meta">SSRN · 2026</div>
+          </a>
+        </li>
+        <li class="pub-item">
+          <a href="https://papers.ssrn.com/abstract=6295358" target="_blank" rel="noopener">
+            <div class="pub-item-title t"
+              data-es="Working Paper · SSRN #6295358"
+              data-en="Working Paper · SSRN #6295358"
+              data-fr="Document de Travail · SSRN #6295358">Working Paper · SSRN #6295358</div>
+            <div class="pub-item-meta">SSRN · 2026</div>
+          </a>
         </li>
       </ul>
     </div>
     <!-- Opinion EN -->
     <div class="pub-category fade-up">
       <p class="pub-cat-label t" data-es="Opinión · Inglés" data-en="Opinion · English" data-fr="Opinion · Anglais">Opinión · Inglés</p>
-      <h3 class="pub-cat-title t" data-es="Artículos de Opinión Política" data-en="Political Opinion Articles" data-fr="Articles d'Opinion Politique">Artículos de Opinión Política</h3>
+      <h3 class="pub-cat-title t" data-es="Artículos Académicos y de Opinión" data-en="Academic & Opinion Articles" data-fr="Articles Académiques et d'Opinion">Artículos Académicos y de Opinión</h3>
       <ul class="pub-list">
-        <li class="pub-item pub-item-static">
-          <div class="pub-item-title t" data-es="Archivo en construcción — próximamente disponible" data-en="Archive in progress — coming soon" data-fr="Archive en cours — bientôt disponible">Archivo en construcción — próximamente disponible</div>
-          <div class="pub-item-meta t" data-es="Articles in English" data-en="Articles in English" data-fr="Articles in English">Articles in English</div>
+        <li class="pub-item">
+          <a href="https://www.iconnectblog.com/venezuelas-amnesty-and-the-problem-of-captured-constitutional-review/" target="_blank" rel="noopener">
+            <div class="pub-item-title">Venezuela&rsquo;s Amnesty and the Problem of Captured Constitutional Review</div>
+            <div class="pub-item-meta">I·CONnect · March 2026</div>
+          </a>
+        </li>
+        <li class="pub-item">
+          <a href="https://www.revuedesjuristesdesciencespo.fr/post/succession-from-usurpation-venezuela-s-constitutional-transition-after-january-3-1" target="_blank" rel="noopener">
+            <div class="pub-item-title">Succession from Usurpation: Venezuela&rsquo;s Constitutional Transition After January 3</div>
+            <div class="pub-item-meta">Revue des Juristes de Sciences Po · March 2026</div>
+          </a>
         </li>
       </ul>
     </div>
-    <!-- Academic -->
+    <!-- Opinion ES -->
     <div class="pub-category fade-up">
-      <p class="pub-cat-label t" data-es="Académico" data-en="Academic" data-fr="Académique">Académico</p>
-      <h3 class="pub-cat-title t" data-es="Ensayos & Publicaciones Académicas" data-en="Essays & Academic Publications" data-fr="Essais & Publications Académiques">Ensayos &amp; Publicaciones Académicas</h3>
+      <p class="pub-cat-label t" data-es="Opinión · Español" data-en="Opinion · Spanish" data-fr="Opinion · Espagnol">Opinión · Español</p>
+      <h3 class="pub-cat-title t" data-es="Artículos de Análisis Político" data-en="Political Analysis Articles" data-fr="Articles d'Analyse Politique">Artículos de Análisis Político</h3>
       <ul class="pub-list">
-        <li class="pub-item pub-item-static">
-          <div class="pub-item-title t" data-es="Archivo en construcción — próximamente disponible" data-en="Archive in progress — coming soon" data-fr="Archive en cours — bientôt disponible">Archivo en construcción — próximamente disponible</div>
-          <div class="pub-item-meta t" data-es="Ciencia política · Derecho comparado" data-en="Political science · Comparative law" data-fr="Science politique · Droit comparé">Ciencia política · Derecho comparado</div>
+        <li class="pub-item">
+          <a href="https://www.ibericonnect.blog/2026/03/venezuela-tras-el-3-de-enero-cuando-la-sucesion-constitucional-no-es-transicion/" target="_blank" rel="noopener">
+            <div class="pub-item-title">Venezuela tras el 3 de enero: cuando la sucesión constitucional no es transición</div>
+            <div class="pub-item-meta">Ibericonnect · Marzo 2026</div>
+          </a>
         </li>
       </ul>
     </div>
