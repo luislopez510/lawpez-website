@@ -802,7 +802,13 @@
   <div class="team-grid">
     <!-- Luis -->
     <div class="team-card fade-up">
-      <img src="img/photo.jpg" alt="Luis López Rodríguez" class="team-photo" />
+      <img src="img/photo.jpg" alt="Luis López Rodríguez" class="team-photo"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="team-placeholder" style="display:none;">
+        <div class="team-placeholder-inner">
+          <span class="team-initials">LL</span>
+        </div>
+      </div>
       <div class="team-info">
         <div class="team-name">Luis López Rodríguez</div>
         <div class="team-title t" data-es="Fundador &amp; Consultor Principal" data-en="Founder &amp; Principal Consultant" data-fr="Fondateur &amp; Consultant Principal">Fundador &amp; Consultor Principal</div>
@@ -1135,7 +1141,7 @@
         const msg = document.getElementById('form-success');
         msg.style.display = 'block';
         const langVal = currentLang;
-        const texts = { es: '✓ Mensaje enviado. Le respondemos en menos de 24 horas.', en: '✓ Message sent. We'll respond within 24 hours.', fr: '✓ Message envoyé. Nous répondrons dans les 24 heures.' };
+        const texts = { es: '✓ Mensaje enviado. Le respondemos en menos de 24 horas.', en: "✓ Message sent. We'll respond within 24 hours.", fr: '✓ Message envoyé. Nous répondrons dans les 24 heures.' };
         msg.textContent = texts[langVal] || texts.es;
       } else { btn.textContent = 'Error — intente de nuevo'; btn.disabled = false; }
     } catch { btn.textContent = 'Error — intente de nuevo'; btn.disabled = false; }
