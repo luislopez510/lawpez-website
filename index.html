@@ -115,8 +115,10 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy:#0f1b2d; --navy2:#172135; --navy3:#1e2d47;
-      --gold:#b8924a; --gold-light:#d4af72; --gold-dim:rgba(184,146,74,0.12);
+      --navy:#0f1b2d; --navy2:#172135; --navy3:#1e2d47; --navy-light:#172135;
+      --gold:#b8924a; --gold-light:#d4af72; --gold-dark:#9a7a3f; --gold-dim:rgba(184,146,74,0.12);
+      --white:#fff; --gray:#a0aec0;
+      --shadow:0 8px 30px rgba(0,0,0,0.20);
       --cream:#faf8f3; --cream2:#f3f0e8; --cream3:#ede9de;
       --text-dark:#1a1a1a; --text-mid:#4a4a4a; --text-muted:#7a7a7a;
       --border-dark:rgba(255,255,255,0.1); --border-light:rgba(0,0,0,0.1);
@@ -407,23 +409,24 @@
     @media(max-width:768px){ #how { padding:5rem 1.5rem; } .how-steps { grid-template-columns:1fr; gap:3rem; } .how-steps::before { display:none; } }
 
     /* ── FLOATING CONTACT BTN ── */
-    #float-cta { position:fixed; bottom:2rem; right:2rem; z-index:999; display:flex; flex-direction:column; align-items:flex-end; gap:0.75rem; }
-    .float-main { width:60px; height:60px; background:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 24px rgba(184,146,74,0.45); transition:transform 0.2s,box-shadow 0.2s; border:none; }
-    .float-main:hover { transform:scale(1.08); box-shadow:0 10px 32px rgba(184,146,74,0.55); }
-    .float-main svg { width:26px; height:26px; fill:var(--navy); }
+    #float-cta { position:fixed; bottom:2rem; right:2rem; z-index:9999; display:flex; flex-direction:column; align-items:flex-end; gap:0.75rem; }
+    .float-main { height:52px; background:var(--gold); border-radius:26px; display:flex; align-items:center; justify-content:center; gap:0.5rem; cursor:pointer; box-shadow:0 6px 24px rgba(184,146,74,0.45); transition:transform 0.2s,box-shadow 0.2s; border:none; padding:0 1.4rem 0 1.1rem; }
+    .float-main:hover { transform:scale(1.04); box-shadow:0 10px 32px rgba(184,146,74,0.55); }
+    .float-main svg { width:22px; height:22px; fill:var(--navy); flex-shrink:0; }
+    .float-label { font-family:Inter,sans-serif; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; color:var(--navy); }
     .float-options { display:flex; flex-direction:column; gap:0.6rem; align-items:flex-end; opacity:0; pointer-events:none; transform:translateY(8px); transition:opacity 0.25s,transform 0.25s; }
     .float-options.open { opacity:1; pointer-events:all; transform:translateY(0); }
-    .float-opt { display:flex; align-items:center; gap:0.7rem; background:var(--navy); color:var(--cream); font-family:Inter,sans-serif; font-size:0.8rem; letter-spacing:0.08em; padding:0.55rem 1.1rem 0.55rem 0.8rem; border-radius:30px; text-decoration:none; white-space:nowrap; box-shadow:0 4px 14px rgba(0,0,0,0.22); transition:background 0.2s; }
+    .float-opt { display:flex; align-items:center; gap:0.7rem; background:var(--navy); color:var(--cream); font-family:Inter,sans-serif; font-size:0.8rem; letter-spacing:0.08em; padding:0.55rem 1.1rem 0.55rem 0.8rem; border-radius:30px; text-decoration:none; white-space:nowrap; box-shadow:0 4px 14px rgba(0,0,0,0.22); transition:background 0.2s; cursor:pointer; border:none; }
     .float-opt:hover { background:var(--navy3,#1e2d47); }
     .float-opt svg { width:16px; height:16px; fill:var(--gold); flex-shrink:0; }
     @media(max-width:768px){ #float-cta { bottom:1.2rem; right:1.2rem; } }
     /* ── WHATSAPP ── */
-    .float-main.wa-btn { background:#25D366; box-shadow:0 6px 24px rgba(37,211,102,0.4); }
-    .float-main.wa-btn:hover { box-shadow:0 10px 32px rgba(37,211,102,0.55); }
-    .float-main.wa-btn svg { fill:#fff; }
     .float-opt.wa-opt { background:#25D366; color:#fff; }
     .float-opt.wa-opt:hover { background:#1db954; }
     .float-opt.wa-opt svg { fill:#fff; }
+    .float-opt.ai-opt { background:var(--navy2); }
+    .float-opt.ai-opt svg { fill:var(--gold-light); }
+    .float-opt.ai-opt:hover { background:var(--navy3); }
     .wa-section { text-align:center; margin:2rem 0 0.5rem; }
     .wa-cta-btn { display:inline-flex; align-items:center; gap:0.75rem; background:#25D366; color:#fff; font-family:Inter,sans-serif; font-size:0.9rem; font-weight:600; letter-spacing:0.06em; padding:0.9rem 2rem; border-radius:4px; text-decoration:none; transition:background 0.2s,transform 0.2s; box-shadow:0 4px 16px rgba(37,211,102,0.3); }
     .wa-cta-btn:hover { background:#1db954; transform:translateY(-2px); box-shadow:0 8px 24px rgba(37,211,102,0.4); }
@@ -466,6 +469,69 @@
     .form-submit { width:100%; border:none; cursor:pointer; font-family:Inter,sans-serif; }
     .form-success { text-align:center; color:var(--gold); font-size:0.88rem; padding:0.5rem; letter-spacing:0.04em; }
     @media(max-width:640px){ .form-row{ grid-template-columns:1fr; } }
+
+    /* ══════════════════════════════════════════════
+       EMBEDDED CHAT WIDGET — ASISTENTE VIRTUAL
+    ══════════════════════════════════════════════ */
+    /* Position overrides for embedded mode */
+    #chat-widget { position:fixed; bottom:28px; right:28px; z-index:9998; font-family:'Georgia',serif; }
+    #chat-toggle  { display:none; }
+    #chat-window  { position:fixed !important; bottom:100px; right:28px; width:380px; max-height:600px; background:white; border-radius:20px; box-shadow:var(--shadow); display:none; flex-direction:column; overflow:hidden; animation:chatSlideUp 0.25s ease; border:1px solid rgba(184,146,74,0.2); }
+    #chat-window.open { display:flex; }
+    @keyframes chatSlideUp { from{opacity:0;transform:translateY(20px) scale(0.95)} to{opacity:1;transform:translateY(0) scale(1)} }
+    @media(max-width:440px){ #chat-window { right:16px; bottom:80px; width:calc(100vw - 32px); } }
+    .chat-header { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%); padding:16px 20px; display:flex; align-items:center; gap:12px; border-bottom:2px solid var(--gold); }
+    .chat-avatar { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%); display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--navy); font-weight:bold; flex-shrink:0; border:2px solid rgba(184,146,74,0.4); }
+    .chat-header-info { flex:1; }
+    .chat-header-name { color:var(--white); font-size:15px; font-weight:bold; letter-spacing:0.5px; }
+    .chat-header-status { color:var(--gold-light); font-size:12px; display:flex; align-items:center; gap:4px; font-style:italic; }
+    .chat-status-dot { width:7px; height:7px; background:#48BB78; border-radius:50%; animation:chatPulse 2s infinite; }
+    @keyframes chatPulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+    .chat-header-close { background:none; border:none; cursor:pointer; color:var(--gray); font-size:20px; padding:4px; border-radius:6px; transition:color 0.2s; }
+    .chat-header-close:hover { color:var(--white); }
+    .chat-lang-toggle { display:flex; gap:0; background:rgba(255,255,255,0.1); border-radius:8px; overflow:hidden; }
+    .chat-lang-btn { padding:4px 10px; background:none; border:none; cursor:pointer; color:var(--gray); font-size:11px; font-family:sans-serif; transition:all 0.2s; }
+    .chat-lang-btn.active { background:var(--gold); color:var(--navy); font-weight:bold; }
+    .chat-messages { flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:12px; background:#F9FAFB; max-height:380px; }
+    .chat-messages::-webkit-scrollbar { width:4px; }
+    .chat-messages::-webkit-scrollbar-thumb { background:var(--gold); border-radius:4px; }
+    .chat-msg { max-width:85%; display:flex; flex-direction:column; gap:2px; }
+    .chat-msg.bot { align-self:flex-start; }
+    .chat-msg.user { align-self:flex-end; }
+    .chat-msg-bubble { padding:10px 14px; border-radius:16px; font-size:13.5px; line-height:1.55; }
+    .chat-msg.bot .chat-msg-bubble { background:white; color:#2D3748; border-radius:4px 16px 16px 16px; box-shadow:0 1px 3px rgba(0,0,0,0.08); border-left:3px solid var(--gold); }
+    .chat-msg.user .chat-msg-bubble { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%); color:var(--white); border-radius:16px 16px 4px 16px; }
+    .chat-msg-time { font-size:10px; color:#A0AEC0; font-family:sans-serif; padding:0 4px; }
+    .chat-msg.user .chat-msg-time { text-align:right; }
+    .chat-quick-replies { display:flex; flex-wrap:wrap; gap:6px; padding:0 16px 8px; background:#F9FAFB; }
+    .chat-qr-chip { background:white; border:1.5px solid var(--gold); color:var(--navy); padding:6px 12px; border-radius:20px; font-size:12px; cursor:pointer; transition:all 0.2s; font-family:'Georgia',serif; }
+    .chat-qr-chip:hover { background:var(--gold); color:white; }
+    .chat-typing-indicator { display:none; align-self:flex-start; background:white; border-radius:4px 16px 16px 16px; padding:10px 16px; box-shadow:0 1px 3px rgba(0,0,0,0.08); border-left:3px solid var(--gold); }
+    .chat-typing-indicator.show { display:flex; gap:4px; align-items:center; }
+    .chat-typing-indicator span { width:7px; height:7px; background:var(--gold); border-radius:50%; animation:chatTyping 1.2s infinite; }
+    .chat-typing-indicator span:nth-child(2) { animation-delay:0.2s; }
+    .chat-typing-indicator span:nth-child(3) { animation-delay:0.4s; }
+    @keyframes chatTyping { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+    .chat-input-area { padding:12px 16px; background:white; border-top:1px solid #E2E8F0; display:flex; gap:8px; align-items:center; }
+    #chat-input { flex:1; border:1.5px solid #E2E8F0; border-radius:12px; padding:9px 14px; font-size:13px; font-family:'Georgia',serif; outline:none; transition:border-color 0.2s; resize:none; max-height:80px; line-height:1.4; }
+    #chat-input:focus { border-color:var(--gold); }
+    #chat-input::placeholder { color:#A0AEC0; }
+    #chat-send-btn { width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform 0.2s; }
+    #chat-send-btn:hover { transform:scale(1.1); }
+    #chat-send-btn svg { width:16px; height:16px; fill:var(--navy); }
+    .chat-wa-cta { margin:4px 16px 12px; background:linear-gradient(135deg,#25D366 0%,#128C7E 100%); color:white; padding:10px 16px; border-radius:12px; display:flex; align-items:center; gap:10px; cursor:pointer; transition:transform 0.2s,box-shadow 0.2s; text-decoration:none; font-size:13px; }
+    .chat-wa-cta:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(37,211,102,0.35); }
+    .chat-wa-cta svg { width:20px; height:20px; fill:white; flex-shrink:0; }
+    .chat-wa-cta-text { flex:1; }
+    .chat-wa-cta-title { font-weight:bold; font-size:13px; }
+    .chat-wa-cta-sub { font-size:11px; opacity:0.9; }
+    .chat-disclaimer { padding:8px 16px; background:#FFF8E7; border-top:1px solid #F6E05E; font-size:10px; color:#744210; font-family:sans-serif; text-align:center; line-height:1.4; }
+    .chat-lead-form { background:white; border:1.5px solid var(--gold); border-radius:12px; padding:14px; margin:4px 0; display:flex; flex-direction:column; gap:8px; }
+    .chat-lead-form input, .chat-lead-form select { border:1px solid #E2E8F0; border-radius:8px; padding:8px 12px; font-size:12px; font-family:'Georgia',serif; outline:none; width:100%; }
+    .chat-lead-form input:focus, .chat-lead-form select:focus { border-color:var(--gold); }
+    .chat-lead-form label { font-size:11px; color:var(--gray); font-family:sans-serif; }
+    .chat-lead-submit { background:var(--navy); color:var(--gold); border:none; border-radius:8px; padding:10px; cursor:pointer; font-size:13px; font-family:'Georgia',serif; font-weight:bold; letter-spacing:1px; transition:background 0.2s; }
+    .chat-lead-submit:hover { background:var(--navy-light); }
   </style>
 </head>
 <body>
@@ -1322,27 +1388,28 @@
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
 <!-- ── FLOATING CTA ── -->
 <div id="float-cta">
   <div class="float-options" id="float-options">
     <a href="https://wa.me/13122856242?text=Hola%2C%20me%20interesa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener" class="float-opt wa-opt">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       WhatsApp
     </a>
+    <button class="float-opt ai-opt" onclick="toggleChat(); document.getElementById('float-options').classList.remove('open');" aria-label="Abrir Asistente Virtual">
+      <svg viewBox="0 0 24 24"><path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3zm-2 10H6V7h12v12zm-9-6c-.83 0-1.5-.67-1.5-1.5S8.17 10 9 10s1.5.67 1.5 1.5S9.83 13 9 13zm6 0c-.83 0-1.5-.67-1.5-1.5S14.17 10 15 10s1.5.67 1.5 1.5S15.83 13 15 13zm-5 3h4v-2h-4v2z"/></svg>
+      <span class="t" data-es="Asistente Virtual" data-en="Virtual Assistant" data-fr="Assistant Virtuel">Asistente Virtual</span>
+    </button>
     <a href="mailto:info@lawpez.com" class="float-opt">
       <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
       info@lawpez.com
     </a>
-    <a href="#contact" class="float-opt" onclick="document.getElementById('float-options').classList.remove('open')">
-      <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
-      <span class="t" data-es="Formulario de contacto" data-en="Contact form" data-fr="Formulaire de contact">Formulario de contacto</span>
-    </a>
   </div>
-  <button class="float-main wa-btn" id="float-toggle" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <button class="float-main" id="float-toggle" aria-label="Contacto">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+    <span class="float-label t" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</span>
   </button>
 </div>
+
 
 <footer>
   <div class="footer-main">
@@ -1392,6 +1459,59 @@
   </div>
 
 </footer>
+
+<!-- ══════════════════════════════════════════════
+     EMBEDDED CHAT WIDGET — ASISTENTE VIRTUAL
+══════════════════════════════════════════════ -->
+<div id="chat-widget">
+  <div id="chat-window">
+    <div class="chat-header">
+      <div class="chat-avatar">LP</div>
+      <div class="chat-header-info">
+        <div class="chat-header-name">Equipo Lawpez</div>
+        <div class="chat-header-status">
+          <div class="chat-status-dot"></div>
+          En línea · Online
+        </div>
+      </div>
+      <div class="chat-lang-toggle">
+        <button class="chat-lang-btn active" onclick="setChatLang('es')" id="chat-btn-es">ES</button>
+        <button class="chat-lang-btn" onclick="setChatLang('en')" id="chat-btn-en">EN</button>
+      </div>
+      <button class="chat-header-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-typing-indicator" id="chat-typing">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="chat-quick-replies" id="chat-quick-replies"></div>
+    <a class="chat-wa-cta" href="https://wa.me/13122856242" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <div class="chat-wa-cta-text">
+        <div class="chat-wa-cta-title">Hablar con Luis directamente</div>
+        <div class="chat-wa-cta-sub">+1 (312) 285-6242 · Respuesta rápida</div>
+      </div>
+      <span>→</span>
+    </a>
+    <div class="chat-input-area">
+      <textarea id="chat-input" placeholder="Escribe tu pregunta..." rows="1"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();chatSendMessage()}"
+        oninput="chatAutoResize(this)"></textarea>
+      <button id="chat-send-btn" onclick="chatSendMessage()">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <div class="chat-disclaimer">
+      ⚠️ Lawpez LLC es un servicio de preparación de documentos. Luis E. Lopez Rodriguez, LL.M. <strong>no es abogado</strong> · Not an attorney · No legal advice provided.
+    </div>
+  </div>
+  <!-- #chat-toggle hidden via CSS -->
+  <button id="chat-toggle" onclick="toggleChat()">
+    <div id="chat-badge">1</div>
+  </button>
+</div>
+
 
 <script>
   // ── LANGUAGE SWITCHER ──
@@ -1520,6 +1640,345 @@
       } else { btn.textContent = 'Error — intente de nuevo'; btn.disabled = false; }
     } catch { btn.textContent = 'Error — intente de nuevo'; btn.disabled = false; }
   }
+
+
+  // ══════════════════════════════════════════════
+  // EMBEDDED CHAT WIDGET — ASISTENTE VIRTUAL
+  // ══════════════════════════════════════════════
+  const KB = {
+    es: {
+      greeting: `¡Hola! 👋 Bienvenido/a a *Lawpez LLC* — Consultoría Migratoria.\n\nSoy parte del equipo de Lawpez y estoy aquí para orientarte sobre procesos migratorios y los servicios que ofrecemos.\n\n¿En qué puedo ayudarte hoy?`,
+      menu_chips: ['Ver servicios', 'Peticiones familiares', 'Naturalización', 'Asilo', 'Visas de trabajo', 'Agendar consulta', 'Costos', 'Hablar con Luis'],
+      services: `🏛️ *Servicios de Lawpez LLC:*\n\n📋 **Peticiones Familiares** — I-130, ajuste de estatus\n🎓 **Naturalización** — N-400, ciudadanía\n🛡️ **Asilo & Humanitario** — TPS, DACA, protección\n💼 **Visas de Trabajo** — H-1B, L-1, O-1, cambio de estatus\n💰 **Visas de Inversionista** — E-2, EB-5\n⚖️ **Derecho Venezolano** — Apostilla, traducciones certificadas\n\n¿Sobre cuál deseas más información?`,
+      services_chips: ['Peticiones familiares', 'Naturalización', 'Asilo', 'Visas trabajo', 'Visas inversionista', 'Derecho venezolano'],
+      family: `👨‍👩‍👧 *Peticiones Familiares & Ajuste de Estatus*\n\nAsistimos en la preparación de:\n• **Formulario I-130** — Petición para familiar extranjero\n• **Formulario I-485** — Ajuste de estatus (Green Card)\n• **Formulario I-864** — Declaración de sostenimiento\n• **Procesamiento consular** — Para familiares en el exterior\n\n⏱ Los tiempos varían según categoría migratoria y país de origen.\n\n⚠️ *Somos preparadores de documentos. No representamos ante cortes.*\n\n¿Deseas agendar una consulta para evaluar tu caso?`,
+      family_chips: ['Agendar consulta', 'Costos', 'Documentos necesarios', 'Hablar con Luis'],
+      naturalization: `🇺🇸 *Naturalización — Ciudadanía Americana*\n\nPreparamos el **Formulario N-400** y te guiamos en:\n\n✅ Verificación de elegibilidad (3 o 5 años de residencia)\n✅ Preparación de la solicitud completa\n✅ Lista de documentos requeridos\n✅ Preparación para la entrevista\n\nRequisitos típicos:\n• Residencia permanente por 3-5 años\n• Presencia física continua\n• Buen carácter moral\n• Conocimiento de inglés e historia\n\n¿Tu Green Card tiene más de 3 años?`,
+      naturalization_chips: ['Sí, más de 3 años', 'Sí, más de 5 años', 'Aún no califico', 'Agendar consulta'],
+      asylum: `🛡️ *Asilo & Protección Humanitaria*\n\nApoyamos en la preparación de:\n\n• **Formulario I-589** — Solicitud de asilo\n• **TPS** (Estatus de Protección Temporal) — Venezuela, El Salvador y otros países designados\n• **DACA** — Para personas traídas de niños\n• **VAWA** — Para víctimas de violencia doméstica\n• **U Visa** — Para víctimas de crímenes\n\n🇻🇪 *Nota para venezolanos:* Hay opciones de protección humanitaria disponibles. Contáctanos para evaluar tu caso.\n\n¿Cuál es tu situación?`,
+      asylum_chips: ['Soy venezolano/a', 'Solicitud de asilo', 'TPS', 'DACA', 'Agendar consulta'],
+      work_visas: `💼 *Visas de Trabajo & Cambio de Estatus*\n\nPreparamos documentación para:\n\n• **H-1B** — Trabajadores especializados\n• **L-1** — Transferencia intracompañía\n• **O-1** — Habilidad extraordinaria\n• **E-2** — Inversionista por tratado\n• **TN** — Profesionales USMCA (México/Canadá)\n• **Cambio de estatus** — De turista/estudiante a otra categoría\n\n⚠️ *Para peticiones con empleador, el empleador generalmente debe trabajar con un abogado.*\n\n¿Qué tipo de visa te interesa?`,
+      work_chips: ['H-1B', 'L-1 Transferencia', 'O-1 Talentos', 'Cambio de estatus', 'Agendar consulta'],
+      investor: `💰 *Visas de Inversionista*\n\n**E-2 — Visa de Inversionista por Tratado**\n• Inversión "sustancial" en negocio\n• Disponible para ciudadanos de países con tratado (Venezuela, México, España)\n• Renovable indefinidamente\n\n**EB-5 — Inversionista Inmigrante**\n• Inversión mínima: $800,000 - $1,050,000\n• Crea empleos permanentes para americanos\n• Ruta directa a Green Card\n\n¿Tienes un negocio en mente o ya lo tienes operando?`,
+      investor_chips: ['Tengo un negocio', 'Estoy planificando', 'Más sobre E-2', 'Más sobre EB-5', 'Agendar consulta'],
+      venezuela: `🇻🇪 *Servicios de Derecho Venezolano*\n\nLuis E. Lopez Rodriguez, LL.M. tiene formación en derecho venezolano y ofrece:\n\n📄 **Traducción jurídica** — Documentos legales ES/EN\n📋 **Apostilla** — Orientación para legalizar documentos venezolanos\n⚖️ **Asesoría** — Sobre documentos venezolanos para trámites en EE.UU.\n🏛️ **Actas civiles** — Nacimiento, matrimonio, divorcio\n\n¿Necesitas traducciones o apostillas?`,
+      venezuela_chips: ['Traducción de documentos', 'Apostilla', 'Actas de nacimiento/matrimonio', 'Agendar consulta'],
+      consult: `📅 *Agendar Consulta con Lawpez LLC*\n\nPor favor comparte tus datos y te contactamos a la brevedad:`,
+      consult_form: true,
+      costs: `💰 *Costos & Tarifas*\n\nLas tarifas varían según:\n• Tipo de trámite o formulario\n• Complejidad del caso\n• Documentación necesaria\n\n✅ Las **tarifas del gobierno (filing fees)** son adicionales y se pagan directamente a USCIS.\n\nOfrecemos:\n📋 **Consulta inicial** — Evaluación de tu caso\n💳 **Planes de pago** — Disponibles según el caso\n\n*Contacta directamente para un presupuesto personalizado sin compromiso.*`,
+      costs_chips: ['Agendar consulta', 'Hablar con Luis', 'Ver servicios'],
+      docs: `📄 *Documentos Típicamente Necesarios:*\n\n• Pasaporte vigente\n• ID oficial (DL, State ID)\n• Acta de nacimiento (apostillada si aplica)\n• Acta de matrimonio (si aplica)\n• Comprobante de domicilio (últimos 3 meses)\n• Fotos tamaño pasaporte\n• Formularios fiscales (tax returns)\n• Historial de viajes a EE.UU.\n\n*La lista exacta depende de tu trámite específico.*`,
+      docs_chips: ['Agendar consulta', 'Más preguntas', 'Hablar con Luis'],
+      whatsapp: `📲 *Contacto Directo con Luis*\n\n📞 **+1 (312) 285-6242**\n✉️ info@lawpez.com\n🌐 lawpez.com\n\n*Respuesta típica: mismo día hábil.*\n\n⚠️ Luis E. Lopez Rodriguez, LL.M. es consultor de inmigración, no abogado.`,
+      whatsapp_chips: ['Abrir WhatsApp', 'Agendar consulta', 'Ver servicios'],
+      uscis: `📋 *Tiempos de Procesamiento USCIS*\n\nEjemplos típicos (pueden variar):\n• N-400 Naturalización: 8-24 meses\n• I-485 Ajuste de estatus: 8-36 meses\n• I-130 Petición familiar: 5-24+ meses\n\n🔍 Verifica tiempos actuales en: **uscis.gov/tools/processing-times**`,
+      uscis_chips: ['Agendar consulta', 'Más preguntas'],
+      fallback: `Gracias por tu pregunta. Para orientarte correctamente, lo mejor es hablar directamente con Luis.\n\n¿Te gustaría agendar una consulta o prefieres continuar con el asistente?`,
+      fallback_chips: ['Agendar consulta', 'Ver servicios', 'Hablar por WhatsApp'],
+      form_thanks: `✅ ¡Gracias! Hemos recibido tu información.\n\nLuis te contactará a la brevedad al número o correo que proporcionaste.\n\n*Tiempo de respuesta típico: mismo día hábil.*`,
+      qualify: `👤 *Evaluación de Elegibilidad*\n\n¿Cuál es tu situación actual en EE.UU.?`,
+      qualify_chips: ['Sin estatus / Indocumentado', 'Visa de turista (B1/B2)', 'Visa de estudiante (F-1)', 'Residente permanente', 'Con orden de deportación', 'Recién llegado'],
+      status_undocumented: `Entendemos tu situación — hay más opciones de las que podrías pensar.\n\nPosibles vías según tu caso:\n• Asilo (si hay persecución en tu país)\n• TPS (si tu país está designado)\n• VAWA / U Visa (si aplica)\n• Cancelación de remoción\n• Petición familiar\n\n⚠️ *Con una orden de deportación activa, es urgente consultar con un abogado. Nosotros podemos preparar documentación de soporte.*\n\n¿Deseas que evaluemos tu caso?`,
+      status_chips: ['Agendar consulta urgente', 'Ver opciones', 'Hablar con Luis'],
+    },
+    en: {
+      greeting: `Hello! 👋 Welcome to *Lawpez LLC* — Immigration Consulting.\n\nI'm part of the Lawpez team and I'm here to guide you on immigration processes and the services we offer.\n\nHow can I help you today?`,
+      menu_chips: ['View services', 'Family petitions', 'Naturalization', 'Asylum', 'Work visas', 'Schedule consultation', 'Fees', 'Talk to Luis'],
+      services: `🏛️ *Lawpez LLC Services:*\n\n📋 **Family Petitions** — I-130, adjustment of status\n🎓 **Naturalization** — N-400, citizenship\n🛡️ **Asylum & Humanitarian** — TPS, DACA, protection\n💼 **Work Visas** — H-1B, L-1, O-1, change of status\n💰 **Investor Visas** — E-2, EB-5\n⚖️ **Venezuelan Law** — Apostille, certified translations\n\nWhich would you like to learn more about?`,
+      services_chips: ['Family petitions', 'Naturalization', 'Asylum', 'Work visas', 'Investor visas', 'Venezuelan law'],
+      family: `👨‍👩‍👧 *Family Petitions & Adjustment of Status*\n\nWe assist with:\n• **Form I-130** — Petition for alien relative\n• **Form I-485** — Adjustment of status (Green Card)\n• **Form I-864** — Affidavit of support\n• **Consular processing** — For family members abroad\n\n⚠️ *We are document preparers. We do not represent clients before courts.*\n\nWould you like to schedule a consultation?`,
+      family_chips: ['Schedule consult', 'Fees', 'Required documents', 'Talk to Luis'],
+      naturalization: `🇺🇸 *Naturalization — American Citizenship*\n\nWe prepare **Form N-400** and guide you through:\n\n✅ Eligibility verification (3 or 5 years of residence)\n✅ Complete application preparation\n✅ Required documents checklist\n✅ Interview preparation\n\nHas your Green Card been valid for over 3 years?`,
+      naturalization_chips: ['Yes, over 3 years', 'Yes, over 5 years', 'Not yet eligible', 'Schedule consult'],
+      asylum: `🛡️ *Asylum & Humanitarian Protection*\n\nWe assist with:\n• **Form I-589** — Asylum application\n• **TPS** (Temporary Protected Status)\n• **DACA** — For those brought as children\n• **VAWA** — For domestic violence victims\n• **U Visa** — For crime victims\n\n🇻🇪 *Special note for Venezuelans:* Humanitarian options are currently available.\n\nWhat is your situation?`,
+      asylum_chips: ["I'm Venezuelan", 'Asylum application', 'TPS', 'DACA', 'Schedule consult'],
+      work_visas: `💼 *Work Visas & Change of Status*\n\nWe prepare documentation for:\n• **H-1B** — Specialty occupation workers\n• **L-1** — Intracompany transfer\n• **O-1** — Extraordinary ability\n• **E-2** — Treaty investor\n• **TN** — USMCA professionals\n• **Change of status** — Tourist/student to another category\n\nWhich visa type interests you?`,
+      work_chips: ['H-1B', 'L-1 Transfer', 'O-1 Talent', 'Change of status', 'Schedule consult'],
+      investor: `💰 *Investor Visas*\n\n**E-2 — Treaty Investor Visa**\n• Requires substantial investment in a business\n• Available for Venezuela, Mexico, Spain citizens\n• Renewable indefinitely\n\n**EB-5 — Immigrant Investor**\n• Minimum investment: $800,000 - $1,050,000\n• Direct path to Green Card\n\nDo you have a business in mind or already operating?`,
+      investor_chips: ['I have a business', 'Planning ahead', 'More on E-2', 'More on EB-5', 'Schedule consult'],
+      venezuela: `🇻🇪 *Venezuelan Law Services*\n\n📄 **Legal translation** — Legal documents ES/EN\n📋 **Apostille** — Guidance to legalize Venezuelan documents\n⚖️ **Advisory** — On Venezuelan documents for US proceedings\n🏛️ **Civil records** — Birth, marriage, divorce certificates\n\nDo you need translations or apostilles?`,
+      venezuela_chips: ['Document translation', 'Apostille', 'Birth/marriage certificates', 'Schedule consult'],
+      consult: `📅 *Schedule Consultation with Lawpez LLC*\n\nPlease share your details and we'll contact you shortly:`,
+      consult_form: true,
+      costs: `💰 *Costs & Fees*\n\nFees vary depending on type of proceeding, complexity, and documentation.\n\n✅ Government filing fees are additional (paid directly to USCIS).\n\nWe offer initial consultations and payment plans.\n\n*Contact us for a personalized, no-obligation quote.*`,
+      costs_chips: ['Schedule consult', 'Talk to Luis', 'View services'],
+      docs: `📄 *Documents Typically Required:*\n\n• Valid passport\n• Government ID\n• Birth certificate (apostilled if applicable)\n• Marriage certificate (if applicable)\n• Proof of address (last 3 months)\n• Passport-sized photos\n• Tax returns\n• US travel history`,
+      docs_chips: ['Schedule consult', 'More questions', 'Talk to Luis'],
+      whatsapp: `📲 *Direct Contact with Luis*\n\n📞 **+1 (312) 285-6242**\n✉️ info@lawpez.com\n🌐 lawpez.com\n\n*Typical response: same business day.*\n\n⚠️ Luis E. Lopez Rodriguez, LL.M. is an immigration consultant, not an attorney.`,
+      whatsapp_chips: ['Open WhatsApp', 'Schedule consult', 'View services'],
+      uscis: `📋 *USCIS Processing Times*\n\nTypical examples (may vary):\n• N-400 Naturalization: 8-24 months\n• I-485 Adjustment: 8-36 months\n• I-130 Family petition: 5-24+ months\n\n🔍 Check current times: **uscis.gov/tools/processing-times**`,
+      uscis_chips: ['Schedule consult', 'More questions'],
+      fallback: `Thank you for your question. For the best guidance, it's ideal to speak directly with Luis.\n\nWould you like to schedule a consultation?`,
+      fallback_chips: ['Schedule consult', 'View services', 'Talk via WhatsApp'],
+      form_thanks: `✅ Thank you! We've received your information.\n\nLuis will contact you shortly.\n\n*Typical response time: same business day.*`,
+      qualify: `👤 *Eligibility Assessment*\n\nWhat is your current status in the US?`,
+      qualify_chips: ['No status / Undocumented', 'Tourist visa (B1/B2)', 'Student visa (F-1)', 'Permanent resident', 'With deportation order', 'Recently arrived'],
+      status_undocumented: `We understand — there may be more options than you think.\n\nPossible pathways:\n• Asylum (if there's persecution in your home country)\n• TPS (if your country is designated)\n• VAWA / U Visa (if applicable)\n• Cancellation of removal\n• Family petition\n\n⚠️ *With an active deportation order, urgent attorney consultation is advised.*\n\nWould you like us to evaluate your case?`,
+      status_chips: ['Schedule urgent consult', 'View options', 'Talk to Luis'],
+    }
+  };
+
+  const chatIntents = {
+    es: {
+      services:       ['servicio', 'que hacen', 'qué hacen', 'que ofrecen', 'menu', 'menú', 'opciones', 'ayuda', 'hola', 'buenas', 'ver servicio'],
+      family:         ['familia', 'familiar', 'esposa', 'esposo', 'hijo', 'hija', 'peticion', 'petición', 'i-130', 'i130', 'green card', 'residencia', 'ajuste', 'i-485', 'i485', 'consular'],
+      naturalization: ['naturaliz', 'ciudadan', 'n-400', 'n400', 'citizenship'],
+      asylum:         ['asilo', 'asylum', 'tps', 'daca', 'refugiado', 'humanitari', 'vawa', 'violencia'],
+      work_visas:     ['trabajo', 'trabaj', 'h-1b', 'h1b', 'l-1', 'l1', 'o-1', 'o1', 'cambio de estatus', 'visa trabajo'],
+      investor:       ['inversion', 'inversión', 'inversionista', 'e-2', 'e2', 'eb-5', 'eb5', 'negocio', 'empresa'],
+      venezuela:      ['venezolan', 'venezuela', 'apostilla', 'traduccion', 'traducción', 'derecho venezolano'],
+      consult:        ['consulta', 'agendar', 'cita', 'reunión', 'reunion', 'hablar', 'contactar'],
+      costs:          ['costo', 'precio', 'tarifa', 'cuánto', 'cuanto', 'honorario', 'pago', 'cobran'],
+      docs:           ['documento', 'papeles', 'necesito', 'requisito'],
+      whatsapp:       ['whatsapp', 'luis', 'número', 'telefono', 'teléfono', 'directo', 'contacto'],
+      uscis:          ['uscis', 'tiempo', 'demora', 'processing', 'receipt', 'estatus caso'],
+      qualify:        ['elegib', 'califico', 'califican', 'sin papeles', 'indocumentado'],
+    },
+    en: {
+      services:       ['service', 'what do you', 'what you offer', 'menu', 'help', 'hi', 'hello', 'options', 'view service'],
+      family:         ['family', 'spouse', 'wife', 'husband', 'child', 'petition', 'i-130', 'i130', 'green card', 'adjustment', 'i-485', 'consular'],
+      naturalization: ['naturaliz', 'citizen', 'n-400', 'n400', 'citizenship'],
+      asylum:         ['asylum', 'refugee', 'tps', 'daca', 'persecution', 'humanitarian', 'vawa', 'violence'],
+      work_visas:     ['work visa', 'h-1b', 'h1b', 'l-1', 'l1', 'o-1', 'employment', 'change of status'],
+      investor:       ['invest', 'e-2', 'e2', 'eb-5', 'eb5', 'business', 'company'],
+      venezuela:      ['venezuelan', 'venezuela', 'apostille', 'translation', 'venezuelan law'],
+      consult:        ['consult', 'schedule', 'appointment', 'meeting', 'talk', 'contact'],
+      costs:          ['cost', 'price', 'fee', 'how much', 'payment', 'charge'],
+      docs:           ['document', 'papers', 'require', 'need'],
+      whatsapp:       ['whatsapp', 'luis', 'phone', 'number', 'direct'],
+      uscis:          ['uscis', 'how long', 'processing', 'receipt', 'case status'],
+      qualify:        ['eligib', 'qualify', 'can i', 'undocumented', 'no status'],
+    }
+  };
+
+  let chatLang = 'es';
+  let chatOpen = false;
+  let chatMsgCount = 0;
+  let chatFormActive = false;
+
+  function chatT(key) { return KB[chatLang][key]; }
+
+  function matchChatIntent(text) {
+    const lower = text.toLowerCase();
+    const map = chatIntents[chatLang];
+    for (const [intent, keywords] of Object.entries(map)) {
+      if (keywords.some(k => lower.includes(k))) return intent;
+    }
+    return 'fallback';
+  }
+
+  function getChatResponse(intent) {
+    const r = chatT(intent);
+    if (!r) return { text: chatT('fallback'), chips: chatT('fallback_chips'), form: false };
+    return {
+      text: typeof r === 'string' ? r : null,
+      chips: chatT(intent + '_chips') || chatT('fallback_chips'),
+      form: KB[chatLang][intent + '_form'] || false
+    };
+  }
+
+  function toggleChat() {
+    chatOpen = !chatOpen;
+    const win = document.getElementById('chat-window');
+    win.classList.toggle('open', chatOpen);
+    if (chatOpen && chatMsgCount === 0) {
+      setTimeout(() => chatShowTyping(() => chatAddBotMsg(chatT('greeting'), chatT('menu_chips'))), 600);
+    }
+  }
+
+  function chatShowTyping(callback, delay = 1200) {
+    const ind = document.getElementById('chat-typing');
+    ind.classList.add('show');
+    chatScrollBottom();
+    setTimeout(() => { ind.classList.remove('show'); callback(); }, delay);
+  }
+
+  function chatAddBotMsg(text, chips = [], form = false) {
+    const msgs = document.getElementById('chat-messages');
+    const div = document.createElement('div');
+    div.className = 'chat-msg bot';
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-msg-bubble';
+    bubble.innerHTML = chatFormatText(text);
+    const time = document.createElement('div');
+    time.className = 'chat-msg-time';
+    time.textContent = chatGetTime();
+    div.appendChild(bubble);
+    div.appendChild(time);
+    msgs.appendChild(div);
+    if (form) chatRenderLeadForm(msgs);
+    chatMsgCount++;
+    chatSetChips(chips);
+    chatScrollBottom();
+  }
+
+  function chatAddUserMsg(text) {
+    const msgs = document.getElementById('chat-messages');
+    const div = document.createElement('div');
+    div.className = 'chat-msg user';
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-msg-bubble';
+    bubble.textContent = text;
+    const time = document.createElement('div');
+    time.className = 'chat-msg-time';
+    time.textContent = chatGetTime();
+    div.appendChild(bubble);
+    div.appendChild(time);
+    msgs.appendChild(div);
+    chatSetChips([]);
+    chatScrollBottom();
+  }
+
+  function chatSetChips(chips) {
+    const qr = document.getElementById('chat-quick-replies');
+    qr.innerHTML = '';
+    if (!chips || !chips.length) return;
+    chips.forEach(chip => {
+      const btn = document.createElement('button');
+      btn.className = 'chat-qr-chip';
+      btn.textContent = chip;
+      btn.onclick = () => chatHandleInput(chip);
+      qr.appendChild(btn);
+    });
+  }
+
+  function chatSendMessage() {
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if (!text || chatFormActive) return;
+    input.value = '';
+    input.style.height = 'auto';
+    chatHandleInput(text);
+  }
+
+  function chatHandleInput(text) {
+    if (text === 'Abrir WhatsApp' || text === 'Open WhatsApp') {
+      window.open('https://wa.me/13122856242', '_blank');
+      return;
+    }
+    if (text === 'Soy venezolano/a' || text === "I'm Venezuelan") {
+      chatAddUserMsg(text);
+      chatShowTyping(() => chatAddBotMsg(chatT('asylum'), chatT('asylum_chips')));
+      return;
+    }
+    if (text === 'Sin estatus / Indocumentado' || text === 'No status / Undocumented' || text === 'Con orden de deportación' || text === 'With deportation order') {
+      chatAddUserMsg(text);
+      chatShowTyping(() => chatAddBotMsg(chatT('status_undocumented'), chatT('status_chips')));
+      return;
+    }
+    if (text === 'Sí, más de 3 años' || text === 'Sí, más de 5 años' || text === 'Yes, over 3 years' || text === 'Yes, over 5 years') {
+      chatAddUserMsg(text);
+      chatShowTyping(() => chatAddBotMsg(
+        chatLang === 'es'
+          ? `✅ Parece que podrías calificar para la naturalización.\n\nEl siguiente paso es verificar que cumples todos los requisitos y preparar tu solicitud N-400.\n\n¿Te gustaría agendar una evaluación de tu caso?`
+          : `✅ It looks like you may qualify for naturalization.\n\nThe next step is verifying all requirements and preparing your N-400 application.\n\nWould you like to schedule a case evaluation?`,
+        chatT('family_chips')));
+      return;
+    }
+    chatAddUserMsg(text);
+    const intent = matchChatIntent(text);
+    const resp = getChatResponse(intent);
+    if (resp.form) {
+      chatShowTyping(() => chatAddBotMsg(resp.text || chatT('consult'), [], true));
+    } else {
+      chatShowTyping(() => chatAddBotMsg(resp.text, resp.chips));
+    }
+  }
+
+  function chatRenderLeadForm(container) {
+    chatFormActive = true;
+    const form = document.createElement('div');
+    form.className = 'chat-msg bot';
+    form.innerHTML = `
+      <div class="chat-lead-form" id="chat-lead-form">
+        <label>${chatLang === 'es' ? 'Nombre completo' : 'Full name'} *</label>
+        <input type="text" id="clf-name" placeholder="${chatLang === 'es' ? 'Tu nombre' : 'Your name'}" required>
+        <label>${chatLang === 'es' ? 'WhatsApp / Teléfono' : 'WhatsApp / Phone'} *</label>
+        <input type="tel" id="clf-phone" placeholder="+1 (312) 000-0000" required>
+        <label>Email</label>
+        <input type="email" id="clf-email" placeholder="correo@email.com">
+        <label>${chatLang === 'es' ? 'País de origen' : 'Country of origin'}</label>
+        <input type="text" id="clf-country" placeholder="${chatLang === 'es' ? 'Venezuela, México, etc.' : 'Venezuela, Mexico, etc.'}">
+        <label>${chatLang === 'es' ? 'Tu situación migratoria' : 'Your immigration situation'}</label>
+        <select id="clf-status">
+          <option value="">${chatLang === 'es' ? '— Selecciona —' : '— Select —'}</option>
+          <option>${chatLang === 'es' ? 'Sin estatus / Indocumentado' : 'No status / Undocumented'}</option>
+          <option>${chatLang === 'es' ? 'Visa de turista (B1/B2)' : 'Tourist visa (B1/B2)'}</option>
+          <option>${chatLang === 'es' ? 'Visa de estudiante (F-1)' : 'Student visa (F-1)'}</option>
+          <option>${chatLang === 'es' ? 'Residente permanente' : 'Permanent resident'}</option>
+          <option>${chatLang === 'es' ? 'Ciudadano americano' : 'US Citizen'}</option>
+          <option>${chatLang === 'es' ? 'Otro' : 'Other'}</option>
+        </select>
+        <button class="chat-lead-submit" onclick="chatSubmitLead()">
+          ${chatLang === 'es' ? '📅 Solicitar consulta' : '📅 Request consultation'}
+        </button>
+      </div>`;
+    container.appendChild(form);
+    chatScrollBottom();
+  }
+
+  function chatSubmitLead() {
+    const name = document.getElementById('clf-name').value.trim();
+    const phone = document.getElementById('clf-phone').value.trim();
+    if (!name || !phone) {
+      alert(chatLang === 'es' ? 'Por favor completa nombre y teléfono.' : 'Please provide name and phone.');
+      return;
+    }
+    const status = document.getElementById('clf-status').value;
+    const country = document.getElementById('clf-country').value;
+    const email = document.getElementById('clf-email').value;
+    const wa_msg = encodeURIComponent(
+      `🔔 *Nueva consulta desde lawpez.com*\n\n` +
+      `👤 Nombre: ${name}\n` +
+      `📞 Teléfono: ${phone}\n` +
+      `✉️ Email: ${email || 'No indicado'}\n` +
+      `🌍 País: ${country || 'No indicado'}\n` +
+      `📋 Situación: ${status || 'No indicada'}`
+    );
+    document.getElementById('chat-lead-form').remove();
+    chatFormActive = false;
+    chatAddBotMsg(chatT('form_thanks'), chatT('menu_chips'));
+    setTimeout(() => window.open(`https://wa.me/13122856242?text=${wa_msg}`, '_blank'), 1500);
+  }
+
+  function setChatLang(l) {
+    chatLang = l;
+    document.getElementById('chat-btn-es').classList.toggle('active', l === 'es');
+    document.getElementById('chat-btn-en').classList.toggle('active', l === 'en');
+    document.getElementById('chat-messages').innerHTML = '<div class="chat-typing-indicator" id="chat-typing"><span></span><span></span><span></span></div>';
+    document.getElementById('chat-quick-replies').innerHTML = '';
+    chatMsgCount = 0;
+    chatFormActive = false;
+    setTimeout(() => chatShowTyping(() => chatAddBotMsg(chatT('greeting'), chatT('menu_chips'))), 400);
+  }
+
+  function chatFormatText(text) {
+    return text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
+      .replace(/\n/g, '<br>');
+  }
+
+  function chatGetTime() {
+    return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function chatScrollBottom() {
+    const msgs = document.getElementById('chat-messages');
+    setTimeout(() => msgs.scrollTop = msgs.scrollHeight, 50);
+  }
+
+  function chatAutoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 80) + 'px';
+  }
+
+  // Close chat on outside click
+  document.addEventListener('click', (e) => {
+    if (chatOpen && !e.target.closest('#chat-widget') && !e.target.closest('#float-cta')) {
+      toggleChat();
+    }
+  });
 
 </script>
 </body>
