@@ -1837,7 +1837,7 @@
       const btn = document.createElement('button');
       btn.className = 'chat-qr-chip';
       btn.textContent = chip;
-      btn.onclick = () => chatHandleInput(chip);
+      btn.onclick = (e) => { e.stopPropagation(); chatHandleInput(chip); };
       qr.appendChild(btn);
     });
   }
@@ -1851,11 +1851,123 @@
     chatHandleInput(text);
   }
 
+  // Sub-topic chip responses to avoid dead ends
+  const chatSubTopics = {
+    es: {
+      'Apostilla': {
+        text: `📋 *Apostilla de Documentos Venezolanos*\n\nOrientamos sobre cómo legalizar documentos venezolanos para uso en EE.UU.:\n\n• Actas de nacimiento, matrimonio, divorcio\n• Títulos universitarios y diplomas\n• El proceso se gestiona a través del SAREN en Venezuela\n• También coordinamos con gestores en Venezuela si lo necesitas\n\n*Una vez apostillados, podemos traducirlos al inglés para trámites migratorios.*\n\n¿Te gustaría agendar una consulta?`,
+        chips: ['Agendar consulta', 'Traducción de documentos', 'Hablar con Luis', 'Ver servicios']
+      },
+      'Traducción de documentos': {
+        text: `📄 *Traducción Jurídica Certificada*\n\nTraducimos documentos legales del español al inglés:\n\n• Actas civiles (nacimiento, matrimonio, divorcio)\n• Títulos universitarios y diplomas\n• Poderes notariales y documentos judiciales\n• Cualquier documento legal venezolano\n\n✅ *Las traducciones cumplen con los requisitos de USCIS y tribunales americanos.*\n\n¿Necesitas cotizar una traducción?`,
+        chips: ['Agendar consulta', 'Apostilla', 'Hablar con Luis', 'Ver servicios']
+      },
+      'Actas de nacimiento/matrimonio': {
+        text: `🏛️ *Actas Civiles Venezolanas*\n\nTe ayudamos con actas venezolanas para trámites migratorios:\n\n• **Acta de nacimiento** — Requerida para peticiones familiares, naturalización y asilo\n• **Acta de matrimonio** — Para peticiones de cónyuge (I-130)\n• **Acta de divorcio** — Si aplica para nueva petición familiar\n\n📋 *Proceso típico: obtener copia, apostillar, traducir al inglés.*\n\nPodemos orientarte en cada paso. ¿Agendamos una consulta?`,
+        chips: ['Agendar consulta', 'Apostilla', 'Traducción de documentos', 'Hablar con Luis']
+      },
+      'Documentos necesarios': {
+        text: `📄 *Documentos Típicamente Necesarios:*\n\n• Pasaporte vigente\n• ID oficial (DL, State ID)\n• Acta de nacimiento (apostillada si aplica)\n• Acta de matrimonio (si aplica)\n• Comprobante de domicilio (últimos 3 meses)\n• Fotos tamaño pasaporte\n• Formularios fiscales (tax returns)\n• Historial de viajes a EE.UU.\n\n*La lista exacta depende de tu trámite. En la consulta te damos la lista personalizada.*`,
+        chips: ['Agendar consulta', 'Costos', 'Hablar con Luis', 'Ver servicios']
+      },
+      'Hablar por WhatsApp': {
+        text: `📲 *Escríbele directamente a Luis:*\n\n📞 **+1 (312) 285-6242**\n✉️ info@lawpez.com\n\n*Respuesta típica: mismo día hábil.*\n\n⚠️ Solo WhatsApp — no llamadas.`,
+        chips: ['Abrir WhatsApp', 'Agendar consulta', 'Ver servicios']
+      },
+      'Hablar con Luis': {
+        text: `📲 *Contacto directo con Luis:*\n\n📞 **+1 (312) 285-6242** (WhatsApp)\n✉️ info@lawpez.com\n\n*Respuesta típica: mismo día hábil.*\n\n⚠️ Luis E. Lopez Rodriguez, LL.M. es consultor de inmigración, no abogado.`,
+        chips: ['Abrir WhatsApp', 'Agendar consulta', 'Ver servicios']
+      },
+      'Más preguntas': {
+        text: `Claro, con gusto te ayudo. ¿Sobre qué tema tienes dudas?`,
+        chips: ['Ver servicios', 'Peticiones familiares', 'Naturalización', 'Asilo', 'Agendar consulta']
+      },
+      'Ver opciones': {
+        text: `Estas son las principales vías para personas en tu situación:\n\n🛡️ **Asilo** — Si enfrentaste persecución en tu país\n🕊️ **TPS** — Protección temporal para países designados\n👨‍👩‍👧 **Petición familiar** — Si tienes familiares con estatus\n⚖️ **VAWA / U Visa** — Si eres víctima de violencia o crimen\n\n¿Cuál aplica más a tu caso?`,
+        chips: ['Asilo', 'TPS', 'Peticiones familiares', 'Agendar consulta urgente']
+      },
+      'Agendar consulta urgente': {
+        text: `📅 *Consulta Urgente*\n\nEntendemos la urgencia. Por favor comparte tus datos y Luis te contacta a la brevedad:`,
+        chips: [],
+        form: true
+      },
+      'Aún no califico': {
+        text: `No te preocupes — muchas personas califican antes de lo que creen.\n\nPuede haber opciones según tu situación:\n• ¿Estás casado/a con ciudadano/a americano/a? → 3 años\n• ¿Tienes residencia permanente? → 5 años como regla general\n• ¿Servicio militar? → Puede reducir el tiempo\n\nLo mejor es evaluar tu caso específico. ¿Agendamos una consulta gratuita?`,
+        chips: ['Agendar consulta', 'Ver servicios', 'Hablar con Luis']
+      },
+      'Verificar mi caso': {
+        text: `🔍 *Verificar Estatus de Caso USCIS*\n\nPuedes verificar el estatus de tu caso directamente en:\n\n🌐 **uscis.gov/case-status**\n\nNecesitarás tu **Receipt Number** (número de recibo), que comienza con letras como SRC, EAC, WAC, LIN, etc.\n\n¿Necesitas ayuda para entender el estatus de tu caso?`,
+        chips: ['Agendar consulta', 'Hablar con Luis', 'Ver servicios']
+      },
+    },
+    en: {
+      'Apostille': {
+        text: `📋 *Apostille for Venezuelan Documents*\n\nWe guide you through the legalization process:\n\n• Birth, marriage, and divorce certificates\n• University degrees and diplomas\n• Process handled through SAREN in Venezuela\n\n*Once apostilled, we can translate documents to English for immigration proceedings.*\n\nWould you like to schedule a consultation?`,
+        chips: ['Schedule consult', 'Document translation', 'Talk to Luis', 'View services']
+      },
+      'Document translation': {
+        text: `📄 *Certified Legal Translation*\n\nWe translate legal documents from Spanish to English:\n\n• Civil records (birth, marriage, divorce)\n• University degrees and diplomas\n• Power of attorney and legal documents\n\n✅ *Translations meet USCIS and US court requirements.*\n\nWould you like a quote?`,
+        chips: ['Schedule consult', 'Apostille', 'Talk to Luis', 'View services']
+      },
+      'Birth/marriage certificates': {
+        text: `🏛️ *Venezuelan Civil Records*\n\nWe help with Venezuelan records for immigration proceedings:\n\n• **Birth certificate** — Required for family petitions, naturalization, asylum\n• **Marriage certificate** — For spousal petitions (I-130)\n• **Divorce certificate** — If applicable for new family petition\n\n📋 *Typical process: obtain copy → apostille → translate to English.*\n\nWould you like to schedule a consultation?`,
+        chips: ['Schedule consult', 'Apostille', 'Document translation', 'Talk to Luis']
+      },
+      'Required documents': {
+        text: `📄 *Documents Typically Required:*\n\n• Valid passport\n• Government ID\n• Birth certificate (apostilled if applicable)\n• Marriage certificate (if applicable)\n• Proof of address (last 3 months)\n• Passport-sized photos\n• Tax returns\n• US travel history\n\n*The exact list depends on your proceeding. We provide a personalized checklist at consultation.*`,
+        chips: ['Schedule consult', 'Fees', 'Talk to Luis', 'View services']
+      },
+      'Talk via WhatsApp': {
+        text: `📲 *Reach Luis directly:*\n\n📞 **+1 (312) 285-6242** (WhatsApp only)\n✉️ info@lawpez.com\n\n*Typical response: same business day.*`,
+        chips: ['Open WhatsApp', 'Schedule consult', 'View services']
+      },
+      'Talk to Luis': {
+        text: `📲 *Direct contact with Luis:*\n\n📞 **+1 (312) 285-6242** (WhatsApp)\n✉️ info@lawpez.com\n\n*Typical response: same business day.*\n\n⚠️ Luis E. Lopez Rodriguez, LL.M. is an immigration consultant, not an attorney.`,
+        chips: ['Open WhatsApp', 'Schedule consult', 'View services']
+      },
+      'More questions': {
+        text: `Sure — what topic can I help you with?`,
+        chips: ['View services', 'Family petitions', 'Naturalization', 'Asylum', 'Schedule consult']
+      },
+      'View options': {
+        text: `Main pathways for people in your situation:\n\n🛡️ **Asylum** — If you faced persecution in your home country\n🕊️ **TPS** — Temporary protection for designated countries\n👨‍👩‍👧 **Family petition** — If you have family with status\n⚖️ **VAWA / U Visa** — If you're a victim of violence or crime\n\nWhich applies most to your case?`,
+        chips: ['Asylum', 'TPS', 'Family petitions', 'Schedule urgent consult']
+      },
+      'Schedule urgent consult': {
+        text: `📅 *Urgent Consultation*\n\nWe understand the urgency. Please share your details and Luis will contact you shortly:`,
+        chips: [],
+        form: true
+      },
+      'Not yet eligible': {
+        text: `Don't worry — many people qualify sooner than they think.\n\n• Married to a US citizen? → 3 years\n• Permanent resident? → 5 years as a general rule\n• Military service? → May reduce the time\n\nBest to evaluate your specific case. Would you like a free consultation?`,
+        chips: ['Schedule consult', 'View services', 'Talk to Luis']
+      },
+      'Check my case': {
+        text: `🔍 *Check USCIS Case Status*\n\nYou can check your case status directly at:\n\n🌐 **uscis.gov/case-status**\n\nYou'll need your **Receipt Number** (starts with SRC, EAC, WAC, LIN, etc.)\n\nNeed help understanding your case status?`,
+        chips: ['Schedule consult', 'Talk to Luis', 'View services']
+      },
+    }
+  };
+
   function chatHandleInput(text) {
     if (text === 'Abrir WhatsApp' || text === 'Open WhatsApp') {
       window.open('https://wa.me/13122856242', '_blank');
       return;
     }
+
+    // Check sub-topic lookup first (avoids dead-end loops)
+    const subMap = chatSubTopics[chatLang] || chatSubTopics['es'];
+    if (subMap[text]) {
+      const sub = subMap[text];
+      chatAddUserMsg(text);
+      if (sub.form) {
+        chatShowTyping(() => chatAddBotMsg(sub.text, [], true));
+      } else {
+        chatShowTyping(() => chatAddBotMsg(sub.text, sub.chips));
+      }
+      return;
+    }
+
     if (text === 'Soy venezolano/a' || text === "I'm Venezuelan") {
       chatAddUserMsg(text);
       chatShowTyping(() => chatAddBotMsg(chatT('asylum'), chatT('asylum_chips')));
@@ -1972,6 +2084,10 @@
     el.style.height = 'auto';
     el.style.height = Math.min(el.scrollHeight, 80) + 'px';
   }
+
+  // Prevent clicks inside chat window from bubbling to the document listener
+  const _chatWin = document.getElementById('chat-window');
+  if (_chatWin) _chatWin.addEventListener('click', e => e.stopPropagation());
 
   // Close chat on outside click
   document.addEventListener('click', (e) => {
