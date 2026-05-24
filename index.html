@@ -540,24 +540,7 @@
        LAWPEZ v7 — LUXURY PREMIUM LAYER
        ══════════════════════════════════════════════ */
 
-    /* Cursor — custom gold cursor */
-    * { cursor: none !important; }
-    @media (pointer: coarse) { * { cursor: auto !important; } }
-    #cursor-dot {
-      position: fixed; width: 6px; height: 6px; background: var(--gold);
-      border-radius: 50%; pointer-events: none; z-index: 99999;
-      transform: translate(-50%,-50%); transition: opacity 0.3s, width 0.2s, height 0.2s;
-      mix-blend-mode: normal;
-    }
-    #cursor-ring {
-      position: fixed; width: 36px; height: 36px;
-      border: 1.5px solid rgba(184,146,74,0.6);
-      border-radius: 50%; pointer-events: none; z-index: 99998;
-      transform: translate(-50%,-50%);
-    }
-    #cursor-dot.hovered { width: 10px; height: 10px; background: var(--gold-light); }
-    #cursor-ring.hovered { width: 56px; height: 56px; border-color: var(--gold-light); border-width: 1px; }
-    @media (pointer: coarse) { #cursor-dot, #cursor-ring { display: none; } }
+    /* Custom cursor removed */
 
     /* Loader */
     #page-loader {
@@ -965,6 +948,220 @@
     #contact .wa-note { color: rgba(255,255,255,0.3) !important; }
     #contact p[style*="rgba(255,255,255"] { color: rgba(255,255,255,0.3) !important; }
 
+
+    /* ══════════════════════════════════════════
+       v7c — MOTIONSITES ROUND 4 UPGRADES
+       ══════════════════════════════════════════ */
+
+    /* ── 1. GLASSMORPHISM Service Cards ── */
+    #services { overflow: hidden; }
+    .service-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(100px); pointer-events: none; z-index: 0;
+    }
+    .service-blob-1 {
+      width: 550px; height: 550px;
+      background: radial-gradient(circle, rgba(184,146,74,0.11) 0%, transparent 70%);
+      top: -120px; left: -80px;
+      animation: blobFloat 20s ease-in-out infinite;
+    }
+    .service-blob-2 {
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(23,33,53,0.9) 0%, transparent 70%);
+      bottom: -60px; right: 80px;
+      animation: blobFloat 25s ease-in-out infinite reverse;
+    }
+    .service-blob-3 {
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(184,146,74,0.07) 0%, transparent 70%);
+      top: 45%; right: -60px;
+      animation: blobFloat 18s ease-in-out infinite;
+      animation-delay: -9s;
+    }
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33%  { transform: translate(35px, -45px) scale(1.06); }
+      66%  { transform: translate(-25px, 32px) scale(0.97); }
+    }
+    .services-grid { position: relative; z-index: 1; }
+    .services-header { position: relative; z-index: 1; }
+    .service-card {
+      background: rgba(255,255,255,0.035) !important;
+      backdrop-filter: blur(28px) saturate(160%) !important;
+      -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
+      border: 1px solid rgba(184,146,74,0.08) !important;
+      border-top: 1px solid rgba(184,146,74,0.22) !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05) !important;
+    }
+    .service-card:hover {
+      background: rgba(255,255,255,0.06) !important;
+      border-color: rgba(184,146,74,0.3) !important;
+      border-top-color: rgba(184,146,74,0.5) !important;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08) !important;
+    }
+
+    /* ── 2. BLOBS in stats section ── */
+    #stats { position: relative; overflow: hidden; }
+    .stats-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); pointer-events: none; z-index: 0;
+    }
+    .stats-blob-1 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(184,146,74,0.08) 0%, transparent 70%);
+      top: -100px; right: 10%;
+      animation: blobFloat 22s ease-in-out infinite;
+    }
+    .stats-blob-2 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(184,146,74,0.05) 0%, transparent 70%);
+      bottom: -50px; left: 5%;
+      animation: blobFloat 17s ease-in-out infinite reverse;
+    }
+    .stats-grid { position: relative; z-index: 1; }
+
+    /* ── 3. CINEMATIC TESTIMONIAL SLIDER ── */
+    .testi-slider {
+      position: relative; max-width: 860px;
+      margin: 4rem auto 0; text-align: center;
+      min-height: 320px;
+    }
+    .testi-slides { position: relative; min-height: 280px; }
+    .testi-slide {
+      position: absolute; inset: 0;
+      opacity: 0; transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1);
+      pointer-events: none;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .testi-slide.active { opacity: 1; pointer-events: auto; position: relative; }
+    .testi-big-q {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 9rem; line-height: 0.6;
+      color: rgba(15,27,45,0.08);
+      margin-bottom: -1.5rem; display: block;
+      user-select: none;
+    }
+    .testi-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.25rem, 2.2vw, 2rem);
+      font-weight: 300; font-style: italic;
+      color: var(--navy); line-height: 1.55;
+      margin-bottom: 2rem; max-width: 780px;
+    }
+    .testi-meta {
+      font-size: 0.62rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold);
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .testi-meta-sep { color: rgba(184,146,74,0.4); }
+    .testi-stars-row {
+      font-size: 0.75rem; color: var(--gold);
+      margin-top: 0.6rem; letter-spacing: 0.15em;
+    }
+    .testi-dots {
+      display: flex; gap: 0.5rem;
+      justify-content: center; margin-top: 2.5rem;
+      align-items: center;
+    }
+    .testi-dot {
+      height: 5px; border-radius: 3px;
+      border: none; cursor: pointer;
+      background: rgba(15,27,45,0.15);
+      transition: background 0.3s, width 0.4s cubic-bezier(0.16,1,0.3,1);
+      width: 20px;
+      padding: 0;
+    }
+    .testi-dot.active { background: var(--gold); width: 40px; }
+    .testi-dot:hover { background: var(--gold-dark); }
+
+    /* ── 4. HOW WE WORK — stepped large panels ── */
+    #how {
+      background: var(--cream); padding: 0;
+      overflow: hidden;
+    }
+    .how-header-wrap { padding: 8rem 5rem 4rem; max-width: 1200px; margin: 0 auto; }
+    .how-panels { display: flex; flex-direction: column; }
+    .how-panel {
+      display: grid; grid-template-columns: 220px 1fr;
+      align-items: start; gap: 0;
+      padding: 5rem 5rem 5rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      transition: background 0.4s;
+    }
+    .how-panel:hover { background: rgba(184,146,74,0.03); }
+    .how-panel-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(5rem, 8vw, 9rem);
+      font-weight: 200; color: rgba(184,146,74,0.18);
+      line-height: 0.85; letter-spacing: -0.04em;
+      padding-top: 0.1em; transition: color 0.4s;
+    }
+    .how-panel:hover .how-panel-num { color: rgba(184,146,74,0.4); }
+    .how-panel-content { padding-top: 0.5rem; }
+    .how-panel-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; font-weight: 400;
+      color: var(--navy); margin-bottom: 1rem;
+      line-height: 1.15; letter-spacing: -0.01em;
+    }
+    .how-panel-body {
+      font-size: 0.88rem; color: var(--text-mid);
+      line-height: 1.85; font-weight: 300;
+      max-width: 480px;
+    }
+    .how-panel-tag {
+      display: inline-flex; align-items: center;
+      gap: 0.5rem; margin-top: 1.5rem;
+      font-size: 0.58rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .how-panel-tag::before {
+      content: ''; display: block;
+      width: 20px; height: 1px; background: var(--gold);
+    }
+    @media (max-width: 768px) {
+      .how-panel { grid-template-columns: 80px 1fr; padding: 3rem 1.5rem; gap: 1rem; }
+      .how-panel-num { font-size: 4rem; }
+    }
+
+    /* ── 5. MIXED-WEIGHT HERO ── */
+    h1.hero-title span .hw-italic { font-style: italic; color: var(--gold-light); }
+    h1.hero-title span .hw-light  { font-weight: 200; opacity: 0.55; font-style: normal; -webkit-text-fill-color: initial; background: none; }
+
+    /* ── 6. TRUST STRIP ── */
+    .trust-strip {
+      background: var(--cream2);
+      padding: 2.4rem 5rem;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .trust-label {
+      font-size: 0.58rem; letter-spacing: 0.38em;
+      text-transform: uppercase; color: var(--text-muted);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .trust-items {
+      display: flex; align-items: center;
+      gap: 0; flex-wrap: wrap; flex: 1;
+      justify-content: flex-end;
+    }
+    .trust-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-weight: 400;
+      color: var(--text-mid); padding: 0 1.6rem;
+      border-right: 1px solid var(--border-light);
+      letter-spacing: 0.02em; white-space: nowrap;
+    }
+    .trust-item:last-child { border-right: none; }
+    @media (max-width: 768px) {
+      .trust-strip { padding: 2rem 1.5rem; }
+      .trust-items { justify-content: flex-start; }
+      .trust-item { font-size: 0.9rem; padding: 0.3rem 1rem; }
+    }
   </style>
   <!-- Premium animation libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -979,8 +1176,6 @@
   <p class="loader-sub">Immigration Legal Consulting</p>
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
 </div>
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
 <div id="grain"></div>
 <div id="reading-progress"></div>
 
@@ -1039,7 +1234,7 @@
   <div class="hero-left">
     <p class="hero-eyebrow t" data-es="Servicios Migratorios · EE.UU." data-en="Immigration Services · U.S." data-fr="Services d&rsquo;Immigration · É.-U.">Servicios Migratorios · EE.UU.</p>
     <h1 class="hero-title">
-      <span class="t" data-es="Residencia. Ciudadanía. Protección." data-en="Residency. Citizenship. Protection." data-fr="Résidence. Citoyenneté. Protection.">Residencia. Ciudadanía. Protección.</span>
+      <span class="t" data-es="Residencia. <span class='hw-italic'>Ciudadanía.</span> <span class='hw-light'>Protección.</span>" data-en="Residency. <span class='hw-italic'>Citizenship.</span> <span class='hw-light'>Protection.</span>" data-fr="Résidence. <span class='hw-italic'>Citoyenneté.</span> <span class='hw-light'>Protection.</span>">Residencia. <span class="hw-italic">Ciudadanía.</span> <span class="hw-light">Protección.</span></span>
       <em class="t" data-es="Empieza aquí." data-en="Start here." data-fr="Commencez ici.">Empieza aquí.</em>
     </h1>
     <div class="reveal reveal-d2 hero-gold-line"></div>
@@ -1132,8 +1327,24 @@
   </div>
 </div>
 
+<!-- ── TRUST STRIP ── -->
+<div class="trust-strip">
+  <p class="trust-label t" data-es="Presencia en todo EE.UU." data-en="Serving clients across the U.S." data-fr="Présents dans tout les É.-U.">Presencia en todo EE.UU.</p>
+  <div class="trust-items">
+    <span class="trust-item">Illinois</span>
+    <span class="trust-item">Florida</span>
+    <span class="trust-item">New York</span>
+    <span class="trust-item">Texas</span>
+    <span class="trust-item">California</span>
+    <span class="trust-item">Georgia</span>
+    <span class="trust-item t" data-es="+ 20 estados más" data-en="+ 20 more states" data-fr="+ 20 autres états">+ 20 estados más</span>
+  </div>
+</div>
+
 <!-- ── STATS ── -->
 <section id="stats">
+  <div class="stats-blob stats-blob-1" aria-hidden="true"></div>
+  <div class="stats-blob stats-blob-2" aria-hidden="true"></div>
   <div class="stats-grid">
     <div class="stat-item reveal reveal-d1 fade-up">
       <div style="display:flex;align-items:baseline;gap:0.2rem;">
@@ -1240,6 +1451,9 @@
 
 <!-- ── SERVICES ── -->
 <section id="services"><span class="section-bg-num" aria-hidden="true">01</span>
+  <div class="service-blob service-blob-1" aria-hidden="true"></div>
+  <div class="service-blob service-blob-2" aria-hidden="true"></div>
+  <div class="service-blob service-blob-3" aria-hidden="true"></div>
   <div class="services-header">
     <p class="reveal section-label t" data-es="Servicios" data-en="Services" data-fr="Services">Servicios</p>
     <h2 class="reveal reveal-d1 section-title on-dark t"
@@ -1364,51 +1578,54 @@
 
 <!-- ── HOW WE WORK ── -->
 <section id="how">
-  <div class="how-inner">
-    <div class="how-header fade-up">
-      <p class="reveal section-label t" data-es="Proceso" data-en="Process" data-fr="Processus">Proceso</p>
-      <h2 class="reveal reveal-d1 section-title t"
-        data-es="¿Cómo trabajamos?<br><em>Simple. Rápido. Confiable.</em>"
-        data-en="How do we work?<br><em>Simple. Fast. Reliable.</em>"
-        data-fr="Comment travaillons-nous?<br><em>Simple. Rapide. Fiable.</em>">
-        ¿Cómo trabajamos?<br><em>Simple. Rápido. Confiable.</em>
-      </h2>
-      <div class="reveal reveal-d2 gold-line" style="margin:1.5rem auto;"></div>
-    </div>
-    <div class="how-steps">
-      <div class="how-step fade-up">
-        <div class="how-num"><span>01</span></div>
-        <h3 class="how-step-title t" data-es="Consulta Inicial" data-en="Initial Consultation" data-fr="Consultation Initiale">Consulta Inicial</h3>
-        <p class="how-step-body t"
-          data-es="Nos contactas por WhatsApp, correo o formulario. En menos de 24 horas analizamos tu caso y te respondemos con un plan claro."
-          data-en="You reach out via WhatsApp, email, or form. Within 24 hours we analyze your matter and respond with a clear plan."
-          data-fr="Contactez-nous par WhatsApp, email ou formulaire. En moins de 24 heures nous analysons votre dossier et répondons avec un plan clair.">
-          Nos contactas por WhatsApp, correo o formulario. En menos de 24 horas analizamos tu caso y te respondemos con un plan claro.
+  <div class="how-header-wrap">
+    <p class="reveal section-label t" data-es="Proceso" data-en="Process" data-fr="Processus">Proceso</p>
+    <h2 class="reveal reveal-d1 section-title t"
+      data-es="Cómo <em>trabajamos.</em>"
+      data-en="How we <em>work.</em>"
+      data-fr="Comment nous <em>travaillons.</em>">
+      Cómo <em>trabajamos.</em>
+    </h2>
+  </div>
+  <div class="how-panels">
+    <div class="how-panel reveal">
+      <div class="how-panel-num" aria-hidden="true">01</div>
+      <div class="how-panel-content">
+        <h3 class="how-panel-title t" data-es="Consulta Inicial" data-en="Initial Consultation" data-fr="Consultation Initiale">Consulta Inicial</h3>
+        <p class="how-panel-body t"
+          data-es="Analizamos su situación migratoria, identificamos la mejor vía legal y le explicamos el proceso completo. Sin costo y sin compromiso."
+          data-en="We assess your immigration situation, identify the best legal path, and explain the full process. No cost, no commitment."
+          data-fr="Nous évaluons votre situation migratoire, identifions la meilleure voie légale et expliquons le processus complet. Gratuit et sans engagement.">
+          Analizamos su situación migratoria, identificamos la mejor vía legal y le explicamos el proceso completo. Sin costo y sin compromiso.
         </p>
-      </div>
-      <div class="how-step fade-up">
-        <div class="how-num"><span>02</span></div>
-        <h3 class="how-step-title t" data-es="Análisis y Preparación" data-en="Analysis & Preparation" data-fr="Analyse et Préparation">Análisis y Preparación</h3>
-        <p class="how-step-body t"
-          data-es="Investigamos, redactamos y preparamos todos los materiales con rigor académico y precisión jurídica. Te mantenemos informado en cada paso."
-          data-en="We research, draft, and prepare all materials with academic rigor and legal precision. We keep you informed every step of the way."
-          data-fr="Nous recherchons, rédigeons et préparons tous les matériaux avec rigueur académique et précision juridique. Nous vous tenons informé à chaque étape.">
-          Investigamos, redactamos y preparamos todos los materiales con rigor académico y precisión jurídica. Te mantenemos informado en cada paso.
-        </p>
-      </div>
-      <div class="how-step fade-up">
-        <div class="how-num"><span>03</span></div>
-        <h3 class="how-step-title t" data-es="Entrega de Resultados" data-en="Delivery of Results" data-fr="Livraison des Résultats">Entrega de Resultados</h3>
-        <p class="how-step-body t"
-          data-es="Recibes tu expediente listo para el siguiente paso: formularios completados, paquete de evidencia organizado, cartas de experto o cualquier material que tu caso necesite — con soporte post-entrega."
-          data-en="You receive your complete file ready for the next step: completed forms, organized evidence package, expert opinion letters, or any material your case requires — with post-delivery support."
-          data-fr="Vous recevez votre dossier complet prêt pour la prochaine étape: formulaires complétés, dossier de preuves organisé, lettres d'expert ou tout ce que votre dossier nécessite — avec support post-livraison.">
-          Recibes tu expediente listo para el siguiente paso: formularios completados, paquete de evidencia organizado, cartas de experto o cualquier material que tu caso necesite — con soporte post-entrega.
-        </p>
+        <div class="how-panel-tag t" data-es="Gratuita · 30 minutos" data-en="Free · 30 minutes" data-fr="Gratuite · 30 minutes">Gratuita · 30 minutos</div>
       </div>
     </div>
-    <div class="how-cta fade-up">
-      <a href="#contact" class="btn-gold t" data-es="Agenda tu consulta" data-en="Schedule a Consultation" data-fr="Prendre Rendez-vous">Agenda tu consulta</a>
+    <div class="how-panel reveal reveal-d1">
+      <div class="how-panel-num" aria-hidden="true">02</div>
+      <div class="how-panel-content">
+        <h3 class="how-panel-title t" data-es="Análisis y Preparación" data-en="Analysis &amp; Preparation" data-fr="Analyse et Préparation">Análisis y Preparación</h3>
+        <p class="how-panel-body t"
+          data-es="Recopilamos y organizamos todos los documentos necesarios. Preparamos el expediente legal completo con rigor académico y atención al detalle que marca la diferencia."
+          data-en="We gather and organize all required documents. We prepare the complete legal file with academic rigor and the attention to detail that makes the difference."
+          data-fr="Nous rassemblons et organisons tous les documents requis. Nous préparons le dossier juridique complet avec la rigueur et l'attention au détail qui fait la différence.">
+          Recopilamos y organizamos todos los documentos necesarios. Preparamos el expediente legal completo con rigor académico y atención al detalle que marca la diferencia.
+        </p>
+        <div class="how-panel-tag t" data-es="Precisión · Documentación" data-en="Precision · Documentation" data-fr="Précision · Documentation">Precisión · Documentación</div>
+      </div>
+    </div>
+    <div class="how-panel reveal reveal-d2">
+      <div class="how-panel-num" aria-hidden="true">03</div>
+      <div class="how-panel-content">
+        <h3 class="how-panel-title t" data-es="Entrega de Resultados" data-en="Delivery of Results" data-fr="Livraison des Résultats">Entrega de Resultados</h3>
+        <p class="how-panel-body t"
+          data-es="Entregamos el expediente listo para presentar ante USCIS o el tribunal correspondiente. Le acompañamos hasta el cierre exitoso del caso."
+          data-en="We deliver a file ready to present to USCIS or the appropriate court. We accompany you through to the successful close of the case."
+          data-fr="Nous livrons un dossier prêt à présenter à l'USCIS ou au tribunal compétent. Nous vous accompagnons jusqu'à la clôture réussie du dossier.">
+          Entregamos el expediente listo para presentar ante USCIS o el tribunal correspondiente. Le acompañamos hasta el cierre exitoso del caso.
+        </p>
+        <div class="how-panel-tag t" data-es="Acompañamiento total" data-en="Full support" data-fr="Accompagnement total">Acompañamiento total</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1720,80 +1937,115 @@
       </h2>
       <div class="reveal reveal-d2 gold-line"></div>
     </div>
-    <div class="testimonios-grid">
+    <div class="testi-slider" id="testi-slider">
+      <div class="testi-slides">
 
-      <div class="testimonial-card reveal reveal-d1 fade-up">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-quote t"
-          data-es="Mi abogado necesitaba una carta de experto sobre persecución política. La que preparó Lawpez era tan detallada y bien fundamentada que el juez la aceptó sin objeciones. Hoy tengo mi asilo aprobado."
-          data-en="My attorney needed an expert opinion letter about political persecution. The one Lawpez prepared was so detailed and well-grounded that the judge accepted it without objection. Today my asylum is approved."
-          data-fr="Mon avocat avait besoin d'une lettre d'expert sur la persécution politique. Celle que Lawpez a préparée était si solide que le juge l'a acceptée sans objection. Aujourd'hui mon asile est approuvé.">
-          Mi abogado necesitaba una carta de experto sobre persecución política. La que preparó Lawpez era tan detallada y bien fundamentada que el juez la aceptó sin objeciones. Hoy tengo mi asilo aprobado.
-        </p>
-        <div class="testimonial-author">Valentina G.</div>
-        <div class="testimonial-case t" data-es="Asilo Afirmativo" data-en="Affirmative Asylum" data-fr="Asile Affirmatif">Asilo Afirmativo</div>
+        <div class="testi-slide active">
+          <span class="testi-big-q" aria-hidden="true">"</span>
+          <p class="testi-text t"
+            data-es="Mi abogado necesitaba una carta de experto sobre persecución política. La que preparó Lawpez era tan detallada y bien fundamentada que el juez la aceptó sin objeciones. Hoy tengo mi asilo aprobado."
+            data-en="My attorney needed an expert opinion letter about political persecution. The one Lawpez prepared was so detailed that the judge accepted it without objection. Today my asylum is approved."
+            data-fr="Mon avocat avait besoin d'une lettre d'expert. Celle que Lawpez a préparée était si solide que le juge l'a acceptée sans objection.">
+            Mi abogado necesitaba una carta de experto sobre persecución política. La que preparó Lawpez era tan detallada y bien fundamentada que el juez la aceptó sin objeciones. Hoy tengo mi asilo aprobado.
+          </p>
+          <div class="testi-meta">
+            <span>Valentina G.</span>
+            <span class="testi-meta-sep">·</span>
+            <span class="t" data-es="Asilo Afirmativo" data-en="Affirmative Asylum" data-fr="Asile Affirmatif">Asilo Afirmativo</span>
+          </div>
+          <div class="testi-stars-row">★★★★★</div>
+        </div>
+
+        <div class="testi-slide">
+          <span class="testi-big-q" aria-hidden="true">"</span>
+          <p class="testi-text t"
+            data-es="Somos una pareja binacional y no sabíamos por dónde empezar con el I-130 y el I-485. Lawpez organizó toda nuestra documentación y el proceso fue mucho más claro de lo que esperábamos."
+            data-en="We're a binational couple and didn't know where to start with the I-130 and I-485. Lawpez organized all our documentation and the process was much clearer than we expected."
+            data-fr="Nous sommes un couple binational. Lawpez a organisé tous nos documents et le processus a été beaucoup plus clair que prévu.">
+            Somos una pareja binacional y no sabíamos por dónde empezar con el I-130 y el I-485. Lawpez organizó toda nuestra documentación y el proceso fue mucho más claro de lo que esperábamos.
+          </p>
+          <div class="testi-meta">
+            <span>Carlos &amp; Emily M.</span>
+            <span class="testi-meta-sep">·</span>
+            <span class="t" data-es="Ajuste de Estatus por Matrimonio" data-en="Marriage-Based Adjustment" data-fr="Ajustement de Statut">Ajuste de Estatus por Matrimonio</span>
+          </div>
+          <div class="testi-stars-row">★★★★★</div>
+        </div>
+
+        <div class="testi-slide">
+          <span class="testi-big-q" aria-hidden="true">"</span>
+          <p class="testi-text t"
+            data-es="Con el apoyo de Lawpez presenté mi N-400 y en menos de un año rendí el examen y me convertí en ciudadana. Los formularios ya no me intimidaban porque tenía a alguien que los entendía de verdad."
+            data-en="With Lawpez's support, I filed my N-400 and in less than a year I took the exam and became a citizen. The forms no longer intimidated me because I had someone who truly understood them."
+            data-fr="Avec le soutien de Lawpez, j'ai déposé mon N-400 et en moins d'un an je suis devenue citoyenne.">
+            Con el apoyo de Lawpez presenté mi N-400 y en menos de un año rendí el examen y me convertí en ciudadana. Los formularios ya no me intimidaban porque tenía a alguien que los entendía de verdad.
+          </p>
+          <div class="testi-meta">
+            <span>Rosa F.</span>
+            <span class="testi-meta-sep">·</span>
+            <span class="t" data-es="Naturalización" data-en="Naturalization" data-fr="Naturalisation">Naturalización</span>
+          </div>
+          <div class="testi-stars-row">★★★★★</div>
+        </div>
+
+        <div class="testi-slide">
+          <span class="testi-big-q" aria-hidden="true">"</span>
+          <p class="testi-text t"
+            data-es="El proceso de la visa E-2 me parecía imposible de entender solo. Lawpez preparó el análisis económico de forma tan profesional que mi solicitud fue aprobada sin inconvenientes."
+            data-en="The E-2 visa process seemed impossible to navigate alone. Lawpez prepared the economic analysis so professionally that my application was approved without issues."
+            data-fr="Le processus du visa E-2 me semblait impossible. Lawpez a préparé une analyse si professionnelle que ma demande a été approuvée.">
+            El proceso de la visa E-2 me parecía imposible de entender solo. Lawpez preparó el análisis económico de forma tan profesional que mi solicitud fue aprobada sin inconvenientes.
+          </p>
+          <div class="testi-meta">
+            <span>Andrés T.</span>
+            <span class="testi-meta-sep">·</span>
+            <span class="t" data-es="Visa E-2 · Inversionista" data-en="E-2 Visa · Investor" data-fr="Visa E-2 · Investisseur">Visa E-2 · Inversionista</span>
+          </div>
+          <div class="testi-stars-row">★★★★★</div>
+        </div>
+
+        <div class="testi-slide">
+          <span class="testi-big-q" aria-hidden="true">"</span>
+          <p class="testi-text t"
+            data-es="Lawpez preparó toda la documentación para traer a mis padres, gestionó las traducciones y me explicó cada paso. Hoy mi familia está reunida en Estados Unidos."
+            data-en="Lawpez prepared all the documentation to bring my parents, handled the translations, and explained every step. Today my family is together in the United States."
+            data-fr="Lawpez a préparé tous les documents pour faire venir mes parents et expliqué chaque étape. Aujourd'hui ma famille est réunie aux États-Unis.">
+            Lawpez preparó toda la documentación para traer a mis padres, gestionó las traducciones y me explicó cada paso. Hoy mi familia está reunida en Estados Unidos.
+          </p>
+          <div class="testi-meta">
+            <span>Tomás R.</span>
+            <span class="testi-meta-sep">·</span>
+            <span class="t" data-es="Petición Familiar · I-130" data-en="Family Petition · I-130" data-fr="Pétition Familiale · I-130">Petición Familiar · I-130</span>
+          </div>
+          <div class="testi-stars-row">★★★★★</div>
+        </div>
+
+        <div class="testi-slide">
+          <span class="testi-big-q" aria-hidden="true">"</span>
+          <p class="testi-text t"
+            data-es="Cuando se renovó el TPS Lawpez revisó todo mi expediente, preparó los formularios y la evidencia requerida. Hoy tengo mi permiso de trabajo vigente y mi vida laboral está estabilizada."
+            data-en="When TPS was renewed, Lawpez reviewed my full file, prepared the forms and required evidence. Today I have my valid work permit and my professional life is stable."
+            data-fr="Quand le TPS a été renouvelé, Lawpez a examiné mon dossier. Aujourd'hui j'ai mon permis de travail valide.">
+            Cuando se renovó el TPS Lawpez revisó todo mi expediente, preparó los formularios y la evidencia requerida. Hoy tengo mi permiso de trabajo vigente y mi vida laboral está estabilizada.
+          </p>
+          <div class="testi-meta">
+            <span>Lucía M.</span>
+            <span class="testi-meta-sep">·</span>
+            <span class="t" data-es="TPS · Protección Temporal" data-en="TPS · Temporary Protection" data-fr="TPS · Protection Temporaire">TPS · Protección Temporal</span>
+          </div>
+          <div class="testi-stars-row">★★★★★</div>
+        </div>
+
       </div>
-
-      <div class="testimonial-card reveal reveal-d2 fade-up">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-quote t"
-          data-es="Somos una pareja binacional y no sabíamos por dónde empezar con el I-130 y el I-485. Lawpez organizó toda nuestra documentación, tradujo los registros civiles y el proceso fue mucho más claro de lo que esperábamos."
-          data-en="We're a binational couple and didn't know where to start with the I-130 and I-485. Lawpez organized all our documentation, translated the civil records, and the process was much clearer than we expected."
-          data-fr="Nous sommes un couple binational et ne savions pas par où commencer. Lawpez a organisé tous nos documents et le processus a été beaucoup plus clair que prévu.">
-          Somos una pareja binacional y no sabíamos por dónde empezar con el I-130 y el I-485. Lawpez organizó toda nuestra documentación, tradujo los registros civiles y el proceso fue mucho más claro de lo que esperábamos.
-        </p>
-        <div class="testimonial-author">Carlos &amp; Emily M.</div>
-        <div class="testimonial-case t" data-es="Ajuste de Estatus por Matrimonio" data-en="Marriage-Based Adjustment of Status" data-fr="Ajustement de Statut par Mariage">Ajuste de Estatus por Matrimonio</div>
+      <div class="testi-dots" id="testi-dots">
+        <button class="testi-dot active" aria-label="1"></button>
+        <button class="testi-dot" aria-label="2"></button>
+        <button class="testi-dot" aria-label="3"></button>
+        <button class="testi-dot" aria-label="4"></button>
+        <button class="testi-dot" aria-label="5"></button>
+        <button class="testi-dot" aria-label="6"></button>
       </div>
-
-      <div class="testimonial-card reveal reveal-d3 fade-up">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-quote t"
-          data-es="Llevaba cinco años como residente permanente y quería naturalizarme, pero los formularios me intimidaban. Con el apoyo de Lawpez presenté mi N-400 y en menos de un año rendí el examen y me convertí en ciudadana."
-          data-en="I had been a permanent resident for five years and wanted to naturalize, but the forms intimidated me. With Lawpez's support, I filed my N-400 and in less than a year I took the exam and became a citizen."
-          data-fr="J'étais résidente permanente depuis cinq ans et voulais me naturaliser. Avec le soutien de Lawpez, j'ai déposé mon N-400 et en moins d'un an je suis devenue citoyenne.">
-          Llevaba cinco años como residente permanente y quería naturalizarme, pero los formularios me intimidaban. Con el apoyo de Lawpez presenté mi N-400 y en menos de un año rendí el examen y me convertí en ciudadana.
-        </p>
-        <div class="testimonial-author">Rosa F.</div>
-        <div class="testimonial-case t" data-es="Naturalización" data-en="Naturalization" data-fr="Naturalisation">Naturalización</div>
-      </div>
-
-      <div class="testimonial-card reveal reveal-d4 fade-up">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-quote t"
-          data-es="Quería traer a mis padres mayores y no sabía que existía este tipo de apoyo. Lawpez preparó toda la documentación, gestionó las traducciones y me explicó cada paso del proceso. Hoy mi familia está reunida."
-          data-en="I wanted to bring my elderly parents and didn't know this type of support existed. Lawpez prepared all the documentation, handled the translations, and explained every step. Today my family is together."
-          data-fr="Je voulais faire venir mes parents âgés et ne savais pas que ce soutien existait. Lawpez a préparé tous les documents et expliqué chaque étape. Aujourd'hui ma famille est réunie.">
-          Quería traer a mis padres mayores y no sabía que existía este tipo de apoyo. Lawpez preparó toda la documentación, gestionó las traducciones y me explicó cada paso del proceso. Hoy mi familia está reunida.
-        </p>
-        <div class="testimonial-author">Tomás R.</div>
-        <div class="testimonial-case t" data-es="Petición Familiar · I-130" data-en="Family Petition · I-130" data-fr="Pétition Familiale · I-130">Petición Familiar · I-130</div>
-      </div>
-
-      <div class="testimonial-card reveal reveal-d4 fade-up">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-quote t"
-          data-es="El proceso de la visa E-2 me parecía imposible de entender solo. Lawpez preparó todo el análisis del contexto económico y mi historial empresarial de forma tan profesional que mi solicitud fue aprobada sin inconvenientes."
-          data-en="The E-2 visa process seemed impossible to navigate alone. Lawpez prepared the full economic context analysis and my business history so professionally that my application was approved without issues."
-          data-fr="Le processus du visa E-2 me semblait impossible à naviguer seul. Lawpez a préparé une analyse si professionnelle que ma demande a été approuvée sans problème.">
-          El proceso de la visa E-2 me parecía imposible de entender solo. Lawpez preparó todo el análisis del contexto económico y mi historial empresarial de forma tan profesional que mi solicitud fue aprobada sin inconvenientes.
-        </p>
-        <div class="testimonial-author">Andrés T.</div>
-        <div class="testimonial-case t" data-es="Visa E-2 · Inversionista" data-en="E-2 Visa · Investor" data-fr="Visa E-2 · Investisseur">Visa E-2 · Inversionista</div>
-      </div>
-
-      <div class="testimonial-card reveal reveal-d4 fade-up">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-quote t"
-          data-es="Cuando se renovó el TPS para mi país no sabía si calificaba ni cómo registrarme. Lawpez revisó todo mi expediente, preparó los formularios y la evidencia requerida. Hoy tengo mi permiso de trabajo vigente."
-          data-en="When TPS was renewed for my country, I didn't know if I qualified or how to register. Lawpez reviewed my full file, prepared the forms and required evidence. Today I have my valid work permit."
-          data-fr="Quand le TPS a été renouvelé pour mon pays, je ne savais pas si je qualifiais. Lawpez a examiné mon dossier et préparé les formulaires. Aujourd'hui j'ai mon permis de travail valide.">
-          Cuando se renovó el TPS para mi país no sabía si calificaba ni cómo registrarme. Lawpez revisó todo mi expediente, preparó los formularios y la evidencia requerida. Hoy tengo mi permiso de trabajo vigente.
-        </p>
-        <div class="testimonial-author">Lucía M.</div>
-        <div class="testimonial-case t" data-es="TPS · Protección Temporal" data-en="TPS · Temporary Protection" data-fr="TPS · Protection Temporaire">TPS · Protección Temporal</div>
-      </div>
-
+    </div>
     </div>
     <p class="testimonios-footnote t"
       data-es="Los testimonios anteriores son ilustrativos y los nombres son ficticios. Reflejan el tipo de resultados que nuestros clientes han obtenido con el apoyo de Lawpez Group LLC."
@@ -2623,32 +2875,6 @@
     setTimeout(() => loader && loader.classList.add('hidden'), 3500);
   }
 
-  // ── Custom Cursor ────────────────────────
-  const dot = document.getElementById('cursor-dot');
-  const ring = document.getElementById('cursor-ring');
-  if (dot && ring && window.matchMedia('(pointer: fine)').matches) {
-    let cx = 0, cy = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
-    document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
-    document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = '1'; });
-
-    (function animCursor() {
-      rx += (cx - rx) * 0.1;
-      ry += (cy - ry) * 0.1;
-      dot.style.left = cx + 'px';
-      dot.style.top  = cy + 'px';
-      ring.style.left = rx + 'px';
-      ring.style.top  = ry + 'px';
-      requestAnimationFrame(animCursor);
-    })();
-
-    const hoverEls = 'a, button, .service-card, .b2b-package, .nav-cta, .float-main, .float-opt, [onclick]';
-    document.querySelectorAll(hoverEls).forEach(el => {
-      el.addEventListener('mouseenter', () => { dot.classList.add('hovered'); ring.classList.add('hovered'); });
-      el.addEventListener('mouseleave', () => { dot.classList.remove('hovered'); ring.classList.remove('hovered'); });
-    });
-  }
-
   // ── Reading Progress Bar ─────────────────
   const progressBar = document.getElementById('reading-progress');
   if (progressBar) {
@@ -2785,6 +3011,66 @@
   }
 
 })();
+</script>
+<script>
+// ── Testimonial auto-advance slider ──────────────────────────
+(function() {
+  const slider = document.getElementById('testi-slider');
+  if (!slider) return;
+  const slides = slider.querySelectorAll('.testi-slide');
+  const dots   = slider.querySelectorAll('.testi-dot');
+  let current  = 0;
+  let timer    = null;
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = ((n % slides.length) + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function start() { timer = setInterval(() => goTo(current + 1), 6500); }
+  function stop()  { clearInterval(timer); }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { stop(); goTo(i); start(); });
+  });
+
+  slider.addEventListener('mouseenter', stop);
+  slider.addEventListener('mouseleave', start);
+
+  // Swipe support
+  let tsx = 0;
+  slider.addEventListener('touchstart', e => { tsx = e.touches[0].clientX; }, { passive: true });
+  slider.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - tsx;
+    if (Math.abs(dx) > 50) { stop(); goTo(current + (dx < 0 ? 1 : -1)); start(); }
+  });
+
+  start();
+})();
+
+// ── How panels — staggered GSAP reveal ───────────────────────
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+  document.querySelectorAll('.how-panel').forEach((panel, i) => {
+    gsap.from(panel, {
+      opacity: 0, x: -30,
+      duration: 0.9, ease: 'power3.out',
+      scrollTrigger: {
+        trigger: panel,
+        start: 'top 82%',
+        once: true
+      }
+    });
+    gsap.from(panel.querySelector('.how-panel-num'), {
+      opacity: 0, x: -40,
+      duration: 1.1, ease: 'power4.out',
+      delay: i * 0.05,
+      scrollTrigger: { trigger: panel, start: 'top 82%', once: true }
+    });
+  });
+}
 </script>
 </body>
 </html>
