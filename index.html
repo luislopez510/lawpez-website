@@ -532,9 +532,316 @@
     .chat-lead-form label { font-size:11px; color:var(--gray); font-family:sans-serif; }
     .chat-lead-submit { background:var(--navy); color:var(--gold); border:none; border-radius:8px; padding:10px; cursor:pointer; font-size:13px; font-family:'Georgia',serif; font-weight:bold; letter-spacing:1px; transition:background 0.2s; }
     .chat-lead-submit:hover { background:var(--navy-light); }
+  
+    /* ══════════════════════════════════════════════
+       LAWPEZ v7 — LUXURY PREMIUM LAYER
+       ══════════════════════════════════════════════ */
+
+    /* Cursor — custom gold cursor */
+    * { cursor: none !important; }
+    @media (pointer: coarse) { * { cursor: auto !important; } }
+    #cursor-dot {
+      position: fixed; width: 6px; height: 6px; background: var(--gold);
+      border-radius: 50%; pointer-events: none; z-index: 99999;
+      transform: translate(-50%,-50%); transition: opacity 0.3s, width 0.2s, height 0.2s;
+      mix-blend-mode: normal;
+    }
+    #cursor-ring {
+      position: fixed; width: 36px; height: 36px;
+      border: 1.5px solid rgba(184,146,74,0.6);
+      border-radius: 50%; pointer-events: none; z-index: 99998;
+      transform: translate(-50%,-50%);
+    }
+    #cursor-dot.hovered { width: 10px; height: 10px; background: var(--gold-light); }
+    #cursor-ring.hovered { width: 56px; height: 56px; border-color: var(--gold-light); border-width: 1px; }
+    @media (pointer: coarse) { #cursor-dot, #cursor-ring { display: none; } }
+
+    /* Loader */
+    #page-loader {
+      position: fixed; inset: 0; background: var(--navy); z-index: 100000;
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+    #page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-logo-wrap { overflow: hidden; }
+    .loader-logo {
+      font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; letter-spacing: 0.5em;
+      color: var(--gold); font-weight: 300; display: flex; gap: 0;
+      transform: translateY(100%); animation: loaderUp 1s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+    }
+    .loader-sub {
+      font-size: 0.5rem; letter-spacing: 0.55em; text-transform: uppercase;
+      color: rgba(184,146,74,0.45); margin-top: 1.2rem;
+      opacity: 0; animation: loaderFade 0.6s ease 1s forwards;
+    }
+    .loader-bar-wrap { width: 120px; height: 1px; background: rgba(184,146,74,0.15); margin-top: 2.5rem; overflow: hidden; }
+    .loader-bar { height: 100%; background: var(--gold); width: 0; animation: loaderBar 1.6s cubic-bezier(0.16,1,0.3,1) 0.3s forwards; }
+    @keyframes loaderUp { to { transform: translateY(0); } }
+    @keyframes loaderFade { to { opacity: 1; } }
+    @keyframes loaderBar { to { width: 100%; } }
+
+    /* Grain overlay */
+    #grain {
+      position: fixed; inset: -200px; width: calc(100% + 400px); height: calc(100% + 400px);
+      z-index: 9990; pointer-events: none; opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: grainShift 0.4s steps(1) infinite;
+    }
+    @keyframes grainShift {
+      0%   { transform: translate(0,0); }
+      25%  { transform: translate(-4%,-3%); }
+      50%  { transform: translate(3%,4%); }
+      75%  { transform: translate(-2%,3%); }
+      100% { transform: translate(4%,-2%); }
+    }
+
+    /* Reading progress bar */
+    #reading-progress {
+      position: fixed; top: 0; left: 0; height: 2px; z-index: 200; width: 0%;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+      transition: width 0.08s linear;
+    }
+
+    /* ── Reveal animations ── */
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+      will-change: opacity, transform;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+    .reveal-d5 { transition-delay: 0.5s; }
+    .reveal-d6 { transition-delay: 0.6s; }
+
+    /* ── HERO — bigger, more dramatic ── */
+    h1.hero-title {
+      font-size: clamp(4.2rem, 7vw, 8rem) !important;
+      letter-spacing: -0.025em !important;
+      line-height: 0.98 !important;
+    }
+    h1.hero-title em { font-size: 1em; letter-spacing: -0.02em; }
+    .hero-left { padding: 12rem 5rem 8rem !important; }
+    .hero-eyebrow { font-size: 0.58rem; letter-spacing: 0.48em; }
+    .hero-desc { font-size: 0.88rem; max-width: 420px; }
+
+    /* Animated hero line */
+    .hero-gold-line {
+      width: 0; height: 1px; background: linear-gradient(90deg, var(--gold), transparent);
+      margin: 2rem 0; animation: heroLine 1.4s cubic-bezier(0.16,1,0.3,1) 0.6s forwards;
+    }
+    @keyframes heroLine { to { width: 200px; } }
+
+    /* ── NAV — thinner, more refined ── */
+    nav { padding: 1.8rem 5rem !important; }
+    nav.scrolled { padding: 1rem 5rem !important; }
+    .nav-links a {
+      font-size: 0.62rem; letter-spacing: 0.22em;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+      height: 1px; background: var(--gold); transform: scaleX(0);
+      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); transform-origin: right;
+    }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-cta {
+      font-size: 0.62rem; letter-spacing: 0.2em;
+      position: relative; overflow: hidden;
+    }
+    .nav-cta::before {
+      content: ''; position: absolute; inset: 0; background: var(--gold);
+      transform: scaleX(0); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+      transform-origin: left; z-index: -1;
+    }
+    .nav-cta:hover::before { transform: scaleX(1); }
+    .nav-cta:hover { color: #fff !important; border-color: var(--gold) !important; }
+
+    /* ── CREDENTIALS — more refined ── */
+    .cred-year { font-size: 2.2rem !important; font-weight: 300 !important; letter-spacing: 0.05em; }
+    .cred-label { font-size: 0.58rem !important; letter-spacing: 0.22em !important; }
+
+    /* ── MARQUEE STRIP ── */
+    .marquee-section {
+      background: var(--navy); padding: 0;
+      border-top: 1px solid rgba(184,146,74,0.1);
+      border-bottom: 1px solid rgba(184,146,74,0.1);
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex; width: max-content;
+      animation: marqueeScroll 40s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item {
+      display: flex; align-items: center; gap: 1.8rem;
+      padding: 1.1rem 3.5rem; white-space: nowrap; flex-shrink: 0;
+    }
+    .marquee-item span {
+      font-size: 0.58rem; letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); font-weight: 400;
+    }
+    .marquee-diamond {
+      width: 4px; height: 4px; background: var(--gold);
+      transform: rotate(45deg); flex-shrink: 0; opacity: 0.6;
+    }
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── STATS — editorial scale ── */
+    #stats { background: var(--navy) !important; }
+    .stat-num { font-size: clamp(4rem,5.5vw,6rem) !important; font-weight: 200 !important; letter-spacing: -0.03em !important; }
+    .stat-suffix { font-size: 1.5rem !important; font-weight: 200; color: var(--gold) !important; margin-left: 2px; }
+    .stat-label { font-size: 0.6rem !important; letter-spacing: 0.22em !important; color: rgba(255,255,255,0.35) !important; }
+    .stat-item { border-right: 1px solid rgba(184,146,74,0.1) !important; }
+    .stat-item:last-child { border-right: none !important; }
+    .stats-grid { background: var(--navy) !important; }
+
+    /* ── SECTION TITLES — larger ── */
+    .section-title { font-size: clamp(2.8rem,4.5vw,4.8rem) !important; font-weight: 200 !important; line-height: 1.05 !important; letter-spacing: -0.01em !important; }
+    .section-label { font-size: 0.58rem !important; letter-spacing: 0.42em !important; }
+
+    /* ── SERVICES — premium cards ── */
+    .service-card {
+      transition: background 0.4s, box-shadow 0.4s !important;
+      border: none !important; outline: none !important;
+    }
+    .service-card::after { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1) !important; }
+    .service-card:hover {
+      background: var(--navy3) !important;
+      box-shadow: inset 0 0 80px rgba(184,146,74,0.05), 0 0 0 0.5px rgba(184,146,74,0.15) !important;
+    }
+    .service-num { font-size: 6rem !important; color: rgba(184,146,74,0.06) !important; transition: color 0.4s; }
+    .service-card:hover .service-num { color: rgba(184,146,74,0.12) !important; }
+    .service-title { font-size: 1.8rem !important; font-weight: 300 !important; letter-spacing: -0.01em; }
+
+    /* ── ABOUT QUOTE — larger ── */
+    .about-quote {
+      font-size: 1.75rem !important; line-height: 1.5 !important;
+      padding-left: 2rem !important; border-left-width: 2px !important;
+    }
+
+    /* ── TESTIMONIALS — editorial ── */
+    .testimonial-card {
+      position: relative !important;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s !important;
+    }
+    .testimonial-card:hover { transform: translateY(-6px) !important; }
+    .testimonial-card::before {
+      content: '"';
+      font-family: 'Cormorant Garamond', serif; font-size: 9rem; font-weight: 300;
+      color: rgba(184,146,74,0.1); position: absolute;
+      top: -1.5rem; left: 1.2rem; line-height: 1; pointer-events: none;
+    }
+
+    /* ── B2B PACKAGES — premium hover ── */
+    .b2b-package {
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s !important;
+      border-top: 2px solid var(--gold) !important;
+    }
+    .b2b-package:hover {
+      transform: translateY(-6px) !important;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.12) !important;
+    }
+
+    /* ── CONTACT SECTION ── */
+    #contact .section-title { color: #fff !important; }
+
+    /* ── BUTTONS — premium feel ── */
+    .btn-gold {
+      position: relative; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16,1,0.3,1) !important;
+      letter-spacing: 0.2em !important;
+    }
+    .btn-gold::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(255,255,255,0.12);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .btn-gold:hover::after { transform: scaleX(1); }
+    .btn-gold:hover { transform: translateY(-3px) !important; box-shadow: 0 12px 32px rgba(184,146,74,0.35) !important; }
+    .btn-ghost { letter-spacing: 0.2em !important; transition: all 0.4s cubic-bezier(0.16,1,0.3,1) !important; }
+    .btn-ghost:hover { transform: translateY(-3px) !important; }
+
+    /* ── GOLD DIVIDER LINE ── */
+    .gold-rule {
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(184,146,74,0.3), transparent);
+    }
+
+    /* ── FOOTER — refined ── */
+    footer { position: relative; }
+
+    /* ── SCROLL BAR — thinner, gold ── */
+    ::-webkit-scrollbar { width: 3px !important; }
+    ::-webkit-scrollbar-thumb { background: var(--gold) !important; border-radius: 0 !important; }
+    ::-webkit-scrollbar-track { background: var(--navy) !important; }
+
+    /* ── SECTION NUMBERS (decorative bg text) ── */
+    .section-bg-num {
+      position: absolute; right: 4rem; top: 3rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(6rem,10vw,12rem); font-weight: 200;
+      color: rgba(184,146,74,0.04); line-height: 1;
+      pointer-events: none; user-select: none;
+      letter-spacing: -0.05em;
+    }
+    section { position: relative; }
+
+    /* ── MAGNETIC WRAPPER ── */
+    .mag-wrap { display: inline-block; }
+
+    /* ── HERO bottom scroll indicator ── */
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 5rem; z-index: 2;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .scroll-hint-line {
+      width: 0; height: 1px; background: rgba(255,255,255,0.3);
+      animation: scrollLineGrow 1.2s cubic-bezier(0.16,1,0.3,1) 1.5s forwards;
+    }
+    .scroll-hint-text {
+      font-size: 0.55rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); opacity: 0;
+      animation: loaderFade 0.6s ease 2s forwards;
+    }
+    @keyframes scrollLineGrow { to { width: 48px; } }
+
+    /* ── ABOUT photo — gold border animated ── */
+    .about-photo-wrap {
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1) !important;
+    }
+    .about-photo-wrap:hover { transform: scale(1.01) !important; }
+
+    /* ── EDU ITEMS ── */
+    .edu-item { transition: padding-left 0.3s ease; }
+    .edu-item:hover { padding-left: 0.5rem; }
+    .edu-year { font-size: 1.2rem !important; }
+
   </style>
+  <!-- Premium animation libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
+<!-- ── PREMIUM LAYER v7 ── -->
+<div id="page-loader">
+  <div class="loader-logo-wrap">
+    <div class="loader-logo">LAWPEZ</div>
+  </div>
+  <p class="loader-sub">Immigration Legal Consulting</p>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+</div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="grain"></div>
+<div id="reading-progress"></div>
+
 
 <!-- ── NAVIGATION ── -->
 <div id="progress-bar"></div>
@@ -587,6 +894,7 @@
       <span class="t" data-es="Residencia. Ciudadanía. Protección." data-en="Residency. Citizenship. Protection." data-fr="Résidence. Citoyenneté. Protection.">Residencia. Ciudadanía. Protección.</span>
       <em class="t" data-es="Empieza aquí." data-en="Start here." data-fr="Commencez ici.">Empieza aquí.</em>
     </h1>
+    <div class="reveal reveal-d2 hero-gold-line"></div>
     <p class="hero-desc t"
       data-es="Peticiones familiares, asilo, naturalización, H-1B y visas de inversionista. Preparamos el expediente completo — para particulares y para firmas de abogados. Cualquier nacionalidad."
       data-en="Family petitions, asylum, naturalization, H-1B, and investor visas. We prepare the complete file — for individuals and law firms. Any nationality."
@@ -599,6 +907,10 @@
     </div>
   </div>
 
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    <span class="scroll-hint-text t" data-es="Desplaza para explorar" data-en="Scroll to explore" data-fr="Défiler pour explorer">Desplaza para explorar</span>
+  </div>
 </section>
 
 <!-- ── CREDENTIALS STRIP ── -->
@@ -622,32 +934,69 @@
     </div>
   </div>
 </div>
+<!-- ── MARQUEE STRIP ── -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>Peticiones Familiares</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Naturalización</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Asilo & TPS</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Visas E-2 & EB-5</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Cartas de Experto en Derecho Venezolano</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Ajuste de Estatus</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>H-1B & Visas de Trabajo</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Consultoría Migratoria</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Family Petitions</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Naturalization</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Asylum & TPS</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>E-2 & EB-5 Investor Visas</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Venezuelan Law Expert Letters</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Adjustment of Status</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Work Visas</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Immigration Consulting</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Peticiones Familiares</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Naturalización</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Asilo & TPS</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Visas E-2 & EB-5</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Cartas de Experto en Derecho Venezolano</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Ajuste de Estatus</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>H-1B & Visas de Trabajo</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Consultoría Migratoria</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Family Petitions</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Naturalization</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Asylum & TPS</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>E-2 & EB-5 Investor Visas</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Venezuelan Law Expert Letters</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Adjustment of Status</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Work Visas</span><div class="marquee-diamond"></div></div>
+    <div class="marquee-item"><span>Immigration Consulting</span><div class="marquee-diamond"></div></div>
+  </div>
+</div>
 
 <!-- ── STATS ── -->
 <section id="stats">
   <div class="stats-grid">
-    <div class="stat-item fade-up">
+    <div class="stat-item reveal reveal-d1 fade-up">
       <div style="display:flex;align-items:baseline;gap:0.2rem;">
         <span class="stat-num counter" data-target="3">0</span>
         <span class="stat-suffix"> idiomas</span>
       </div>
       <div class="stat-label t" data-es="Español · Inglés · Francés" data-en="Spanish · English · French" data-fr="Espagnol · Anglais · Français">Español · Inglés · Francés</div>
     </div>
-    <div class="stat-item fade-up">
+    <div class="stat-item reveal reveal-d2 fade-up">
       <div style="display:flex;align-items:baseline;gap:0.2rem;">
         <span class="stat-num counter" data-target="50">0</span>
         <span class="stat-suffix">+ casos</span>
       </div>
       <div class="stat-label t" data-es="Clientes y firmas atendidas" data-en="Clients and firms served" data-fr="Clients et cabinets servis">Clientes y firmas atendidas</div>
     </div>
-    <div class="stat-item fade-up">
+    <div class="stat-item reveal reveal-d3 fade-up">
       <div style="display:flex;align-items:baseline;gap:0.2rem;">
         <span class="stat-num counter" data-target="7">0</span>
         <span class="stat-suffix">+ años</span>
       </div>
       <div class="stat-label t" data-es="De experiencia jurídica" data-en="Of legal experience" data-fr="D'expérience juridique">De experiencia jurídica</div>
     </div>
-    <div class="stat-item fade-up">
+    <div class="stat-item reveal reveal-d4 fade-up">
       <div style="display:flex;align-items:baseline;gap:0.2rem;">
         <span class="stat-num">24</span>
         <span class="stat-suffix">h</span>
@@ -658,17 +1007,17 @@
 </section>
 
 <!-- ── ABOUT ── -->
-<section id="about">
+<section id="about"><span class="section-bg-num" aria-hidden="true">02</span>
   <div class="about-grid">
     <div class="about-content">
-      <p class="section-label t" data-es="Perfil Profesional" data-en="Professional Profile" data-fr="Profil Professionnel">Perfil Profesional</p>
-      <h2 class="section-title t"
+      <p class="reveal section-label t" data-es="Perfil Profesional" data-en="Professional Profile" data-fr="Profil Professionnel">Perfil Profesional</p>
+      <h2 class="reveal reveal-d1 section-title t"
         data-es="Conocimiento venezolano.<br><em>Perspectiva global.</em>"
         data-en="Venezuelan expertise.<br><em>Global perspective.</em>"
         data-fr="Expertise vénézuélienne.<br><em>Perspective mondiale.</em>">
         Conocimiento venezolano.<br><em>Perspectiva global.</em>
       </h2>
-      <div class="gold-line"></div>
+      <div class="reveal reveal-d2 gold-line"></div>
 
       <div class="author-badge">
         <span class="author-badge-icon">✦</span>
@@ -730,10 +1079,10 @@
 </section>
 
 <!-- ── SERVICES ── -->
-<section id="services">
+<section id="services"><span class="section-bg-num" aria-hidden="true">01</span>
   <div class="services-header">
-    <p class="section-label t" data-es="Servicios" data-en="Services" data-fr="Services">Servicios</p>
-    <h2 class="section-title on-dark t"
+    <p class="reveal section-label t" data-es="Servicios" data-en="Services" data-fr="Services">Servicios</p>
+    <h2 class="reveal reveal-d1 section-title on-dark t"
       data-es="Servicios migratorios.<br><em>Y derecho venezolano.</em>"
       data-en="Immigration services.<br><em>And Venezuelan law.</em>"
       data-fr="Services d&rsquo;immigration.<br><em>Et droit vénézuélien.</em>">
@@ -748,7 +1097,7 @@
   </div>
   <div class="services-grid">
 
-    <div class="service-card fade-up">
+    <div class="service-card reveal reveal-d1 fade-up">
       <div class="service-num">01</div>
       <h3 class="service-title t" data-es="Peticiones Familiares &amp; Ajuste de Estatus" data-en="Family Petitions &amp; Adjustment of Status" data-fr="Pétitions Familiales &amp; Ajustement de Statut">Peticiones Familiares &amp; Ajuste de Estatus</h3>
       <p class="service-desc t"
@@ -765,7 +1114,7 @@
       </ul>
     </div>
 
-    <div class="service-card fade-up">
+    <div class="service-card reveal reveal-d2 fade-up">
       <div class="service-num">02</div>
       <h3 class="service-title t" data-es="Naturalización &amp; Procesamiento Consular" data-en="Naturalization &amp; Consular Processing" data-fr="Naturalisation &amp; Traitement Consulaire">Naturalización &amp; Procesamiento Consular</h3>
       <p class="service-desc t"
@@ -782,7 +1131,7 @@
       </ul>
     </div>
 
-    <div class="service-card fade-up">
+    <div class="service-card reveal reveal-d3 fade-up">
       <div class="service-num">03</div>
       <h3 class="service-title t" data-es="Asilo &amp; Protección Humanitaria" data-en="Asylum &amp; Humanitarian Protection" data-fr="Asile &amp; Protection Humanitaire">Asilo &amp; Protección Humanitaria</h3>
       <p class="service-desc t"
@@ -799,7 +1148,7 @@
       </ul>
     </div>
 
-    <div class="service-card fade-up">
+    <div class="service-card reveal reveal-d4 fade-up">
       <div class="service-num">04</div>
       <h3 class="service-title t" data-es="Visas de Trabajo &amp; Cambio de Estatus" data-en="Work Visas &amp; Change of Status" data-fr="Visas de Travail &amp; Changement de Statut">Visas de Trabajo &amp; Cambio de Estatus</h3>
       <p class="service-desc t"
@@ -816,7 +1165,7 @@
       </ul>
     </div>
 
-    <div class="service-card fade-up">
+    <div class="service-card reveal reveal-d5 fade-up">
       <div class="service-num">05</div>
       <h3 class="service-title t" data-es="Visas de Inversionista" data-en="Investor Visas" data-fr="Visas d&rsquo;Investisseur">Visas de Inversionista</h3>
       <p class="service-desc t"
@@ -833,7 +1182,7 @@
       </ul>
     </div>
 
-    <div class="service-card fade-up">
+    <div class="service-card reveal reveal-d6 fade-up">
       <div class="service-num">06</div>
       <h3 class="service-title t" data-es="Derecho Venezolano &amp; Traducción" data-en="Venezuelan Law &amp; Translation" data-fr="Droit Vénézuélien &amp; Traduction">Derecho Venezolano &amp; Traducción</h3>
       <p class="service-desc t"
@@ -857,14 +1206,14 @@
 <section id="how">
   <div class="how-inner">
     <div class="how-header fade-up">
-      <p class="section-label t" data-es="Proceso" data-en="Process" data-fr="Processus">Proceso</p>
-      <h2 class="section-title t"
+      <p class="reveal section-label t" data-es="Proceso" data-en="Process" data-fr="Processus">Proceso</p>
+      <h2 class="reveal reveal-d1 section-title t"
         data-es="¿Cómo trabajamos?<br><em>Simple. Rápido. Confiable.</em>"
         data-en="How do we work?<br><em>Simple. Fast. Reliable.</em>"
         data-fr="Comment travaillons-nous?<br><em>Simple. Rapide. Fiable.</em>">
         ¿Cómo trabajamos?<br><em>Simple. Rápido. Confiable.</em>
       </h2>
-      <div class="gold-line" style="margin:1.5rem auto;"></div>
+      <div class="reveal reveal-d2 gold-line" style="margin:1.5rem auto;"></div>
     </div>
     <div class="how-steps">
       <div class="how-step fade-up">
@@ -905,18 +1254,18 @@
 </section>
 
 <!-- ── B2B ── -->
-<section id="b2b">
+<section id="b2b"><span class="section-bg-num" aria-hidden="true">04</span>
   <div class="b2b-inner">
     <div class="b2b-top">
       <div>
-        <p class="section-label t" data-es="Para Firmas de Abogados" data-en="For Law Firms" data-fr="Pour Cabinets d&rsquo;Avocats">Para Firmas de Abogados</p>
-        <h2 class="section-title t"
+        <p class="reveal section-label t" data-es="Para Firmas de Abogados" data-en="For Law Firms" data-fr="Pour Cabinets d&rsquo;Avocats">Para Firmas de Abogados</p>
+        <h2 class="reveal reveal-d1 section-title t"
           data-es="Tú haces el derecho.<br><em>Nosotros el papeleo.</em>"
           data-en="You handle the law.<br><em>We handle the paperwork.</em>"
           data-fr="Vous gérez le droit.<br><em>Nous gérons la paperasse.</em>">
           Tú haces el derecho.<br><em>Nosotros el papeleo.</em>
         </h2>
-        <div class="gold-line"></div>
+        <div class="reveal reveal-d2 gold-line"></div>
         <p class="b2b-intro-text t"
           data-es="Diseñado para firmas que quieren mover casos más rápido. Preparamos los formularios USCIS, organizamos el expediente de evidencia y producimos las cartas de experto — listos para que el attorney revise, firme y presente."
           data-en="Built for firms that want to move cases faster. We prepare the USCIS forms, organize the evidence file, and produce expert opinion letters — ready for the attorney to review, sign, and file."
@@ -966,14 +1315,14 @@
 <section id="why">
   <div class="why-inner">
     <div class="centered">
-      <p class="section-label t" data-es="Por Qué Lawpez" data-en="Why Lawpez" data-fr="Pourquoi Lawpez">Por Qué Lawpez</p>
-      <h2 class="section-title t"
+      <p class="reveal section-label t" data-es="Por Qué Lawpez" data-en="Why Lawpez" data-fr="Pourquoi Lawpez">Por Qué Lawpez</p>
+      <h2 class="reveal reveal-d1 section-title t"
         data-es="Preparación completa.<br><em>Respaldo binacional.</em>"
         data-en="Complete preparation.<br><em>Binational expertise.</em>"
         data-fr="Préparation complète.<br><em>Expertise binationale.</em>">
         Preparación completa.<br><em>Respaldo binacional.</em>
       </h2>
-      <div class="gold-line"></div>
+      <div class="reveal reveal-d2 gold-line"></div>
     </div>
     <div class="why-grid">
       <div class="why-item fade-up">
@@ -1023,8 +1372,8 @@
 <!-- ── PUBLICATIONS ── -->
 <section id="publications">
   <div class="pub-header fade-up">
-    <p class="section-label t" data-es="Publicaciones" data-en="Publications" data-fr="Publications">Publicaciones</p>
-    <h2 class="section-title on-dark t"
+    <p class="reveal section-label t" data-es="Publicaciones" data-en="Publications" data-fr="Publications">Publicaciones</p>
+    <h2 class="reveal reveal-d1 section-title on-dark t"
       data-es="Repositorio intelectual.<br><em>Escritura con propósito.</em>"
       data-en="Intellectual repository.<br><em>Writing with purpose.</em>"
       data-fr="Répertoire intellectuel.<br><em>Écriture avec intention.</em>">
@@ -1113,8 +1462,8 @@
 <!-- ── TEAM ── -->
 <section id="team">
   <div class="team-header">
-    <p class="section-label t" data-es="El Equipo" data-en="The Team" data-fr="L'Équipe">El Equipo</p>
-    <h2 class="section-title t"
+    <p class="reveal section-label t" data-es="El Equipo" data-en="The Team" data-fr="L'Équipe">El Equipo</p>
+    <h2 class="reveal reveal-d1 section-title t"
       data-es="Las personas detrás<br><em>del trabajo.</em>"
       data-en="The people behind<br><em>the work.</em>"
       data-fr="Les personnes derrière<br><em>le travail.</em>">
@@ -1199,21 +1548,21 @@
 
 
 <!-- ── TESTIMONIOS ── -->
-<section id="testimonios">
+<section id="testimonios"><span class="section-bg-num" aria-hidden="true">03</span>
   <div class="testimonios-inner">
     <div class="testimonios-header">
-      <p class="section-label t" data-es="Resultados" data-en="Results" data-fr="Résultats">Resultados</p>
-      <h2 class="section-title t"
+      <p class="reveal section-label t" data-es="Resultados" data-en="Results" data-fr="Résultats">Resultados</p>
+      <h2 class="reveal reveal-d1 section-title t"
         data-es="Casos reales.<br><em>Personas reales.</em>"
         data-en="Real cases.<br><em>Real people.</em>"
         data-fr="Cas réels.<br><em>Personnes réelles.</em>">
         Casos reales.<br><em>Personas reales.</em>
       </h2>
-      <div class="gold-line"></div>
+      <div class="reveal reveal-d2 gold-line"></div>
     </div>
     <div class="testimonios-grid">
 
-      <div class="testimonial-card fade-up">
+      <div class="testimonial-card reveal reveal-d1 fade-up">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-quote t"
           data-es="Mi abogado necesitaba una carta de experto sobre persecución política. La que preparó Lawpez era tan detallada y bien fundamentada que el juez la aceptó sin objeciones. Hoy tengo mi asilo aprobado."
@@ -1225,7 +1574,7 @@
         <div class="testimonial-case t" data-es="Asilo Afirmativo" data-en="Affirmative Asylum" data-fr="Asile Affirmatif">Asilo Afirmativo</div>
       </div>
 
-      <div class="testimonial-card fade-up">
+      <div class="testimonial-card reveal reveal-d2 fade-up">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-quote t"
           data-es="Somos una pareja binacional y no sabíamos por dónde empezar con el I-130 y el I-485. Lawpez organizó toda nuestra documentación, tradujo los registros civiles y el proceso fue mucho más claro de lo que esperábamos."
@@ -1237,7 +1586,7 @@
         <div class="testimonial-case t" data-es="Ajuste de Estatus por Matrimonio" data-en="Marriage-Based Adjustment of Status" data-fr="Ajustement de Statut par Mariage">Ajuste de Estatus por Matrimonio</div>
       </div>
 
-      <div class="testimonial-card fade-up">
+      <div class="testimonial-card reveal reveal-d3 fade-up">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-quote t"
           data-es="Llevaba cinco años como residente permanente y quería naturalizarme, pero los formularios me intimidaban. Con el apoyo de Lawpez presenté mi N-400 y en menos de un año rendí el examen y me convertí en ciudadana."
@@ -1249,7 +1598,7 @@
         <div class="testimonial-case t" data-es="Naturalización" data-en="Naturalization" data-fr="Naturalisation">Naturalización</div>
       </div>
 
-      <div class="testimonial-card fade-up">
+      <div class="testimonial-card reveal reveal-d4 fade-up">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-quote t"
           data-es="Quería traer a mis padres mayores y no sabía que existía este tipo de apoyo. Lawpez preparó toda la documentación, gestionó las traducciones y me explicó cada paso del proceso. Hoy mi familia está reunida."
@@ -1261,7 +1610,7 @@
         <div class="testimonial-case t" data-es="Petición Familiar · I-130" data-en="Family Petition · I-130" data-fr="Pétition Familiale · I-130">Petición Familiar · I-130</div>
       </div>
 
-      <div class="testimonial-card fade-up">
+      <div class="testimonial-card reveal reveal-d4 fade-up">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-quote t"
           data-es="El proceso de la visa E-2 me parecía imposible de entender solo. Lawpez preparó todo el análisis del contexto económico y mi historial empresarial de forma tan profesional que mi solicitud fue aprobada sin inconvenientes."
@@ -1273,7 +1622,7 @@
         <div class="testimonial-case t" data-es="Visa E-2 · Inversionista" data-en="E-2 Visa · Investor" data-fr="Visa E-2 · Investisseur">Visa E-2 · Inversionista</div>
       </div>
 
-      <div class="testimonial-card fade-up">
+      <div class="testimonial-card reveal reveal-d4 fade-up">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-quote t"
           data-es="Cuando se renovó el TPS para mi país no sabía si calificaba ni cómo registrarme. Lawpez revisó todo mi expediente, preparó los formularios y la evidencia requerida. Hoy tengo mi permiso de trabajo vigente."
@@ -1298,14 +1647,14 @@
 <!-- ── CONTACT ── -->
 <section id="contact">
   <div class="contact-inner">
-    <p class="section-label centered t" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</p>
-    <h2 class="section-title centered t"
+    <p class="reveal section-label centered t" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</p>
+    <h2 class="reveal reveal-d1 section-title centered t"
       data-es="Hablemos de<br><em>su caso.</em>"
       data-en="Let's talk about<br><em>your matter.</em>"
       data-fr="Parlons de<br><em>votre dossier.</em>">
       Hablemos de<br><em>su caso.</em>
     </h2>
-    <div class="gold-line centered" style="margin:1.5rem auto 2rem;"></div>
+    <div class="reveal reveal-d2 gold-line centered" style="margin:1.5rem auto 2rem;"></div>
     <p class="contact-intro t"
       data-es="Atendemos casos de cualquier nacionalidad. Formularios USCIS, peticiones familiares, asilo, naturalización, cartas de experto y más. Escríbanos y le respondemos en menos de 24 horas."
       data-en="We serve clients of any nationality. USCIS forms, family petitions, asylum, naturalization, expert opinion letters, and more. Write to us and we'll respond within 24 hours."
@@ -2096,6 +2445,119 @@
     }
   });
 
+</script>
+<script>
+// ═══════════════════════════════════════════
+// LAWPEZ v7 — PREMIUM INTERACTIONS
+// ═══════════════════════════════════════════
+
+(function() {
+
+  // ── Loader ──────────────────────────────
+  const loader = document.getElementById('page-loader');
+  if (loader) {
+    window.addEventListener('load', () => {
+      setTimeout(() => loader.classList.add('hidden'), 2000);
+    });
+    // Safety: hide after 3.5s max
+    setTimeout(() => loader && loader.classList.add('hidden'), 3500);
+  }
+
+  // ── Custom Cursor ────────────────────────
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  if (dot && ring && window.matchMedia('(pointer: fine)').matches) {
+    let cx = 0, cy = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
+    document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
+    document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = '1'; });
+
+    (function animCursor() {
+      rx += (cx - rx) * 0.1;
+      ry += (cy - ry) * 0.1;
+      dot.style.left = cx + 'px';
+      dot.style.top  = cy + 'px';
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(animCursor);
+    })();
+
+    const hoverEls = 'a, button, .service-card, .b2b-package, .nav-cta, .float-main, .float-opt, [onclick]';
+    document.querySelectorAll(hoverEls).forEach(el => {
+      el.addEventListener('mouseenter', () => { dot.classList.add('hovered'); ring.classList.add('hovered'); });
+      el.addEventListener('mouseleave', () => { dot.classList.remove('hovered'); ring.classList.remove('hovered'); });
+    });
+  }
+
+  // ── Reading Progress Bar ─────────────────
+  const progressBar = document.getElementById('reading-progress');
+  if (progressBar) {
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = ((scrollTop / total) * 100).toFixed(1) + '%';
+    }, { passive: true });
+  }
+
+  // ── Scroll Reveal ────────────────────────
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // ── Magnetic Buttons ─────────────────────
+  document.querySelectorAll('.btn-gold, .btn-ghost, .nav-cta').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width / 2;
+      const y = e.clientY - r.top - r.height / 2;
+      btn.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+
+  // ── GSAP ScrollTrigger animations ────────
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero parallax
+    gsap.to('#hero', {
+      backgroundPositionY: '30%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    // Section titles — horizontal slide
+    document.querySelectorAll('.about-grid, .services-header, .b2b-inner').forEach(el => {
+      gsap.fromTo(el, 
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+        }
+      );
+    });
+  }
+
+  // ── Stat suffix color sync (gold tint) ───
+  document.querySelectorAll('.stat-suffix').forEach(el => {
+    el.style.color = 'var(--gold)';
+  });
+
+})();
 </script>
 </body>
 </html>
