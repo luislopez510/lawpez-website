@@ -125,9 +125,9 @@
       --border-gold:rgba(184,146,74,0.25);
     }
     html { scroll-behavior: smooth; }
-    body { font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; background:#0a0f1a; color:#e8e2d6; line-height:1.7; overflow-x:hidden; }
+    body { font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; background:#16202e; color:#e8e2d6; line-height:1.7; overflow-x:hidden; }
     ::-webkit-scrollbar { width:4px; }
-    ::-webkit-scrollbar-track { background:#0a0f1a; }
+    ::-webkit-scrollbar-track { background:#16202e; }
     ::-webkit-scrollbar-thumb { background:var(--gold); border-radius:2px; }
 
     /* ── NAV ── */
@@ -296,7 +296,7 @@
     .centered .gold-line { margin:1.5rem auto; }
 
     /* ── ABOUT ── */
-    #about { background:#0e1420; }
+    #about { background:#1a2738; }
     .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:7rem; align-items:center; max-width:1200px; margin:0 auto; }
     .about-quote { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-style:italic; font-weight:300; line-height:1.6; color:#e8e2d6; border-left:3px solid var(--gold); padding-left:1.5rem; margin:2rem 0; }
     .about-text { font-size:0.88rem; color:rgba(232,226,214,0.65); line-height:1.9; font-weight:300; margin-bottom:1.2rem; }
@@ -341,7 +341,7 @@
     /* ── B2B ── */
 
     /* ── B2B animated background ── */
-    #b2b { background:#0e1420; position:relative; overflow:hidden; }
+    #b2b { background:#1a2738; position:relative; overflow:hidden; }
     .b2b-bg-anim {
       position: absolute; inset: 0; z-index: 0; pointer-events: none;
       background:
@@ -374,7 +374,7 @@
     .pkg-list li:last-child { border-bottom:none; }
 
     /* ── WHY ── */
-    #why { background:#0e1420; }
+    #why { background:#1a2738; }
     .why-inner { max-width:1200px; margin:0 auto; }
     .why-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-top:4rem; }
     .why-item { text-align:center; padding:2.5rem 1.5rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-bottom:3px solid var(--gold); transition:transform 0.3s; }
@@ -410,7 +410,7 @@
     .pub-novel-link { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-top:0.5rem; display:block; }
 
     /* ── TEAM ── */
-    #team { background:#0a0f1a; }
+    #team { background:#16202e; }
     .team-header { max-width:1200px; margin:0 auto 4rem; }
     .team-intro { font-size:0.88rem; color:rgba(232,226,214,0.55); max-width:480px; line-height:1.8; font-weight:300; }
     .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:1200px; margin:0 auto; }
@@ -431,7 +431,7 @@
     .team-creds { margin-top:1rem; padding-top:1rem; border-top:1px solid rgba(184,146,74,0.15); font-size:0.72rem; color:rgba(184,146,74,0.75); line-height:1.6; font-weight:400; letter-spacing:0.04em; }
 
     /* ── CONTACT ── */
-    #contact { background:#0a0f1a; }
+    #contact { background:#16202e; }
     .contact-inner { max-width:860px; margin:0 auto; text-align:center; }
     .contact-intro { font-size:0.88rem; color:rgba(232,226,214,0.65); max-width:520px; margin:0 auto 3rem; line-height:1.85; font-weight:300; text-align:center; }
     .contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:3.5rem; }
@@ -454,14 +454,27 @@
 
 
     /* ── TESTIMONIALS ── */
-    #testimonios { background:#0a0f1a; padding:8rem 5rem; }
+    #testimonios { background:#16202e; padding:8rem 5rem; }
     .testimonios-inner { max-width:1200px; margin:0 auto; }
     .testimonios-header { text-align:center; margin-bottom:3rem; }
     .testimonios-header .section-label { justify-content:center; }
     .testimonios-header .gold-line { margin:1.5rem auto; }
     .testimonios-disclaimer { font-size:0.72rem; color:var(--text-muted); font-style:italic; margin-bottom:3rem; text-align:center; opacity:0.75; max-width:680px; margin-left:auto; margin-right:auto; line-height:1.7; }
     .testimonios-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-    .testimonial-card { background:rgba(255,255,255,0.03); padding:2.5rem; border:1px solid rgba(255,255,255,0.06); border-bottom:3px solid var(--gold); position:relative; transition:transform 0.3s; }
+    .testimonial-card {
+      background: #ede8dc;
+      padding: 2.2rem 2rem 1.8rem;
+      border: 1px solid rgba(184,146,74,0.15);
+      border-top: 3px solid var(--gold);
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .testimonial-card:hover { transform:translateY(-5px); box-shadow:0 20px 50px rgba(0,0,0,0.15); }
+    .testimonial-card .testi-big-q { font-size:5rem; line-height:0.6; color:rgba(184,146,74,0.3); margin-bottom:-0.8rem; display:block; user-select:none; font-family:'Cormorant Garamond',serif; }
+    .testimonial-card .testi-text { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.35vw,1.18rem); font-weight:300; font-style:italic; color:#1a2535; line-height:1.7; margin-bottom:1.4rem; max-width:100%; }
+    .testimonial-card .testi-meta { font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:0.6rem; }
+    .testimonial-card .testi-meta-sep { color:rgba(184,146,74,0.5); }
+    .testimonial-card .testi-stars-row { color:var(--gold); font-size:0.82rem; letter-spacing:0.1em; margin-top:0.8rem; }
     .testimonial-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.1); }
     .testimonial-stars { color:var(--gold); font-size:0.85rem; letter-spacing:0.1em; margin-bottom:1.2rem; }
     .testimonial-quote { font-family:'Cormorant Garamond',serif; font-size:1.08rem; font-style:italic; font-weight:300; color:var(--navy); line-height:1.7; margin-bottom:1.5rem; padding-left:1.2rem; border-left:3px solid var(--gold-dim); }
@@ -505,7 +518,7 @@
     @media(max-width:768px){ #stats { padding:3rem 1.5rem; } .stats-grid { grid-template-columns:repeat(2,1fr); gap:2rem; } }
 
     /* ── HOW WE WORK ── */
-    #how { background:#0a0f1a; padding:8rem 0; }
+    #how { background:#16202e; padding:8rem 0; }
     .how-inner { max-width:1100px; margin:0 auto; }
     .how-header { text-align:center; margin-bottom:5rem; }
     .how-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; position:relative; }
@@ -729,7 +742,7 @@
     .cred-label { font-size: 0.58rem !important; letter-spacing: 0.22em !important; }
 
     /* ── MARQUEE STRIP ── */
-    .marquee-section { background:#0a0f1a; border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05); overflow:hidden; white-space:nowrap; padding:1.2rem 0; }
+    .marquee-section { background:#16202e; border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05); overflow:hidden; white-space:nowrap; padding:1.2rem 0; }
     .marquee-track {
       display: flex; width: max-content;
       animation: marqueeScroll 40s linear infinite;
@@ -889,7 +902,7 @@
        ══════════════════════════════════════ */
 
     /* ── Contact section — full navy ── */
-    #contact { background: #0a0f1a !important; }
+    #contact { background: #16202e !important; }
     #contact .section-label { color: var(--gold-light) !important; }
     #contact .section-label::after { background: var(--gold-light) !important; }
     #contact .section-title { color: #fff !important; }
@@ -1148,7 +1161,7 @@
 
     /* ── 4. HOW WE WORK — stepped large panels ── */
     #how {
-      background: #0a0f1a; padding: 0;
+      background: #16202e; padding: 0;
       overflow: hidden;
     }
     .how-header-wrap { padding: 8rem 5rem 4rem; max-width: 1200px; margin: 0 auto; }
@@ -1203,7 +1216,7 @@
     h1.hero-title span .hw-light  { font-weight: 200; opacity: 0.55; font-style: normal; -webkit-text-fill-color: initial; background: none; }
 
     /* ── 6. TRUST STRIP ── */
-    .trust-strip { background:#0a0f1a; padding:3rem 5rem; text-align:center; border-top:1px solid rgba(184,146,74,0.12); }
+    .trust-strip { background:#16202e; padding:3rem 5rem; text-align:center; border-top:1px solid rgba(184,146,74,0.12); }
     .trust-label {
       font-size: 0.58rem; letter-spacing: 0.38em;
       text-transform: uppercase; color: var(--text-muted);
@@ -1223,7 +1236,7 @@
     }
     .trust-item:last-child { border-right: none; }
     @media (max-width: 768px) {
-      .trust-strip { background:#0a0f1a; padding:3rem 5rem; text-align:center; border-top:1px solid rgba(184,146,74,0.12); }
+      .trust-strip { background:#16202e; padding:3rem 5rem; text-align:center; border-top:1px solid rgba(184,146,74,0.12); }
       .trust-items { justify-content: flex-start; }
       .trust-item { font-size: 0.9rem; padding: 0.3rem 1rem; }
     }
@@ -2018,114 +2031,104 @@
       </h2>
       <div class="reveal reveal-d2 gold-line"></div>
     </div>
-    <div class="testi-slider" id="testi-slider">
-      <div class="testi-slides">
+    <div class="testimonios-grid" id="testi-grid">
 
-        <div class="testi-slide active">
-          <span class="testi-big-q" aria-hidden="true">"</span>
-          <p class="testi-text t"
-            data-es="Mi abogado necesitaba una carta de experto sobre persecución política. La que preparó Lawpez era tan detallada y bien fundamentada que el juez la aceptó sin objeciones. Hoy tengo mi asilo aprobado."
-            data-en="My attorney needed an expert opinion letter about political persecution. The one Lawpez prepared was so detailed that the judge accepted it without objection. Today my asylum is approved."
-            data-fr="Mon avocat avait besoin d'une lettre d'expert. Celle que Lawpez a préparée était si solide que le juge l'a acceptée sans objection.">
-            Mi abogado necesitaba una carta de experto sobre persecución política. La que preparó Lawpez era tan detallada y bien fundamentada que el juez la aceptó sin objeciones. Hoy tengo mi asilo aprobado.
-          </p>
-          <div class="testi-meta">
-            <span>Valentina G.</span>
-            <span class="testi-meta-sep">·</span>
-            <span class="t" data-es="Asilo Afirmativo" data-en="Affirmative Asylum" data-fr="Asile Affirmatif">Asilo Afirmativo</span>
-          </div>
-          <div class="testi-stars-row">★★★★★</div>
+      <div class="testimonial-card fade-up">
+        <span class="testi-big-q" aria-hidden="true">"</span>
+        <p class="testi-text t"
+          data-es="Mi abogado necesitaba una carta de experto sobre persecución política. La que preparó Lawpez era tan detallada y bien fundamentada que el juez la aceptó sin objeciones. Hoy tengo mi asilo aprobado."
+          data-en="My attorney needed an expert opinion letter about political persecution. The one Lawpez prepared was so detailed that the judge accepted it without objection. Today my asylum is approved."
+          data-fr="Mon avocat avait besoin d'une lettre d'expert. Celle que Lawpez a préparée était si solide que le juge l'a acceptée sans objection.">
+          Mi abogado necesitaba una carta de experto sobre persecución política. La que preparó Lawpez era tan detallada y bien fundamentada que el juez la aceptó sin objeciones. Hoy tengo mi asilo aprobado.
+        </p>
+        <div class="testi-meta">
+          <span>Valentina G.</span>
+          <span class="testi-meta-sep">·</span>
+          <span class="t" data-es="Asilo Afirmativo" data-en="Affirmative Asylum" data-fr="Asile Affirmatif">Asilo Afirmativo</span>
         </div>
-
-        <div class="testi-slide">
-          <span class="testi-big-q" aria-hidden="true">"</span>
-          <p class="testi-text t"
-            data-es="Somos una pareja binacional y no sabíamos por dónde empezar con el I-130 y el I-485. Lawpez organizó toda nuestra documentación y el proceso fue mucho más claro de lo que esperábamos."
-            data-en="We're a binational couple and didn't know where to start with the I-130 and I-485. Lawpez organized all our documentation and the process was much clearer than we expected."
-            data-fr="Nous sommes un couple binational. Lawpez a organisé tous nos documents et le processus a été beaucoup plus clair que prévu.">
-            Somos una pareja binacional y no sabíamos por dónde empezar con el I-130 y el I-485. Lawpez organizó toda nuestra documentación y el proceso fue mucho más claro de lo que esperábamos.
-          </p>
-          <div class="testi-meta">
-            <span>Carlos &amp; Emily M.</span>
-            <span class="testi-meta-sep">·</span>
-            <span class="t" data-es="Ajuste de Estatus por Matrimonio" data-en="Marriage-Based Adjustment" data-fr="Ajustement de Statut">Ajuste de Estatus por Matrimonio</span>
-          </div>
-          <div class="testi-stars-row">★★★★★</div>
-        </div>
-
-        <div class="testi-slide">
-          <span class="testi-big-q" aria-hidden="true">"</span>
-          <p class="testi-text t"
-            data-es="Con el apoyo de Lawpez presenté mi N-400 y en menos de un año rendí el examen y me convertí en ciudadana. Los formularios ya no me intimidaban porque tenía a alguien que los entendía de verdad."
-            data-en="With Lawpez's support, I filed my N-400 and in less than a year I took the exam and became a citizen. The forms no longer intimidated me because I had someone who truly understood them."
-            data-fr="Avec le soutien de Lawpez, j'ai déposé mon N-400 et en moins d'un an je suis devenue citoyenne.">
-            Con el apoyo de Lawpez presenté mi N-400 y en menos de un año rendí el examen y me convertí en ciudadana. Los formularios ya no me intimidaban porque tenía a alguien que los entendía de verdad.
-          </p>
-          <div class="testi-meta">
-            <span>Rosa F.</span>
-            <span class="testi-meta-sep">·</span>
-            <span class="t" data-es="Naturalización" data-en="Naturalization" data-fr="Naturalisation">Naturalización</span>
-          </div>
-          <div class="testi-stars-row">★★★★★</div>
-        </div>
-
-        <div class="testi-slide">
-          <span class="testi-big-q" aria-hidden="true">"</span>
-          <p class="testi-text t"
-            data-es="El proceso de la visa E-2 me parecía imposible de entender solo. Lawpez preparó el análisis económico de forma tan profesional que mi solicitud fue aprobada sin inconvenientes."
-            data-en="The E-2 visa process seemed impossible to navigate alone. Lawpez prepared the economic analysis so professionally that my application was approved without issues."
-            data-fr="Le processus du visa E-2 me semblait impossible. Lawpez a préparé une analyse si professionnelle que ma demande a été approuvée.">
-            El proceso de la visa E-2 me parecía imposible de entender solo. Lawpez preparó el análisis económico de forma tan profesional que mi solicitud fue aprobada sin inconvenientes.
-          </p>
-          <div class="testi-meta">
-            <span>Andrés T.</span>
-            <span class="testi-meta-sep">·</span>
-            <span class="t" data-es="Visa E-2 · Inversionista" data-en="E-2 Visa · Investor" data-fr="Visa E-2 · Investisseur">Visa E-2 · Inversionista</span>
-          </div>
-          <div class="testi-stars-row">★★★★★</div>
-        </div>
-
-        <div class="testi-slide">
-          <span class="testi-big-q" aria-hidden="true">"</span>
-          <p class="testi-text t"
-            data-es="Lawpez preparó toda la documentación para traer a mis padres, gestionó las traducciones y me explicó cada paso. Hoy mi familia está reunida en Estados Unidos."
-            data-en="Lawpez prepared all the documentation to bring my parents, handled the translations, and explained every step. Today my family is together in the United States."
-            data-fr="Lawpez a préparé tous les documents pour faire venir mes parents et expliqué chaque étape. Aujourd'hui ma famille est réunie aux États-Unis.">
-            Lawpez preparó toda la documentación para traer a mis padres, gestionó las traducciones y me explicó cada paso. Hoy mi familia está reunida en Estados Unidos.
-          </p>
-          <div class="testi-meta">
-            <span>Tomás R.</span>
-            <span class="testi-meta-sep">·</span>
-            <span class="t" data-es="Petición Familiar · I-130" data-en="Family Petition · I-130" data-fr="Pétition Familiale · I-130">Petición Familiar · I-130</span>
-          </div>
-          <div class="testi-stars-row">★★★★★</div>
-        </div>
-
-        <div class="testi-slide">
-          <span class="testi-big-q" aria-hidden="true">"</span>
-          <p class="testi-text t"
-            data-es="Cuando se renovó el TPS Lawpez revisó todo mi expediente, preparó los formularios y la evidencia requerida. Hoy tengo mi permiso de trabajo vigente y mi vida laboral está estabilizada."
-            data-en="When TPS was renewed, Lawpez reviewed my full file, prepared the forms and required evidence. Today I have my valid work permit and my professional life is stable."
-            data-fr="Quand le TPS a été renouvelé, Lawpez a examiné mon dossier. Aujourd'hui j'ai mon permis de travail valide.">
-            Cuando se renovó el TPS Lawpez revisó todo mi expediente, preparó los formularios y la evidencia requerida. Hoy tengo mi permiso de trabajo vigente y mi vida laboral está estabilizada.
-          </p>
-          <div class="testi-meta">
-            <span>Lucía M.</span>
-            <span class="testi-meta-sep">·</span>
-            <span class="t" data-es="TPS · Protección Temporal" data-en="TPS · Temporary Protection" data-fr="TPS · Protection Temporaire">TPS · Protección Temporal</span>
-          </div>
-          <div class="testi-stars-row">★★★★★</div>
-        </div>
-
+        <div class="testi-stars-row">★★★★★</div>
       </div>
-      <div class="testi-dots" id="testi-dots">
-        <button class="testi-dot active" aria-label="1"></button>
-        <button class="testi-dot" aria-label="2"></button>
-        <button class="testi-dot" aria-label="3"></button>
-        <button class="testi-dot" aria-label="4"></button>
-        <button class="testi-dot" aria-label="5"></button>
-        <button class="testi-dot" aria-label="6"></button>
+
+      <div class="testimonial-card fade-up reveal-d1">
+        <span class="testi-big-q" aria-hidden="true">"</span>
+        <p class="testi-text t"
+          data-es="Somos una pareja binacional y no sabíamos por dónde empezar con el I-130 y el I-485. Lawpez organizó toda nuestra documentación y el proceso fue mucho más claro de lo que esperábamos."
+          data-en="We're a binational couple and didn't know where to start with the I-130 and I-485. Lawpez organized all our documentation and the process was much clearer than we expected."
+          data-fr="Nous sommes un couple binational. Lawpez a organisé tous nos documents et le processus a été beaucoup plus clair que prévu.">
+          Somos una pareja binacional y no sabíamos por dónde empezar con el I-130 y el I-485. Lawpez organizó toda nuestra documentación y el proceso fue mucho más claro de lo que esperábamos.
+        </p>
+        <div class="testi-meta">
+          <span>Carlos &amp; Emily M.</span>
+          <span class="testi-meta-sep">·</span>
+          <span class="t" data-es="Ajuste de Estatus por Matrimonio" data-en="Marriage-Based Adjustment" data-fr="Ajustement de Statut">Ajuste de Estatus por Matrimonio</span>
+        </div>
+        <div class="testi-stars-row">★★★★★</div>
       </div>
+
+      <div class="testimonial-card fade-up reveal-d2">
+        <span class="testi-big-q" aria-hidden="true">"</span>
+        <p class="testi-text t"
+          data-es="Con el apoyo de Lawpez presenté mi N-400 y en menos de un año rendí el examen y me convertí en ciudadana. Los formularios ya no me intimidaban porque tenía a alguien que los entendía de verdad."
+          data-en="With Lawpez's support, I filed my N-400 and in less than a year I took the exam and became a citizen. The forms no longer intimidated me because I had someone who truly understood them."
+          data-fr="Avec le soutien de Lawpez, j'ai déposé mon N-400 et en moins d'un an je suis devenue citoyenne.">
+          Con el apoyo de Lawpez presenté mi N-400 y en menos de un año rendí el examen y me convertí en ciudadana. Los formularios ya no me intimidaban porque tenía a alguien que los entendía de verdad.
+        </p>
+        <div class="testi-meta">
+          <span>Rosa F.</span>
+          <span class="testi-meta-sep">·</span>
+          <span class="t" data-es="Naturalización" data-en="Naturalization" data-fr="Naturalisation">Naturalización</span>
+        </div>
+        <div class="testi-stars-row">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card fade-up reveal-d3">
+        <span class="testi-big-q" aria-hidden="true">"</span>
+        <p class="testi-text t"
+          data-es="El proceso de la visa E-2 me parecía imposible de entender solo. Lawpez preparó el análisis económico de forma tan profesional que mi solicitud fue aprobada sin inconvenientes."
+          data-en="The E-2 visa process seemed impossible to navigate alone. Lawpez prepared the economic analysis so professionally that my application was approved without issues."
+          data-fr="Le processus du visa E-2 me semblait impossible. Lawpez a préparé une analyse si professionnelle que ma demande a été approuvée.">
+          El proceso de la visa E-2 me parecía imposible de entender solo. Lawpez preparó el análisis económico de forma tan profesional que mi solicitud fue aprobada sin inconvenientes.
+        </p>
+        <div class="testi-meta">
+          <span>Andrés T.</span>
+          <span class="testi-meta-sep">·</span>
+          <span class="t" data-es="Visa E-2 · Inversionista" data-en="E-2 Visa · Investor" data-fr="Visa E-2 · Investisseur">Visa E-2 · Inversionista</span>
+        </div>
+        <div class="testi-stars-row">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card fade-up reveal-d4">
+        <span class="testi-big-q" aria-hidden="true">"</span>
+        <p class="testi-text t"
+          data-es="Lawpez preparó toda la documentación para traer a mis padres, gestionó las traducciones y me explicó cada paso. Hoy mi familia está reunida en Estados Unidos."
+          data-en="Lawpez prepared all the documentation to bring my parents, handled the translations, and explained every step. Today my family is together in the United States."
+          data-fr="Lawpez a préparé tous les documents pour faire venir mes parents et expliqué chaque étape. Aujourd'hui ma famille est réunie aux États-Unis.">
+          Lawpez preparó toda la documentación para traer a mis padres, gestionó las traducciones y me explicó cada paso. Hoy mi familia está reunida en Estados Unidos.
+        </p>
+        <div class="testi-meta">
+          <span>Tomás R.</span>
+          <span class="testi-meta-sep">·</span>
+          <span class="t" data-es="Petición Familiar · I-130" data-en="Family Petition · I-130" data-fr="Pétition Familiale · I-130">Petición Familiar · I-130</span>
+        </div>
+        <div class="testi-stars-row">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card fade-up reveal-d5">
+        <span class="testi-big-q" aria-hidden="true">"</span>
+        <p class="testi-text t"
+          data-es="Cuando se renovó el TPS Lawpez revisó todo mi expediente, preparó los formularios y la evidencia requerida. Hoy tengo mi permiso de trabajo vigente y mi vida laboral está estabilizada."
+          data-en="When TPS was renewed, Lawpez reviewed my full file, prepared the forms and required evidence. Today I have my valid work permit and my professional life is stable."
+          data-fr="Quand le TPS a été renouvelé, Lawpez a examiné mon dossier. Aujourd'hui j'ai mon permis de travail valide.">
+          Cuando se renovó el TPS Lawpez revisó todo mi expediente, preparó los formularios y la evidencia requerida. Hoy tengo mi permiso de trabajo vigente y mi vida laboral está estabilizada.
+        </p>
+        <div class="testi-meta">
+          <span>Lucía M.</span>
+          <span class="testi-meta-sep">·</span>
+          <span class="t" data-es="TPS · Protección Temporal" data-en="TPS · Temporary Protection" data-fr="TPS · Protection Temporaire">TPS · Protección Temporal</span>
+        </div>
+        <div class="testi-stars-row">★★★★★</div>
+      </div>
+
     </div>
     </div>
     <p class="testimonios-footnote t"
