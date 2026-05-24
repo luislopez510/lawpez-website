@@ -826,6 +826,145 @@
     .edu-item:hover { padding-left: 0.5rem; }
     .edu-year { font-size: 1.2rem !important; }
 
+
+    /* ══════════════════════════════════════
+       v7b — ROUND 2 PREMIUM UPGRADES
+       ══════════════════════════════════════ */
+
+    /* ── Contact section — full navy ── */
+    #contact { background: var(--navy) !important; }
+    #contact .section-label { color: var(--gold-light) !important; }
+    #contact .section-label::after { background: var(--gold-light) !important; }
+    #contact .section-title { color: #fff !important; }
+    #contact .section-title em { color: var(--gold-light) !important; }
+    #contact .gold-line { background: var(--gold) !important; }
+    #contact .contact-intro { color: rgba(255,255,255,0.5) !important; }
+    #contact .contact-item {
+      background: var(--navy2) !important;
+      border: none !important;
+      border-top: 1px solid rgba(184,146,74,0.2) !important;
+      box-shadow: none !important;
+      transition: background 0.3s, border-color 0.3s !important;
+    }
+    #contact .contact-item:hover { background: var(--navy3) !important; border-color: rgba(184,146,74,0.5) !important; }
+    #contact .contact-item-label { color: var(--gold) !important; }
+    #contact .contact-item-value { color: rgba(255,255,255,0.8) !important; }
+    #contact .contact-item-value:hover { color: var(--gold-light) !important; }
+    #contact .contact-disclaimer { color: rgba(255,255,255,0.25) !important; }
+
+    /* Form dark editorial style */
+    #contact .contact-form label { color: rgba(255,255,255,0.5) !important; font-size: 0.6rem !important; letter-spacing: 0.25em !important; text-transform: uppercase !important; }
+    #contact .contact-form input,
+    #contact .contact-form select,
+    #contact .contact-form textarea {
+      background: rgba(255,255,255,0.04) !important;
+      border: none !important;
+      border-bottom: 1px solid rgba(184,146,74,0.25) !important;
+      border-radius: 0 !important;
+      color: #fff !important;
+      padding: 1rem 0 !important;
+      font-family: 'Cormorant Garamond', serif !important;
+      font-size: 1.05rem !important;
+      letter-spacing: 0.04em !important;
+      transition: border-color 0.3s !important;
+    }
+    #contact .contact-form input:focus,
+    #contact .contact-form select:focus,
+    #contact .contact-form textarea:focus {
+      outline: none !important;
+      border-bottom-color: var(--gold) !important;
+      background: rgba(184,146,74,0.04) !important;
+    }
+    #contact .contact-form input::placeholder,
+    #contact .contact-form textarea::placeholder { color: rgba(255,255,255,0.2) !important; font-style: italic; }
+    #contact .contact-form select option { background: var(--navy2); color: #fff; }
+    #contact .form-submit {
+      margin-top: 1rem !important;
+      letter-spacing: 0.25em !important;
+      border-radius: 0 !important;
+    }
+
+    /* ── Gold shimmer on em text ── */
+    @keyframes goldShimmer {
+      0%   { background-position: -300% center; }
+      60%  { background-position: 300% center; }
+      100% { background-position: 300% center; }
+    }
+    h1.hero-title em,
+    #contact .section-title em {
+      background: linear-gradient(90deg,
+        var(--gold-dark) 0%,
+        var(--gold) 25%,
+        #ffe9a0 50%,
+        var(--gold) 75%,
+        var(--gold-dark) 100%
+      );
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: goldShimmer 6s ease-in-out infinite;
+      animation-delay: 3s;
+    }
+
+    /* ── Rotating hero badge ── */
+    .hero-badge {
+      position: absolute;
+      bottom: 4rem; right: 6%;
+      z-index: 2; width: 110px; height: 110px;
+      animation: badgeSpin 22s linear infinite;
+      opacity: 0.7;
+    }
+    .hero-badge:hover { opacity: 1; }
+    .hero-badge svg { width: 100%; height: 100%; }
+    @keyframes badgeSpin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @media (max-width: 768px) { .hero-badge { display: none; } }
+
+    /* ── Ambient gold orb ── */
+    .hero-orb {
+      position: absolute;
+      width: 50vw; height: 50vw;
+      max-width: 700px; max-height: 700px;
+      background: radial-gradient(circle at center,
+        rgba(184,146,74,0.09) 0%,
+        rgba(184,146,74,0.04) 40%,
+        transparent 70%
+      );
+      border-radius: 50%;
+      right: -10%; top: 50%;
+      transform: translateY(-50%);
+      z-index: 1; pointer-events: none;
+      animation: orbPulse 8s ease-in-out infinite;
+    }
+    @keyframes orbPulse {
+      0%, 100% { opacity: 0.7; transform: translateY(-50%) scale(1); }
+      50%       { opacity: 1;   transform: translateY(-50%) scale(1.08); }
+    }
+
+    /* ── Hero title lines — reveal from bottom ── */
+    .hero-title-line {
+      display: block; overflow: hidden; line-height: 1.05;
+    }
+    .hero-title-line > * {
+      display: block;
+    }
+
+    /* ── Stat strip — deeper ── */
+    #stats { border-top: 1px solid rgba(184,146,74,0.1); }
+
+    /* ── Contact section bottom gold border ── */
+    #contact { border-top: 1px solid rgba(184,146,74,0.12) !important; }
+
+    /* ── Section bg number in contact ── */
+    #contact .section-bg-num { color: rgba(255,255,255,0.02) !important; }
+
+    /* ── wa-note color fix on dark bg ── */
+    #contact .wa-note { color: rgba(255,255,255,0.3) !important; }
+    #contact p[style*="rgba(255,255,255"] { color: rgba(255,255,255,0.3) !important; }
+
   </style>
   <!-- Premium animation libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -916,6 +1055,18 @@
     </div>
   </div>
 
+  <div class="hero-orb" aria-hidden="true"></div>
+  <div class="hero-badge" aria-hidden="true">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="badge-circle" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/>
+      </defs>
+      <text font-family="Inter,sans-serif" font-size="7.2" fill="rgba(184,146,74,0.85)" letter-spacing="2.8" font-weight="500">
+        <textPath href="#badge-circle">LAWPEZ GROUP LLC ✦ CHICAGO ✦ EST. 2018 ✦ </textPath>
+      </text>
+      <circle cx="50" cy="50" r="28" fill="none" stroke="rgba(184,146,74,0.15)" stroke-width="0.5"/>
+    </svg>
+  </div>
   <div class="scroll-hint">
     <div class="scroll-hint-line"></div>
     <span class="scroll-hint-text t" data-es="Desplaza para explorar" data-en="Scroll to explore" data-fr="Défiler pour explorer">Desplaza para explorar</span>
@@ -1654,7 +1805,7 @@
 </section>
 
 <!-- ── CONTACT ── -->
-<section id="contact">
+<section id="contact"><span class="section-bg-num" aria-hidden="true">05</span>
   <div class="contact-inner">
     <p class="reveal section-label centered t" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</p>
     <h2 class="reveal reveal-d1 section-title centered t"
@@ -2565,6 +2716,73 @@
   document.querySelectorAll('.stat-suffix').forEach(el => {
     el.style.color = 'var(--gold)';
   });
+
+
+  // ── Hero staggered line reveal (after loader) ──────────────────
+  if (typeof gsap !== 'undefined') {
+    const heroTargets = [
+      '.hero-eyebrow',
+      '.hero-title span',
+      '.hero-title em',
+      '.hero-gold-line',
+      '.hero-desc',
+      '.hero-ctas a:first-child',
+      '.hero-ctas a:last-child',
+      '.scroll-hint'
+    ];
+    gsap.set(heroTargets, { opacity: 0, y: 50 });
+    gsap.to(heroTargets, {
+      opacity: 1, y: 0,
+      duration: 1.2,
+      stagger: 0.1,
+      ease: 'power4.out',
+      delay: 2.2,
+      clearProps: 'opacity,transform'
+    });
+
+    // ── Mouse parallax on hero ──────────────────────────────────
+    const heroSection = document.getElementById('hero');
+    const heroLeft = document.querySelector('.hero-left');
+    const heroVid = document.getElementById('hero-video');
+    if (heroSection && heroLeft) {
+      heroSection.addEventListener('mousemove', (e) => {
+        const rx = (e.clientX / window.innerWidth  - 0.5);
+        const ry = (e.clientY / window.innerHeight - 0.5);
+        gsap.to(heroLeft, { x: rx * 14, y: ry * 8, duration: 1.2, ease: 'power2.out' });
+        if (heroVid) gsap.to(heroVid, { x: -rx * 8, y: -ry * 5, duration: 1.4, ease: 'power2.out' });
+      });
+      heroSection.addEventListener('mouseleave', () => {
+        gsap.to(heroLeft, { x: 0, y: 0, duration: 1.5, ease: 'power3.out' });
+        if (heroVid) gsap.to(heroVid, { x: 0, y: 0, duration: 1.8, ease: 'power3.out' });
+      });
+    }
+
+    // ── GSAP scroll animations on key sections ──────────────────
+    ScrollTrigger.batch('.service-card.reveal', {
+      onEnter: els => gsap.to(els, {
+        opacity: 1, y: 0, duration: 0.9, stagger: 0.1, ease: 'power3.out'
+      }),
+      start: 'top 88%'
+    });
+
+    // Stats numbers dramatic entrance
+    gsap.from('.stat-num', {
+      y: 60, opacity: 0, duration: 1, stagger: 0.12, ease: 'power4.out',
+      scrollTrigger: { trigger: '#stats', start: 'top 80%', once: true }
+    });
+
+    // About section image subtle entrance
+    gsap.from('.about-photo-wrap', {
+      x: 40, opacity: 0, duration: 1.4, ease: 'power3.out',
+      scrollTrigger: { trigger: '#about', start: 'top 70%', once: true }
+    });
+
+    // Contact section dramatic title
+    gsap.from('#contact .section-title', {
+      y: 60, opacity: 0, duration: 1.2, ease: 'power4.out',
+      scrollTrigger: { trigger: '#contact', start: 'top 75%', once: true }
+    });
+  }
 
 })();
 </script>
