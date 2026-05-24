@@ -212,14 +212,27 @@
     /* Hero heading — Inter, tight tracking */
     h1.hero-title {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(2.2rem, 4.2vw, 4rem);
+      font-size: clamp(1.9rem, 3.4vw, 3.2rem);
       font-weight: 400;
-      line-height: 1.1;
+      line-height: 1.12;
       color: #fff;
       letter-spacing: -0.04em;
-      margin-bottom: 1.2rem;
-      max-width: 640px;
+      margin-bottom: 0.4rem;
+      max-width: 620px;
     }
+    .hero-title-accent {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.9rem, 3.4vw, 3.2rem);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold-light);
+      letter-spacing: -0.04em;
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      display: block;
+    }
+    .hero-title-accent.visible { opacity: 1; }
     /* char spans injected by JS */
     .hero-char {
       display: inline-block;
@@ -242,7 +255,9 @@
 
     .hero-tag { opacity:0; transition:opacity 1s ease; border-radius:0.75rem; padding:0.85rem 1.6rem; }
     .hero-tag.visible { opacity:1; }
-    .hero-tag-text { font-size:0.95rem; color:rgba(255,255,255,0.85); font-weight:300; letter-spacing:0.03em; }
+    .hero-tag-links { display:flex; flex-direction:column; gap:0.5rem; }
+    .hero-tag-link { display:block; font-size:0.9rem; color:rgba(255,255,255,0.75); text-decoration:none; font-weight:400; letter-spacing:0.02em; transition:color 0.2s; }
+    .hero-tag-link:hover { color:var(--gold-light); }
     @media (max-width:1100px) { .hero-tag-text { font-size:0.95rem; } }
 
     /* Keep these for scroll hint */
@@ -311,24 +326,43 @@
     .service-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--gold); transform:scaleX(0); transition:transform 0.4s; transform-origin:left; }
     .service-card:hover { background:var(--navy3); }
     .service-card:hover::after { transform:scaleX(1); }
-    .service-num { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; color:rgba(255,255,255,0.06); line-height:1; margin-bottom:1.2rem; }
+    .service-num { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; color:rgba(184,146,74,0.28); line-height:1; margin-bottom:1.2rem; }
     .service-title { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:400; color:#fff; line-height:1.2; margin-bottom:1rem; }
-    .service-desc { font-size:0.83rem; color:rgba(255,255,255,0.45); line-height:1.8; font-weight:300; margin-bottom:1.5rem; }
+    .service-desc { font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.8; font-weight:300; margin-bottom:1.5rem; }
     .service-list { list-style:none; }
-    .service-list li { font-size:0.78rem; color:rgba(255,255,255,0.5); padding:0.4rem 0 0.4rem 1.2rem; border-bottom:1px solid rgba(255,255,255,0.04); position:relative; }
+    .service-list li { font-size:0.78rem; color:rgba(255,255,255,0.65); padding:0.4rem 0 0.4rem 1.2rem; border-bottom:1px solid rgba(255,255,255,0.06); position:relative; }
     .service-list li::before { content:'—'; position:absolute; left:0; color:var(--gold); font-size:0.65rem; }
     .service-list li:last-child { border-bottom:none; }
     .services-note { max-width:1200px; margin:2.5rem auto 0; padding:1.2rem 1.5rem; border:1px solid rgba(184,146,74,0.2); }
     .services-note p { font-size:0.75rem; color:rgba(255,255,255,0.35); line-height:1.7; font-style:italic; }
 
     /* ── B2B ── */
-    #b2b { background:#0a0f1a; }
+
+    /* ── B2B animated background ── */
+    #b2b { background:#0e1420; position:relative; overflow:hidden; }
+    .b2b-bg-anim {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 80% at 90% 20%, rgba(184,146,74,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 5% 80%, rgba(30,45,71,0.8) 0%, transparent 50%);
+    }
+    .b2b-lines {
+      position: absolute; inset: 0; overflow: hidden; z-index: 0;
+      background: repeating-linear-gradient(
+        -45deg, transparent, transparent 60px,
+        rgba(184,146,74,0.025) 60px, rgba(184,146,74,0.025) 61px
+      );
+      animation: b2bShift 25s linear infinite;
+    }
+    @keyframes b2bShift { from { background-position: 0 0; } to { background-position: 200px 200px; } }
+    .b2b-inner { position: relative; z-index: 1; max-width:1200px; margin:0 auto; }
+
     .b2b-inner { max-width:1200px; margin:0 auto; }
     .b2b-top { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; margin-bottom:4rem; }
     .b2b-intro-text { font-size:0.88rem; color:rgba(232,226,214,0.55); line-height:1.9; font-weight:300; margin-top:1.5rem; }
     .b2b-packages { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
-    .b2b-package { background:rgba(255,255,255,0.03); padding:2.5rem; border:1px solid rgba(255,255,255,0.06); border-top:3px solid var(--gold); transition:all 0.3s; }
-    .b2b-package:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.1); }
+    .b2b-package { background:rgba(255,255,255,0.04); padding:2.5rem; border:1px solid rgba(255,255,255,0.08); border-top:3px solid var(--gold); transition:all 0.3s; }
+    .b2b-package:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(184,146,74,0.2); }
     .pkg-tag { font-size:0.62rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem; }
     .pkg-title { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:400; color:#e8e2d6; margin-bottom:0.8rem; }
     .pkg-desc { font-size:0.8rem; color:rgba(232,226,214,0.55); line-height:1.7; font-weight:300; }
@@ -397,11 +431,11 @@
     /* ── CONTACT ── */
     #contact { background:#0a0f1a; }
     .contact-inner { max-width:860px; margin:0 auto; text-align:center; }
-    .contact-intro { font-size:0.88rem; color:rgba(232,226,214,0.6); max-width:520px; margin:0 auto 3.5rem; line-height:1.85; font-weight:300; }
+    .contact-intro { font-size:0.88rem; color:rgba(232,226,214,0.65); max-width:520px; margin:0 auto 3rem; line-height:1.85; font-weight:300; text-align:center; }
     .contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:3.5rem; }
     .contact-item { background:rgba(255,255,255,0.03); padding:2.5rem 1.5rem; text-align:center; border:1px solid rgba(255,255,255,0.06); border-top:2px solid var(--gold); }
     .contact-item-label { font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem; }
-    .contact-item-value { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--navy); text-decoration:none; display:block; font-weight:400; transition:color 0.3s; }
+    .contact-item-value { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:rgba(232,226,214,0.85); text-decoration:none; display:block; font-weight:400; transition:color 0.3s; }
     .contact-item-value:hover { color:var(--gold); }
     .contact-disclaimer { font-size:0.73rem; color:var(--text-muted); opacity:0.65; margin-top:2.5rem; line-height:1.7; max-width:600px; margin-left:auto; margin-right:auto; }
 
@@ -469,7 +503,7 @@
     @media(max-width:768px){ #stats { padding:3rem 1.5rem; } .stats-grid { grid-template-columns:repeat(2,1fr); gap:2rem; } }
 
     /* ── HOW WE WORK ── */
-    #how { background:#0a0f1a; }
+    #how { background:#0a0f1a; padding:8rem 0; }
     .how-inner { max-width:1100px; margin:0 auto; }
     .how-header { text-align:center; margin-bottom:5rem; }
     .how-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; position:relative; }
@@ -748,8 +782,8 @@
       background: var(--navy3) !important;
       box-shadow: inset 0 0 80px rgba(184,146,74,0.05), 0 0 0 0.5px rgba(184,146,74,0.15) !important;
     }
-    .service-num { font-size: 6rem !important; color: rgba(184,146,74,0.06) !important; transition: color 0.4s; }
-    .service-card:hover .service-num { color: rgba(184,146,74,0.12) !important; }
+    .service-num { font-size: 6rem !important; color: rgba(184,146,74,0.3) !important; transition: color 0.4s; }
+    .service-card:hover .service-num { color: rgba(184,146,74,0.55) !important; }
     .service-title { font-size: 1.8rem !important; font-weight: 300 !important; letter-spacing: -0.01em; }
 
     /* ── ABOUT QUOTE — larger ── */
@@ -862,13 +896,13 @@
        ══════════════════════════════════════ */
 
     /* ── Contact section — full navy ── */
-    #contact { background: var(--navy) !important; }
+    #contact { background: #0a0f1a !important; }
     #contact .section-label { color: var(--gold-light) !important; }
     #contact .section-label::after { background: var(--gold-light) !important; }
     #contact .section-title { color: #fff !important; }
     #contact .section-title em { color: var(--gold-light) !important; }
     #contact .gold-line { background: var(--gold) !important; }
-    #contact .contact-intro { color: rgba(255,255,255,0.5) !important; }
+    #contact .contact-intro { color: rgba(232,226,214,0.65) !important; }
     #contact .contact-item {
       background: var(--navy2) !important;
       border: none !important;
@@ -1071,9 +1105,9 @@
     .testi-slider {
       position: relative; max-width: 860px;
       margin: 4rem auto 0; text-align: center;
-      min-height: 320px;
+      min-height: 380px;
     }
-    .testi-slides { position: relative; min-height: 280px; }
+    .testi-slides { position: relative; min-height: 320px; }
     .testi-slide {
       position: absolute; inset: 0;
       opacity: 0; transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1);
@@ -1085,7 +1119,7 @@
     .testi-big-q {
       font-family: 'Cormorant Garamond', serif;
       font-size: 9rem; line-height: 0.6;
-      color: rgba(15,27,45,0.08);
+      color: rgba(184,146,74,0.12);
       margin-bottom: -1.5rem; display: block;
       user-select: none;
     }
@@ -1093,7 +1127,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.25rem, 2.2vw, 2rem);
       font-weight: 300; font-style: italic;
-      color: var(--navy); line-height: 1.55;
+      color: rgba(232,226,214,0.9); line-height: 1.55;
       margin-bottom: 2rem; max-width: 780px;
     }
     .testi-meta {
@@ -1102,10 +1136,7 @@
       display: flex; align-items: center; gap: 0.8rem;
     }
     .testi-meta-sep { color: rgba(184,146,74,0.4); }
-    .testi-stars-row {
-      font-size: 0.75rem; color: var(--gold);
-      margin-top: 0.6rem; letter-spacing: 0.15em;
-    }
+    .testi-stars-row { color: var(--gold); font-size: 1rem; letter-spacing: 0.15em; margin-top: 1.2rem; }
     .testi-dots {
       display: flex; gap: 0.5rem;
       justify-content: center; margin-top: 2.5rem;
@@ -1133,7 +1164,7 @@
       display: grid; grid-template-columns: 220px 1fr;
       align-items: start; gap: 0;
       padding: 5rem 5rem 5rem;
-      border-top: 1px solid rgba(0,0,0,0.06);
+      border-top: 1px solid rgba(255,255,255,0.06);
       transition: background 0.4s;
     }
     .how-panel:hover { background: rgba(184,146,74,0.03); }
@@ -1149,11 +1180,11 @@
     .how-panel-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.2rem; font-weight: 400;
-      color: var(--navy); margin-bottom: 1rem;
+      color: #e8e2d6; margin-bottom: 1rem;
       line-height: 1.15; letter-spacing: -0.01em;
     }
     .how-panel-body {
-      font-size: 0.88rem; color: var(--text-mid);
+      font-size: 0.88rem; color: rgba(232,226,214,0.65);
       line-height: 1.85; font-weight: 300;
       max-width: 480px;
     }
@@ -1271,11 +1302,15 @@
       <!-- LEFT: heading + sub + buttons -->
       <div class="hero-col-left">
         <h1 class="hero-title" id="hero-heading"
-          data-es="Residencia.\nCiudadanía. Protección."
-          data-en="Residency.\nCitizenship. Protection."
-          data-fr="Résidence.\nCitoyenneté. Protection.">
-          Residencia.\nCiudadanía. Protección.
+          data-es="Residencia.\nCiudadanía."
+          data-en="Residency.\nCitizenship."
+          data-fr="Résidence.\nCitoyenneté.">
+          Residencia.\nCiudadanía.
         </h1>
+        <span class="hero-title-accent t"
+          data-es="Protección."
+          data-en="Protection."
+          data-fr="Protection.">Protección.</span>
         <p class="hero-sub t"
           data-es="Peticiones familiares, asilo, naturalización y visas de inversionista. Preparamos el expediente completo — para particulares y firmas de abogados."
           data-en="Family petitions, asylum, naturalization, and investor visas. We prepare the complete file — for individuals and law firms."
@@ -1289,13 +1324,12 @@
       </div>
       <!-- RIGHT: glass tag -->
       <div class="hero-col-right">
-        <div class="hero-tag liquid-glass border border-white/20" style="border:1px solid rgba(255,255,255,0.2);">
-          <p class="hero-tag-text t"
-            data-es="Peticiones · Asilo · Naturalización."
-            data-en="Petitions · Asylum · Naturalization."
-            data-fr="Pétitions · Asile · Naturalisation.">
-            Peticiones · Asilo · Naturalización.
-          </p>
+        <div class="hero-tag liquid-glass" style="border:1px solid rgba(255,255,255,0.2);border-radius:0.75rem;padding:1rem 1.6rem;">
+          <div class="hero-tag-links">
+            <a href="#services" class="hero-tag-link t" data-es="Peticiones →" data-en="Petitions →" data-fr="Pétitions →">Peticiones →</a>
+            <a href="#services" class="hero-tag-link t" data-es="Asilo →" data-en="Asylum →" data-fr="Asile →">Asilo →</a>
+            <a href="#services" class="hero-tag-link t" data-es="Naturalización →" data-en="Naturalization →" data-fr="Naturalisation →">Naturalización →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1671,6 +1705,8 @@
 
 <!-- ── B2B ── -->
 <section id="b2b"><span class="section-bg-num" aria-hidden="true">04</span>
+  <div class="b2b-bg-anim" aria-hidden="true"></div>
+  <div class="b2b-lines" aria-hidden="true"></div>
   <div class="b2b-inner">
     <div class="b2b-top">
       <div>
@@ -1729,10 +1765,21 @@
 
 <!-- ── WHY LAWPEZ ── -->
 <section id="why">
+  <div class="why-globe-wrap" aria-hidden="true">
+    <div class="why-globe">
+      <div class="why-globe-lines"></div>
+      <div class="why-globe-arc"></div>
+      <div class="why-globe-arc2"></div>
+      <div class="why-globe-dot"></div>
+      <div class="why-globe-dot"></div>
+      <div class="why-globe-dot"></div>
+      <div class="why-globe-shine"></div>
+    </div>
+  </div>
   <div class="why-inner">
     <div class="centered">
       <p class="reveal section-label t" data-es="Por Qué Lawpez" data-en="Why Lawpez" data-fr="Pourquoi Lawpez">Por Qué Lawpez</p>
-      <h2 class="reveal reveal-d1 section-title t"
+      <h2 class="reveal reveal-d1 section-title on-dark t"
         data-es="Preparación completa.<br><em>Respaldo binacional.</em>"
         data-en="Complete preparation.<br><em>Binational expertise.</em>"
         data-fr="Préparation complète.<br><em>Expertise binationale.</em>">
@@ -1968,7 +2015,7 @@
   <div class="testimonios-inner">
     <div class="testimonios-header">
       <p class="reveal section-label t" data-es="Resultados" data-en="Results" data-fr="Résultats">Resultados</p>
-      <h2 class="reveal reveal-d1 section-title t"
+      <h2 class="reveal reveal-d1 section-title on-dark t"
         data-es="Casos reales.<br><em>Personas reales.</em>"
         data-en="Real cases.<br><em>Real people.</em>"
         data-fr="Cas réels.<br><em>Personnes réelles.</em>">
@@ -2357,6 +2404,11 @@
     if (hh && typeof buildAnimatedHeading === 'function') {
       hh._currentLang = lang;
       buildAnimatedHeading(hh, lang);
+    }
+    const heroAcc = document.querySelector('.hero-title-accent');
+    if (heroAcc) {
+      heroAcc.innerHTML = heroAcc.dataset[lang] || heroAcc.dataset.es || '';
+    if (true) {
     }
   }
 
@@ -3019,6 +3071,8 @@
   if (heroSub)  setTimeout(() => heroSub.classList.add('visible'),  600);
   if (heroCtas) setTimeout(() => heroCtas.classList.add('visible'), 900);
   if (heroTag)  setTimeout(() => heroTag.classList.add('visible'),  1100);
+  const heroAccent = document.querySelector('.hero-title-accent');
+  if (heroAccent) setTimeout(() => heroAccent.classList.add('visible'), 800);
 
   // ── Lang change hook: rebuild heading chars ────────────────────
   const _origSetLang = typeof setLang === 'function' ? setLang : null;
