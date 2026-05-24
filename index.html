@@ -922,6 +922,17 @@
     #contact .contact-item-value:hover { color: var(--gold-light) !important; }
     #contact .contact-disclaimer { color: rgba(255,255,255,0.25) !important; }
 
+    /* ── Force all contact content visible (reveal/fade-up fallback) ── */
+    #contact .reveal,
+    #contact .fade-up,
+    #contact .section-title,
+    #contact .section-label,
+    #contact .gold-line,
+    #contact .contact-item,
+    #contact .wa-section,
+    #contact .contact-form,
+    #contact .contact-disclaimer { opacity: 1 !important; transform: none !important; }
+
     /* Form dark editorial style */
     #contact .contact-form label { color: rgba(255,255,255,0.5) !important; font-size: 0.6rem !important; letter-spacing: 0.25em !important; text-transform: uppercase !important; }
     #contact .contact-form input,
@@ -1204,6 +1215,11 @@
       content: ''; display: block;
       width: 20px; height: 1px; background: var(--gold);
     }
+    /* how-panels + how-header visible by default */
+    #how .reveal,
+    #how .fade-up,
+    #how .section-title,
+    #how .section-label { opacity: 1 !important; transform: none !important; }
     /* how-panels visible by default; GSAP will animate them if loaded */
     .how-panel { opacity: 1; transform: none; }
     @media (max-width: 768px) {
