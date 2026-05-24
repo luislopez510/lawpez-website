@@ -611,28 +611,9 @@
     /* Custom cursor removed */
 
     /* Loader */
-    #page-loader {
-      position: fixed; inset: 0; background: var(--navy); z-index: 100000;
-      display: flex; align-items: center; justify-content: center; flex-direction: column;
-      transition: opacity 1s ease, visibility 1s ease;
     }
-    #page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .loader-logo-wrap { overflow: hidden; }
-    .loader-logo {
-      font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; letter-spacing: 0.5em;
-      color: var(--gold); font-weight: 300; display: flex; gap: 0;
-      transform: translateY(100%); animation: loaderUp 1s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
     }
-    .loader-sub {
-      font-size: 0.5rem; letter-spacing: 0.55em; text-transform: uppercase;
-      color: rgba(184,146,74,0.45); margin-top: 1.2rem;
-      opacity: 0; animation: loaderFade 0.6s ease 1s forwards;
     }
-    .loader-bar-wrap { width: 120px; height: 1px; background: rgba(184,146,74,0.15); margin-top: 2.5rem; overflow: hidden; }
-    .loader-bar { height: 100%; background: var(--gold); width: 0; animation: loaderBar 1.6s cubic-bezier(0.16,1,0.3,1) 0.3s forwards; }
-    @keyframes loaderUp { to { transform: translateY(0); } }
-    @keyframes loaderFade { to { opacity: 1; } }
-    @keyframes loaderBar { to { width: 100%; } }
 
     /* Grain overlay */
     #grain {
@@ -1223,14 +1204,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-<!-- ── PREMIUM LAYER v7 ── -->
-<div id="page-loader">
-  <div class="loader-logo-wrap">
-    <div class="loader-logo">LAWPEZ</div>
-  </div>
-  <p class="loader-sub">Immigration Legal Consulting</p>
-  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
-</div>
 <div id="grain"></div>
 <div id="reading-progress"></div>
 
@@ -2932,17 +2905,7 @@
 
 (function() {
 
-  // ── Loader ──────────────────────────────
-  const loader = document.getElementById('page-loader');
-  if (loader) {
-    window.addEventListener('load', () => {
-      setTimeout(() => loader.classList.add('hidden'), 2000);
-    });
-    // Safety: hide after 3.5s max
-    setTimeout(() => loader && loader.classList.add('hidden'), 3500);
-  }
-
-  // ── Reading Progress Bar ─────────────────
+    // ── Reading Progress Bar ─────────────────
   const progressBar = document.getElementById('reading-progress');
   if (progressBar) {
     window.addEventListener('scroll', () => {
@@ -3017,7 +2980,7 @@
     const lines = raw.split('\n');
     el.innerHTML = '';
     const charDelay = 30;
-    const initialDelay = 400; // after loader
+    const initialDelay = 200; // no loader
     let globalIdx = 0;
 
     lines.forEach((line, li) => {
@@ -3045,22 +3008,15 @@
   const heroSub  = document.querySelector('.hero-sub');
   const heroCtas = document.querySelector('.hero-ctas');
   const heroTag  = document.querySelector('.hero-tag');
-  if (heroSub)  setTimeout(() => heroSub.classList.add('visible'),  1000);
-  if (heroCtas) setTimeout(() => heroCtas.classList.add('visible'), 1400);
-  if (heroTag)  setTimeout(() => heroTag.classList.add('visible'),  1600);
+  if (heroSub)  setTimeout(() => heroSub.classList.add('visible'),  600);
+  if (heroCtas) setTimeout(() => heroCtas.classList.add('visible'), 900);
+  if (heroTag)  setTimeout(() => heroTag.classList.add('visible'),  1100);
 
   // ── Lang change hook: rebuild heading chars ────────────────────
   const _origSetLang = typeof setLang === 'function' ? setLang : null;
   // patch will be applied below after setLang is available
 
   if (typeof gsap !== 'undefined') {
-    // no gsap hero parallax needed for new design
-    const dummy_heroLeft = null;
-      heroSection.addEventListener('mouseleave', () => {
-        gsap.to(heroLeft, { x: 0, y: 0, duration: 1.5, ease: 'power3.out' });
-        if (heroVid) gsap.to(heroVid, { x: 0, y: 0, duration: 1.8, ease: 'power3.out' });
-      });
-    }
 
     // ── GSAP scroll animations on key sections ──────────────────
     ScrollTrigger.batch('.service-card.reveal', {
