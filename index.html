@@ -112,6 +112,10 @@ button{background:none;border:none;cursor:pointer;font-family:inherit;color:inhe
   background:rgba(13,24,41,0.35);
 }
 
+/* ─── HERO TEXT ENTRANCE ─── */
+@keyframes slideInLeft{from{transform:translateX(-120px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes slideInRight{from{transform:translateX(120px);opacity:0}to{transform:translateX(0);opacity:1}}
+
 /* Typography rows */
 .hero-inner{
   position:relative;z-index:4;
@@ -125,6 +129,7 @@ button{background:none;border:none;cursor:pointer;font-family:inherit;color:inhe
   padding:0 3vw 1.5vw;
   position:relative;
   border-bottom:1px solid rgba(242,237,228,0.1);
+  overflow:hidden;
 }
 .hero-row:last-child{border-bottom:none}
 .hero-label{
@@ -133,8 +138,14 @@ button{background:none;border:none;cursor:pointer;font-family:inherit;color:inhe
   color:var(--dim);
   position:absolute;
   right:3vw;top:1.5vw;
+  opacity:0;
+  animation:fadeIn 0.6s ease forwards;
 }
 .hero-label.left{right:auto;left:3vw}
+.hero-row[data-row="0"] .hero-label{animation-delay:0.5s}
+.hero-row[data-row="1"] .hero-label{animation-delay:0.65s}
+.hero-row[data-row="2"] .hero-label{animation-delay:0.8s}
+
 .hero-word{
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(5rem,13vw,18rem);
@@ -145,7 +156,13 @@ button{background:none;border:none;cursor:pointer;font-family:inherit;color:inhe
   white-space:nowrap;
   will-change:transform,letter-spacing;
   display:inline-block;
+  opacity:0;
 }
+/* Row 0 (Lawpez) slides in from left; row 1 (Strategic) from right; row 2 (Immigration) from left */
+.hero-row[data-row="0"] .hero-word{animation:slideInLeft 0.9s cubic-bezier(0.76,0,0.24,1) 0.3s forwards}
+.hero-row[data-row="1"] .hero-word{animation:slideInRight 0.9s cubic-bezier(0.76,0,0.24,1) 0.45s forwards}
+.hero-row[data-row="2"] .hero-word{animation:slideInLeft 0.9s cubic-bezier(0.76,0,0.24,1) 0.6s forwards}
+
 .hero-word.right{margin-left:auto}
 .hero-word.sm{font-size:clamp(2.5rem,6vw,8rem);opacity:0.5}
 
@@ -214,55 +231,130 @@ button{background:none;border:none;cursor:pointer;font-family:inherit;color:inhe
 }
 .statement-sub p{max-width:38ch}
 
-/* ─── USTED ES ───────────────────────────────────────────── */
+/* ─── USTED ES (multi-line cycling) ─────────────────────── */
 .vous{
   background:var(--ink);
-  padding:8vw 3vw;
+  padding:8vw 3vw 6vw;
   border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
   overflow:hidden;
 }
 .vous-tagline{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(3rem,7vw,10rem);
+  font-size:clamp(2.8rem,6.5vw,9rem);
   font-weight:300;
-  line-height:1.1;
+  line-height:1.05;
   color:var(--cream);
   letter-spacing:-0.01em;
 }
-.vous-prefix{opacity:0.35}
-.vous-word-wrap{display:inline-block;overflow:hidden;vertical-align:bottom}
-.vous-word{
-  display:inline-block;
+.vous-prefix{opacity:0.35;display:block}
+.vous-block-wrap{
+  display:block;
+  overflow:hidden;
+  position:relative;
+  min-height:2.2em;
+  margin-top:0.1em;
+}
+.vous-block{
+  display:block;
   color:var(--gold);
   font-style:italic;
-  transform:translateY(100%);
-  transition:transform 0.65s cubic-bezier(0.76,0,0.24,1);
+  transform:translateY(110%);
+  transition:transform 0.75s cubic-bezier(0.76,0,0.24,1);
+  white-space:pre-line;
+  line-height:1.05;
+  position:absolute;top:0;left:0;
 }
-.vous-word.visible{transform:translateY(0)}
+.vous-block.visible{transform:translateY(0);position:relative}
+.vous-block.leaving{transform:translateY(-110%);position:absolute}
+.vous-bottom{
+  margin-top:5vw;
+  display:grid;grid-template-columns:1fr 1fr;gap:4vw;
+  border-top:1px solid var(--line);padding-top:3vw;
+}
 .vous-sub{
-  margin-top:4vw;
   font-size:0.85rem;
   color:var(--dim);
   line-height:1.7;
-  max-width:55ch;
+  max-width:44ch;
 }
 
-/* ─── SAVOIR-FAIRE / FORTALEZAS ───────────────────────────── */
+/* ─── TICKER SECTION ─────────────────────────────────────── */
+.ticker-section{
+  background:#1c1204;
+  overflow:hidden;
+  padding:3vw 0;
+  border-top:1px solid rgba(201,168,112,0.1);
+  border-bottom:1px solid rgba(201,168,112,0.1);
+}
+.ticker-track{
+  display:flex;
+  width:max-content;
+  animation:tickerScroll 24s linear infinite;
+}
+@keyframes tickerScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.ticker-item{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.5rem,9vw,12rem);
+  font-weight:700;
+  color:var(--gold);
+  white-space:nowrap;
+  padding:0 2vw;
+  line-height:1;
+  letter-spacing:-0.02em;
+}
+.ticker-sep{
+  color:rgba(201,168,112,0.3);
+  padding:0 1vw;
+  font-size:clamp(2rem,5vw,6rem);
+  font-family:'Cormorant Garamond',serif;
+  font-weight:300;
+  line-height:1;
+  align-self:center;
+}
+
+/* ─── SAVOIR-FAIRE (cycling row + grid) ──────────────────── */
 .savoir{
-  padding:6vw 3vw;
+  padding:0 3vw;
   background:var(--ink);
   border-top:1px solid var(--line);
 }
-.savoir-header{
-  display:flex;justify-content:space-between;align-items:baseline;
-  margin-bottom:4vw;
+.savoir-row{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  padding:4vw 0 3vw;
+  border-bottom:1px solid var(--line);
+  gap:2rem;
 }
-.savoir-title{
+.savoir-label{
   font-size:0.75rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;
   color:var(--dim);
+  flex-shrink:0;
 }
-.savoir-list{
+.savoir-cycle-wrap{
+  overflow:hidden;
+  position:relative;
+  height:1.1em;
+  flex:1;
+  display:flex;justify-content:flex-end;
+}
+.savoir-cycle{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.5rem,3.5vw,4.5rem);
+  font-weight:300;
+  color:var(--cream);
+  white-space:nowrap;
+  letter-spacing:-0.01em;
+  line-height:1;
+  transform:translateY(110%);
+  transition:transform 0.7s cubic-bezier(0.76,0,0.24,1);
+  position:absolute;right:0;bottom:0;
+}
+.savoir-cycle.visible{transform:translateY(0)}
+.savoir-cycle.leaving{transform:translateY(-110%)}
+
+.savoir-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:0;
@@ -678,29 +770,60 @@ footer{
 </section>
 
 <!-- ══════════════════════════════════════
-     USTED ES
+     USTED ES (multi-line cycling)
 ══════════════════════════════════════════ -->
 <section class="vous">
-  <p class="vous-tagline">
+  <div class="vous-tagline">
     <span class="vous-prefix" data-i18n="vous_prefix">Usted es</span>
-    <br>
-    <span class="vous-word-wrap">
-      <span class="vous-word" id="vous-word">familiar separado/a</span>
+    <span class="vous-block-wrap" id="vous-block-wrap">
+      <span class="vous-block visible" id="vous-block-current">un familiar separado
+buscando reunificación</span>
     </span>
-  </p>
-  <p class="vous-sub" data-i18n="vous_sub">
-    Sea cual sea su situación migratoria, en Lawpez Group encontrará un equipo que habla su idioma — literal y culturalmente. Evaluamos su caso con honestidad y trazamos el camino más seguro hacia su objetivo.
-  </p>
+  </div>
+  <div class="vous-bottom">
+    <p class="vous-sub" data-i18n="vous_sub_left">¿Está buscando reunirse con su familia, proteger su futuro o construir una vida nueva en los Estados Unidos?</p>
+    <p class="vous-sub" data-i18n="vous_sub_right">En Lawpez Strategic Immigration, evaluamos su caso con honestidad y trazamos el camino más seguro — sin importar cuán compleja sea su situación.</p>
+  </div>
 </section>
 
 <!-- ══════════════════════════════════════
-     FORTALEZAS
+     TICKER
+══════════════════════════════════════════ -->
+<div class="ticker-section">
+  <div class="ticker-track">
+    <!-- Duplicated for seamless loop -->
+    <span class="ticker-item">Consultoría Estratégica</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Inmigración</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Lawpez Strategic</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Venezuela · EE.UU.</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Consultoría Estratégica</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Inmigración</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Lawpez Strategic</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Venezuela · EE.UU.</span>
+    <span class="ticker-sep">·</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ÁREAS DE PRÁCTICA
 ══════════════════════════════════════════ -->
 <section class="savoir" id="servicios">
-  <div class="savoir-header">
-    <span class="savoir-title" data-i18n="savoir_title">Áreas de Práctica</span>
+  <!-- Cycling skill label row -->
+  <div class="savoir-row">
+    <span class="savoir-label" data-i18n="savoir_title">Áreas de Práctica</span>
+    <div class="savoir-cycle-wrap">
+      <span class="savoir-cycle visible" id="savoir-cycle">Peticiones Familiares</span>
+    </div>
   </div>
-  <div class="savoir-list">
+  <!-- Grid -->
+  <div class="savoir-grid">
     <div class="savoir-item">
       <div class="savoir-num">01</div>
       <div class="savoir-name" data-i18n="skill_1">Peticiones<br>Familiares</div>
@@ -1032,6 +1155,19 @@ const TEXTS = {
     footer_rights:'Todos los derechos reservados.',
     footer_built:'Consultoría · No somos abogados',
     disclaimer_title:'Aviso Legal Importante / Important Legal Disclaimer',
+    vous_sub_left:'¿Está buscando reunirse con su familia, proteger su futuro o construir una vida nueva en los Estados Unidos?',
+    vous_sub_right:'En Lawpez Strategic Immigration evaluamos su caso con honestidad y trazamos el camino más seguro — sin importar cuán compleja sea su situación.',
+    vous_blocks:[
+      'un familiar separado\nbuscando reunificación',
+      'un solicitante de asilo\nen busca de protección',
+      'un emprendedor\ncon visión global',
+      'un profesional cualificado\nabriendo nuevas puertas',
+      'una familia venezolana\nreivindicando su futuro',
+      'un inversionista\nconstruyendo su legado',
+    ],
+    savoir_skills:['Peticiones Familiares','Ajuste de Estatus','Asilo & Protección',
+      'Visas de Trabajo','Naturalización','Inversión E-2 & EB-5',
+      'Consular Processing','Derecho Venezolano'],
     vous_words:['familiar separado/a','emprendedor/a','profesional cualificado/a',
       'venezolano/a en el exterior','familia binacional','solicitante de asilo',
       'trabajador/a temporal','inversionista internacional'],
@@ -1092,6 +1228,19 @@ const TEXTS = {
     footer_rights:'All rights reserved.',
     footer_built:'Consulting · Not attorneys',
     disclaimer_title:'Important Legal Disclaimer / Aviso Legal Importante',
+    vous_sub_left:'Are you seeking to reunite with your family, protect your future, or build a new life in the United States?',
+    vous_sub_right:'At Lawpez Strategic Immigration, we evaluate your case honestly and chart the safest path forward — no matter how complex your situation.',
+    vous_blocks:[
+      'a separated family member\nseeking reunification',
+      'an asylum seeker\nseeking protection',
+      'an entrepreneur\nwith a global vision',
+      'a skilled professional\nopening new doors',
+      'a Venezuelan family\nreclaiming your future',
+      'an investor\nbuilding your legacy',
+    ],
+    savoir_skills:['Family Petitions','Adjustment of Status','Asylum & Protection',
+      'Work Visas','Naturalization','Investment E-2 & EB-5',
+      'Consular Processing','Venezuelan Law'],
     vous_words:['a separated family member','an entrepreneur','a skilled professional',
       'a Venezuelan abroad','a binational family','an asylum seeker',
       'a temporary worker','an international investor'],
@@ -1152,6 +1301,19 @@ const TEXTS = {
     footer_rights:'Tous droits réservés.',
     footer_built:'Conseil · Non avocats',
     disclaimer_title:'Avis Juridique Important / Important Legal Disclaimer',
+    vous_sub_left:'Cherchez-vous à rejoindre votre famille, à protéger votre avenir ou à construire une nouvelle vie aux États-Unis?',
+    vous_sub_right:'Chez Lawpez Strategic Immigration, nous évaluons votre dossier honnêtement et traçons la voie la plus sûre — quelle que soit la complexité de votre situation.',
+    vous_blocks:[
+      'un membre de famille séparé\nen quête de réunification',
+      'un demandeur d\'asile\nen quête de protection',
+      'un entrepreneur\nà vision globale',
+      'un professionnel qualifié\nouvrant de nouvelles portes',
+      'une famille vénézuélienne\nrevendiquant son avenir',
+      'un investisseur\nconstruisant son héritage',
+    ],
+    savoir_skills:['Pétitions Familiales','Ajustement de Statut','Asile & Protection',
+      'Visas de Travail','Naturalisation','Investissement E-2 & EB-5',
+      'Traitement Consulaire','Droit Vénézuélien'],
     vous_words:['un membre de famille séparé','un entrepreneur','un professionnel qualifié',
       'un Vénézuélien à l\'étranger','une famille binationale','un demandeur d\'asile',
       'un travailleur temporaire','un investisseur international'],
@@ -1177,10 +1339,14 @@ function applyLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
   });
-  // Update vous word cycling list
-  vousWords = t.vous_words || TEXTS.es.vous_words;
+  // Update vous block cycling list
+  vousBlocks = t.vous_blocks || TEXTS.es.vous_blocks;
   vousIdx = 0;
-  showVousWord(vousIdx);
+  showVousBlock(vousIdx);
+  // Update savoir cycle
+  savoirSkills = t.savoir_skills || TEXTS.es.savoir_skills;
+  savoirIdx = 0;
+  showSavoirSkill(savoirIdx);
   // Update html lang
   document.documentElement.lang = lang;
 }
@@ -1232,26 +1398,68 @@ dots.forEach(dot => {
 
 startBgCycle();
 
-/* ─── VOUS / USTED ES CYCLING ────────────────────────────── */
-let vousWords = TEXTS.es.vous_words;
+/* ─── VOUS / USTED ES — MULTI-LINE BLOCK CYCLING ─────────── */
+let vousBlocks = TEXTS.es.vous_blocks;
 let vousIdx = 0;
-const vousWordEl = document.getElementById('vous-word');
+const vousWrap = document.getElementById('vous-block-wrap');
 
-function showVousWord(idx) {
-  vousWordEl.classList.remove('visible');
-  setTimeout(() => {
-    vousWordEl.textContent = vousWords[idx];
-    vousWordEl.classList.add('visible');
-  }, 300);
+function showVousBlock(idx) {
+  const current = vousWrap.querySelector('.vous-block.visible');
+
+  // Create new block
+  const next = document.createElement('span');
+  next.className = 'vous-block';
+  next.textContent = vousBlocks[idx];
+  vousWrap.appendChild(next);
+
+  // Force reflow then animate
+  requestAnimationFrame(() => {
+    if (current) {
+      current.classList.remove('visible');
+      current.classList.add('leaving');
+    }
+    next.classList.add('visible');
+    setTimeout(() => {
+      if (current && current.parentNode) current.parentNode.removeChild(current);
+    }, 800);
+  });
 }
 
-// Initial show
-setTimeout(() => showVousWord(0), 500);
+setTimeout(() => {
+  // Set initial block text
+  const initial = vousWrap.querySelector('.vous-block');
+  if (initial) initial.textContent = vousBlocks[0];
+}, 100);
 
 setInterval(() => {
-  vousIdx = (vousIdx + 1) % vousWords.length;
-  showVousWord(vousIdx);
-}, 2800);
+  vousIdx = (vousIdx + 1) % vousBlocks.length;
+  showVousBlock(vousIdx);
+}, 3200);
+
+/* ─── SAVOIR SKILL CYCLING ───────────────────────────────── */
+let savoirSkills = TEXTS.es.savoir_skills;
+let savoirIdx = 0;
+const savoirCycleEl = document.getElementById('savoir-cycle');
+
+function showSavoirSkill(idx) {
+  savoirCycleEl.classList.remove('visible');
+  savoirCycleEl.classList.add('leaving');
+  setTimeout(() => {
+    savoirCycleEl.textContent = savoirSkills[idx];
+    savoirCycleEl.classList.remove('leaving');
+    savoirCycleEl.classList.add('visible');
+  }, 380);
+}
+
+setTimeout(() => {
+  savoirCycleEl.textContent = savoirSkills[0];
+  savoirCycleEl.classList.add('visible');
+}, 200);
+
+setInterval(() => {
+  savoirIdx = (savoirIdx + 1) % savoirSkills.length;
+  showSavoirSkill(savoirIdx);
+}, 2600);
 
 /* ─── ACCORDION ──────────────────────────────────────────── */
 document.querySelectorAll('.service-item').forEach(item => {
@@ -1287,7 +1495,7 @@ const staggerObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-const savorSection = document.querySelector('.savoir-list');
+const savorSection = document.querySelector('.savoir-grid');
 if (savorSection) staggerObserver.observe(savorSection);
 
 /* ─── HERO SCROLL PARALLAX + LETTER-SPACING ─────────────── */
