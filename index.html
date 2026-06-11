@@ -152,7 +152,7 @@ section{position:relative;padding:clamp(80px,12vw,160px) 0}
 }
 .band-media::after{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(13,27,42,.4),rgba(13,27,42,.12) 50%,rgba(13,27,42,.5));
+  background:linear-gradient(180deg,rgba(13,27,42,.45),rgba(13,27,42,.3) 50%,rgba(13,27,42,.6));
 }
 .band-word{
   position:relative;z-index:2;
@@ -166,9 +166,14 @@ section{position:relative;padding:clamp(80px,12vw,160px) 0}
   padding:0 clamp(24px,5vw,80px);color:var(--cream);
   opacity:0;will-change:transform,opacity;
 }
+.band-text .label{
+  color:#EBCB80;font-size:13px;font-weight:500;letter-spacing:.16em;
+  text-shadow:0 1px 4px rgba(10,22,34,.95),0 2px 18px rgba(10,22,34,.85);
+}
 .band-text p{
-  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-family:var(--serif);font-style:italic;font-weight:400;
   font-size:clamp(26px,3.4vw,46px);line-height:1.35;margin-top:14px;
+  text-shadow:0 1px 6px rgba(10,22,34,.8),0 4px 26px rgba(10,22,34,.7);
 }
 
 /* ===== NAV ===== */
