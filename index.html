@@ -136,16 +136,39 @@ section{position:relative;padding:clamp(80px,12vw,160px) 0}
 }
 .clip-reveal.in .zoom{transform:scale(1);opacity:1}
 
-/* ===== CUSTOM CURSOR ===== */
-.cursor{display:none}
-@media (hover:hover){
-  .cursor{
-    display:block;position:fixed;top:0;left:0;width:8px;height:8px;
-    background:var(--gold);border-radius:50%;pointer-events:none;
-    z-index:9999;transform:translate(-50%,-50%);
-    transition:width 300ms var(--ease-std),height 300ms var(--ease-std),background-color 300ms var(--ease-std);
-  }
-  .cursor.is-big{width:32px;height:32px;background:#fff;mix-blend-mode:difference}
+/* ===== CINEMATIC SCROLL BANDS (Apple-style scrub) ===== */
+.band{height:170vh;position:relative;background:var(--navy);padding:0}
+.band-sticky{
+  position:sticky;top:0;height:100vh;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.band-media{
+  position:absolute;inset:0;
+  clip-path:inset(14% 20%);will-change:clip-path;
+}
+.band-media img{
+  width:100%;height:100%;object-fit:cover;
+  transform:scale(1.25);will-change:transform;
+}
+.band-media::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(13,27,42,.4),rgba(13,27,42,.12) 50%,rgba(13,27,42,.5));
+}
+.band-word{
+  position:relative;z-index:2;
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(72px,14vw,220px);letter-spacing:-.02em;line-height:1;
+  color:var(--cream);opacity:0;will-change:transform,opacity;
+  user-select:none;
+}
+.band-text{
+  position:relative;z-index:2;max-width:760px;
+  padding:0 clamp(24px,5vw,80px);color:var(--cream);
+  opacity:0;will-change:transform,opacity;
+}
+.band-text p{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(26px,3.4vw,46px);line-height:1.35;margin-top:14px;
 }
 
 /* ===== NAV ===== */
@@ -208,19 +231,16 @@ section{position:relative;padding:clamp(80px,12vw,160px) 0}
   padding:140px clamp(24px,5vw,80px) clamp(48px,6vw,72px) clamp(24px,5vw,80px);
   position:relative;will-change:transform,opacity;
 }
-.hero-kicker{margin-bottom:clamp(24px,4vh,48px);display:flex;gap:18px;align-items:center}
-.hero-kicker .rule{
-  display:inline-block;width:64px;height:1px;background:var(--gold);
-  transform:scaleX(0);transform-origin:left;
-  transition:transform 1.2s var(--ease-clip) .9s;
-}
-body.loaded .hero-kicker .rule{transform:scaleX(1)}
 .hero h1{
   font-family:var(--serif);font-weight:300;
   font-size:clamp(52px,7.5vw,118px);
   line-height:.98;letter-spacing:-.02em;
 }
-.hero-line{display:block;overflow:hidden}
+.hero-line{
+  display:block;overflow:hidden;
+  padding:.06em .08em .16em .02em;
+  margin:-.06em -.08em -.16em -.02em;
+}
 .hero-line-inner{
   display:block;transform:translateY(60px);opacity:0;
   transition:transform 1.1s var(--ease-out),opacity .9s ease;
@@ -710,7 +730,6 @@ a.contact-row:hover .arrow{transform:translateX(8px)}
 </div>
 
 <div class="grain" aria-hidden="true"></div>
-<div class="cursor" id="cursor"></div>
 
 <!-- ===== NAV ===== -->
 <nav class="nav" id="nav">
@@ -737,10 +756,6 @@ a.contact-row:hover .arrow{transform:translateX(8px)}
 <header class="hero s-cream" id="top">
   <div class="hero-grid">
     <div class="hero-copy" id="heroCopy">
-      <div class="hero-kicker">
-        <span class="rule"></span>
-        <span class="label label--gold">Establecido 2020 · Chicago</span>
-      </div>
       <h1>
         <span class="hero-line"><span class="hero-line-inner" style="--i:0">Lawpez</span></span>
         <span class="hero-line hero-line--accent"><span class="hero-line-inner" style="--i:1">Strategic</span></span>
@@ -749,7 +764,6 @@ a.contact-row:hover .arrow{transform:translateX(8px)}
       </h1>
       <p class="hero-sub">Navegamos el sistema migratorio con precisión, dignidad y resultados.</p>
       <div class="hero-tags">
-        <span class="label">Establecido 2020</span>
         <span class="label">Lawpez Group LLC</span>
         <span class="label label--gold">Español</span>
         <span class="label label--gold">English</span>
@@ -794,6 +808,14 @@ a.contact-row:hover .arrow{transform:translateX(8px)}
     </div>
   </div>
 </div>
+
+<!-- ===== BANDA CINEMÁTICA I ===== -->
+<section class="band" aria-hidden="true">
+  <div class="band-sticky">
+    <div class="band-media"><img src="assets/equipo-colonnade.jpg" alt="" loading="lazy"></div>
+    <div class="band-word">Lawpez</div>
+  </div>
+</section>
 
 <!-- ===== ENFOQUE ===== -->
 <section class="enfoque s-cream" id="enfoque">
@@ -985,7 +1007,7 @@ a.contact-row:hover .arrow{transform:translateX(8px)}
 <!-- ===== EQUIPO ===== -->
 <section class="equipo s-navy" id="equipo">
   <div class="equipo-bg" data-parallax="0.18">
-    <img src="assets/equipo-colonnade.jpg" alt="">
+    <img src="assets/hero-desk.jpg" alt="">
   </div>
   <div class="container">
     <div class="equipo-head">
@@ -1043,6 +1065,17 @@ a.contact-row:hover .arrow{transform:translateX(8px)}
         </div>
       </article>
 
+    </div>
+  </div>
+</section>
+
+<!-- ===== BANDA CINEMÁTICA II ===== -->
+<section class="band">
+  <div class="band-sticky">
+    <div class="band-media"><img src="assets/hero-skyline.jpg" alt="" loading="lazy"></div>
+    <div class="band-text">
+      <span class="label label--gold">Lawpez Strategic Immigration Consulting</span>
+      <p>Navegamos el sistema migratorio con precisión, dignidad y resultados.</p>
     </div>
   </div>
 </section>
@@ -1160,11 +1193,11 @@ a.contact-row:hover .arrow{transform:translateX(8px)}
   },{passive:true});
 })();
 
-/* ===== INTERSECTION OBSERVER — RISE + CLIP REVEALS ===== */
+/* ===== INTERSECTION OBSERVER — RISE + CLIP REVEALS (reversible) ===== */
 (function(){
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+      e.target.classList.toggle('in',e.isIntersecting);
     });
   },{threshold:0.15});
   document.querySelectorAll('.rise,.clip-reveal,.label-line').forEach(function(el){io.observe(el);});
@@ -1296,25 +1329,51 @@ a.contact-row:hover .arrow{transform:translateX(8px)}
   cycle();
 })();
 
-/* ===== CUSTOM CURSOR (lerp 0.12) ===== */
+/* ===== CINEMATIC BANDS — SCROLL SCRUB (Apple-style, reversible) ===== */
 (function(){
-  if(!window.matchMedia('(hover: hover)').matches)return;
-  var cur=document.getElementById('cursor');
-  var mx=innerWidth/2,my=innerHeight/2,x=mx,y=my;
-  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;});
-  function loop(){
-    x+=(mx-x)*0.12;y+=(my-y)*0.12;
-    cur.style.left=x+'px';cur.style.top=y+'px';
-    requestAnimationFrame(loop);
+  var bands=[],ticking=false;
+  function clamp01(v){return Math.max(0,Math.min(1,v));}
+  function measure(){
+    bands=[];
+    document.querySelectorAll('.band').forEach(function(b){
+      var r=b.getBoundingClientRect();
+      bands.push({
+        top:r.top+window.scrollY,h:b.offsetHeight,
+        media:b.querySelector('.band-media'),
+        img:b.querySelector('.band-media img'),
+        word:b.querySelector('.band-word'),
+        text:b.querySelector('.band-text')
+      });
+    });
   }
-  loop();
-  var hoverSel='a,button,.acc-head,.profile-btn,.team-card';
-  document.addEventListener('mouseover',function(e){
-    if(e.target.closest(hoverSel))cur.classList.add('is-big');
-  });
-  document.addEventListener('mouseout',function(e){
-    if(e.target.closest(hoverSel))cur.classList.remove('is-big');
-  });
+  function update(){
+    ticking=false;
+    var vh=window.innerHeight,sy=window.scrollY;
+    bands.forEach(function(o){
+      var span=Math.max(o.h-vh,1);
+      var p=clamp01((sy-o.top)/span);
+      var open=Math.min(p/0.55,1);             /* window opens during first 55% */
+      var v=(1-open)*14,hz=(1-open)*20;
+      o.media.style.clipPath='inset('+v.toFixed(2)+'% '+hz.toFixed(2)+'%)';
+      o.img.style.transform='scale('+(1.25-open*0.25).toFixed(4)+')';
+      if(o.word){
+        o.word.style.opacity=clamp01(p*2.2).toFixed(2);
+        o.word.style.transform='translateX('+((0.5-p)*14).toFixed(2)+'vw)';
+      }
+      if(o.text){
+        var tp=clamp01((p-0.4)/0.4);
+        o.text.style.opacity=tp.toFixed(2);
+        o.text.style.transform='translateY('+((1-tp)*48).toFixed(1)+'px)';
+      }
+    });
+  }
+  function onScroll(){
+    if(!ticking){ticking=true;requestAnimationFrame(update);}
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',function(){measure();onScroll();});
+  window.addEventListener('load',function(){measure();update();});
+  measure();update();
 })();
 </script>
 </body>
