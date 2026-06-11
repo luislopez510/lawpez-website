@@ -1202,10 +1202,22 @@ a.contact-row:hover .arrow{transform:translateX(8px)}
 (function(){
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      e.target.classList.toggle('in',e.isIntersecting);
+      if(e.target.classList.contains('rise')||e.target.classList.contains('label-line')){
+        e.target.classList.toggle('in',e.isIntersecting);
+      }
+      if(e.target._reveals){
+        e.target._reveals.forEach(function(c){c.classList.toggle('in',e.isIntersecting);});
+      }
     });
   },{threshold:0.15});
-  document.querySelectorAll('.rise,.clip-reveal,.label-line').forEach(function(el){io.observe(el);});
+  document.querySelectorAll('.rise,.label-line').forEach(function(el){io.observe(el);});
+  /* clip-path:inset(100%) deja el elemento con área visible cero, así que el
+     observer nunca lo reporta como intersectando — se observa el padre */
+  document.querySelectorAll('.clip-reveal').forEach(function(el){
+    var p=el.parentElement;
+    p._reveals=p._reveals||[];p._reveals.push(el);
+    io.observe(p);
+  });
 })();
 
 /* ===== WORD-BY-WORD PULL QUOTE ===== */
